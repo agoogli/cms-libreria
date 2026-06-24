@@ -16,6 +16,23 @@ After you click the `Deploy` button above, you'll want to have standalone copy o
 
 ### Development
 
+```
+podman volume create cms_pgdata
+
+podman run -d \
+  --name cms-postgres \
+  -e POSTGRES_DB=cms_db \
+  -e POSTGRES_USER=cms \
+  -e POSTGRES_PASSWORD=cms \
+  -v cms_pgdata:/var/lib/postgresql/data:Z \
+  -p 5432:5432 \
+  --restart unless-stopped \
+  docker.io/library/postgres:17
+  
+.env:  
+postgresql://cms:cms@localhost:5432/cms_db
+```
+
 1. First [clone the repo](#clone) if you have not done so already
 2. `cd my-project && cp .env.example .env` to copy the example environment variables. You'll need to add the `MONGODB_URL` from your Cloud project to your `.env` if you want to use S3 storage and the MongoDB database that was created for you.
 
