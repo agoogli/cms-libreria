@@ -9,6 +9,8 @@ import { Utenti } from './collections/Utenti'
 import { Media } from './collections/Media'
 import { Settori } from './collections/Settori'
 import { Libri } from './collections/Libri'
+import { en } from '@payloadcms/translations/languages/en'
+import { it } from '@payloadcms/translations/languages/it'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -19,6 +21,10 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+  },
+  i18n: {
+    supportedLanguages: { en, it },
+    fallbackLanguage: 'it',
   },
   collections: [Utenti, Media, Settori, Libri],
   editor: lexicalEditor(),

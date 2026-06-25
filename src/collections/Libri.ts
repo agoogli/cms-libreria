@@ -27,10 +27,6 @@ export const Libri: CollectionConfig = {
       type: 'text',
     },
     {
-      name: 'ean',
-      type: 'text',
-    },
-    {
       name: 'prezzo',
       type: 'number',
       required: true,
@@ -43,6 +39,10 @@ export const Libri: CollectionConfig = {
       name: 'editore',
       type: 'text',
       required: true,
+    },
+    {
+      name: 'ean',
+      type: 'text',
     },
     {
       name: 'settore',

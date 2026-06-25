@@ -1,0 +1,11 @@
+/* Uniform field labels across all collection forms */
+.field-label,
+label.field-label,
+.field-label__text {
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  margin-bottom: 8px !important;
+  color: var(--theme-text, #333) !important;
+}

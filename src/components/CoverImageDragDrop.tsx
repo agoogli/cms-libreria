@@ -258,13 +258,6 @@ export const CoverImageDragDrop: React.FC<CoverImageDragDropProps> = ({
               >
                 Sostituisci
               </button>
-              <button
-                type="button"
-                className={`${styles.btn} ${styles.btnDanger}`}
-                onClick={handleRemove}
-              >
-                Rimuovi
-              </button>
               <a
                 href={mediaData.url}
                 target="_blank"
@@ -274,6 +267,13 @@ export const CoverImageDragDrop: React.FC<CoverImageDragDropProps> = ({
               >
                 Apri originale
               </a>
+              <button
+                type="button"
+                className={`${styles.btn} ${styles.btnDanger}`}
+                onClick={handleRemove}
+              >
+                Rimuovi
+              </button>
             </div>
           </div>
         </div>
