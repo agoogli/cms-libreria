@@ -58,6 +58,11 @@ export const Libri: CollectionConfig = {
       name: 'imgCopertina',
       type: 'relationship',
       relationTo: 'media',
+      admin: {
+        components: {
+          Field: '@/components/CoverImageDragDrop',
+        },
+      },
     },
     {
       name: 'descrizione',
