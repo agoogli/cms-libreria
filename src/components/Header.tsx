@@ -17,15 +17,15 @@ export function Header() {
   ]
 
   return (
-    <header className="w-full bg-black text-white">
-      {/* 80% width container on desktop */}
-      <div className="w-full lg:w-[80%] mx-auto px-4 py-6 flex justify-between items-center">
+    <header className="w-full bg-transparent text-zinc-900">
+      {/* 60% width container on desktop, reduced padding by 30% (py-6 -> py-4) */}
+      <div className="w-full lg:w-[60%] mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex flex-col select-none group">
-          <span className="font-serif text-xl sm:text-2xl font-bold tracking-wide text-white group-hover:text-orange-400 transition-colors duration-200">
+          <span className="font-serif text-xl sm:text-2xl font-bold tracking-wide text-zinc-900 group-hover:text-orange-600 transition-colors duration-200">
             ANTIGRAVITÀ
           </span>
-          <span className="text-[10px] uppercase tracking-[0.25em] text-zinc-400 -mt-1 font-sans">
+          <span className="text-[10px] uppercase tracking-[0.25em] text-zinc-500 -mt-1 font-sans">
             Libreria &amp; Cultura
           </span>
         </Link>
@@ -36,7 +36,7 @@ export function Header() {
             <Link
               key={link.name}
               href={link.href}
-              className="text-sm font-medium tracking-wide text-zinc-300 hover:text-orange-400 transition-colors duration-200 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-orange-400 hover:after:w-full after:transition-all after:duration-300"
+              className="text-sm font-medium tracking-wide text-zinc-700 hover:text-orange-600 transition-colors duration-200 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-orange-600 hover:after:w-full after:transition-all after:duration-300"
             >
               {link.name}
             </Link>
@@ -46,7 +46,7 @@ export function Header() {
         {/* Mobile menu button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden p-2 text-zinc-300 hover:text-white focus:outline-none"
+          className="md:hidden p-2 text-zinc-600 hover:text-zinc-900 focus:outline-none"
           aria-label="Toggle Menu"
         >
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -55,14 +55,14 @@ export function Header() {
 
       {/* Mobile Navigation Panel */}
       {isOpen && (
-        <div className="md:hidden bg-zinc-950 border-t border-zinc-900 animate-in fade-in slide-in-from-top-4 duration-200">
+        <div className="md:hidden bg-white border-t border-zinc-200 shadow-lg animate-in fade-in slide-in-from-top-4 duration-200">
           <nav className="flex flex-col px-6 py-4 gap-4">
             {links.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="text-base font-medium text-zinc-300 hover:text-orange-400 transition-colors duration-150 py-1"
+                className="text-base font-medium text-zinc-700 hover:text-orange-600 transition-colors duration-150 py-1"
               >
                 {link.name}
               </Link>

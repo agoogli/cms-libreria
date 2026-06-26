@@ -3,7 +3,7 @@ import { Phone, Mail, MessageCircle } from 'lucide-react'
 
 export function TopBar() {
   return (
-    <div className="w-full bg-zinc-950 text-zinc-300 py-2 px-4 border-b border-zinc-800 text-xs sm:text-sm">
+    <div className="w-full bg-[#363537] text-zinc-300 py-2 px-4 border-b border-zinc-700 text-xs sm:text-sm">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8">
         <a
           href="tel:+390123456789"
