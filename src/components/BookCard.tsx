@@ -33,7 +33,7 @@ export function BookCard({ book }: BookCardProps) {
   return (
     <div className="group cursor-pointer flex flex-col h-full select-none bg-white px-8 pt-3 pb-3 rounded-lg border border-zinc-200/80 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 ease-out font-sans">
       {/* Book Cover Container - negative horizontal margins keep its size exactly as before */}
-      <div className="relative aspect-[3/4] w-auto -mx-2.5 rounded-md overflow-hidden bg-zinc-100 shadow-sm border border-zinc-200/60">
+      <div className="relative aspect-[3/4] w-auto -mx-2.5 rounded-none overflow-hidden bg-zinc-100 shadow-sm border border-zinc-200/60">
         {imageUrl ? (
           <Image
             src={imageUrl}
@@ -63,14 +63,14 @@ export function BookCard({ book }: BookCardProps) {
       </div>
 
       {/* Book Details (Inter font, increased horizontal padding, compacted vertical spacing) */}
-      <div className="mt-2.5 flex flex-col px-1">
+      <div className="mt-2.5 flex flex-col flex-grow px-1">
         <h3 className="font-sans text-[11px] sm:text-xs font-bold text-zinc-900 line-clamp-3 group-hover:text-orange-600 transition-colors duration-200 leading-tight">
           {book.titolo}
         </h3>
-        <p className="text-xs text-zinc-500 mt-0.5 line-clamp-1 font-sans font-normal">
+        <p className="text-xs text-zinc-500 mt-0.5 line-clamp-2 font-sans font-normal">
           {book.autore || 'Autore non specificato'}
         </p>
-        <div className="pt-1 mt-1 flex items-center justify-between border-t border-zinc-100/80">
+        <div className="pt-1 mt-auto flex items-center justify-between border-t border-zinc-100/80">
           <span className="text-xs sm:text-sm font-semibold text-orange-600 font-sans">
             {formattedPrice}
           </span>
