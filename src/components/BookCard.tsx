@@ -68,9 +68,9 @@ export function BookCard({ book }: BookCardProps) {
           {book.titolo}
         </h3>
         <p className="text-xs text-zinc-500 mt-0.5 line-clamp-2 font-sans font-normal">
-          {book.autore || 'Autore non specificato'}
+          {book.autore || 'Autori vari'}
         </p>
-        <div className="pt-1 mt-auto flex items-center justify-between border-t border-zinc-100/80">
+        <div className="mt-auto flex items-center justify-between border-t border-zinc-100/80">
           <span className="text-xs sm:text-sm font-semibold text-orange-600 font-sans">
             {formattedPrice}
           </span>
