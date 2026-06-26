@@ -31,7 +31,7 @@ export function BookCard({ book }: BookCardProps) {
   }).format(book.prezzo)
 
   return (
-    <div className="group cursor-pointer flex flex-col h-full select-none bg-white p-3 rounded-lg border border-zinc-200/80 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 ease-out">
+    <div className="group cursor-pointer flex flex-col h-full select-none bg-white p-2.5 rounded-lg border border-zinc-200/80 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 ease-out font-sans">
       {/* Book Cover Container with 3D shadow and scale effects */}
       <div className="relative aspect-[3/4] w-full rounded-md overflow-hidden bg-zinc-100 shadow-sm border border-zinc-200/60">
         {imageUrl ? (
@@ -45,14 +45,14 @@ export function BookCard({ book }: BookCardProps) {
           />
         ) : (
           /* Fallback Cover: Elegant gradient with initials for books without images */
-          <div className="absolute inset-0 bg-gradient-to-br from-zinc-800 via-zinc-900 to-black flex flex-col justify-between p-3 text-center border-l-4 border-orange-500">
+          <div className="absolute inset-0 bg-gradient-to-br from-zinc-800 via-zinc-900 to-black flex flex-col justify-between p-2.5 text-center border-l-4 border-orange-500">
             <div className="text-[9px] uppercase tracking-widest text-zinc-500 font-sans mt-1">
               {book.autore || 'Autore Sconosciuto'}
             </div>
-            <div className="font-serif text-xs sm:text-sm text-zinc-200 line-clamp-3 my-auto px-1">
+            <div className="font-sans text-xs sm:text-sm text-zinc-200 font-semibold line-clamp-3 my-auto px-1">
               {book.titolo}
             </div>
-            <div className="text-[8px] uppercase tracking-widest text-orange-500/80 font-serif mb-1">
+            <div className="text-[8px] uppercase tracking-widest text-orange-500/80 font-sans mb-1">
               Antigravità
             </div>
           </div>
@@ -62,19 +62,19 @@ export function BookCard({ book }: BookCardProps) {
         <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-white/10 via-transparent to-black/10" />
       </div>
 
-      {/* Book Details */}
-      <div className="mt-3 flex flex-col flex-grow">
-        <h3 className="font-serif text-xs sm:text-sm font-bold text-zinc-900 line-clamp-2 group-hover:text-orange-600 transition-colors duration-200 leading-tight">
+      {/* Book Details (Inter font, increased horizontal padding, compacted vertical spacing) */}
+      <div className="mt-2 flex flex-col gap-1 px-1.5">
+        <h3 className="font-sans text-xs sm:text-sm font-bold text-zinc-900 line-clamp-3 group-hover:text-orange-600 transition-colors duration-200 leading-tight">
           {book.titolo}
         </h3>
-        <p className="text-[11px] text-zinc-500 mt-1 line-clamp-1 font-sans font-normal">
+        <p className="text-[11px] text-zinc-500 line-clamp-1 font-sans font-normal">
           {book.autore || 'Autore non specificato'}
         </p>
-        <div className="mt-auto pt-2 flex items-center justify-between">
-          <span className="text-xs sm:text-sm font-semibold text-orange-600 font-mono">
+        <div className="pt-1 flex items-center justify-between border-t border-zinc-100/60">
+          <span className="text-xs sm:text-sm font-semibold text-orange-600 font-sans">
             {formattedPrice}
           </span>
-          <span className="text-[9px] uppercase tracking-wider text-zinc-400 group-hover:text-zinc-600 transition-colors duration-200">
+          <span className="text-[9px] uppercase tracking-wider text-zinc-400 group-hover:text-zinc-600 transition-colors duration-200 font-sans">
             Dettagli →
           </span>
         </div>

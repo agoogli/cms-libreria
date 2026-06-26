@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 
 export function Header() {
@@ -21,13 +22,15 @@ export function Header() {
       {/* 60% width container on desktop, reduced padding by 30% (py-6 -> py-4) */}
       <div className="w-full lg:w-[60%] mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
-        <Link href="/" className="flex flex-col select-none group">
-          <span className="font-serif text-xl sm:text-2xl font-bold tracking-wide text-zinc-900 group-hover:text-orange-600 transition-colors duration-200">
-            ANTIGRAVITÀ
-          </span>
-          <span className="text-[10px] uppercase tracking-[0.25em] text-zinc-500 -mt-1 font-sans">
-            Libreria &amp; Cultura
-          </span>
+        <Link href="/" className="flex items-center select-none">
+          <Image
+            src="/assets/logo.png"
+            alt="Libreria Antigravità"
+            width={180}
+            height={50}
+            className="h-10 w-auto object-contain"
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation */}
