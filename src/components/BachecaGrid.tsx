@@ -13,13 +13,18 @@ const slideshowImages = [
 export function BachecaGrid() {
   const [animatedCard, setAnimatedCard] = useState<number | null>(null)
   const [currentSlide, setCurrentSlide] = useState(0)
+  const lastAnimatedRef = React.useRef<number | null>(null)
 
-  // Timer for the card bounce/glow animation (cycles through 6 cards)
+  // Timer for the card bounce/glow animation (picks a random card, ensuring no consecutive duplicates)
   useEffect(() => {
     const interval = setInterval(() => {
-      setAnimatedCard((prev) => {
-        return prev === null ? 0 : (prev + 1) % 6
-      })
+      let nextIndex: number
+      do {
+        nextIndex = Math.floor(Math.random() * 6)
+      } while (nextIndex === lastAnimatedRef.current)
+
+      lastAnimatedRef.current = nextIndex
+      setAnimatedCard(nextIndex)
 
       const timeout = setTimeout(() => {
         setAnimatedCard(null)
@@ -60,8 +65,8 @@ export function BachecaGrid() {
         }
       `}</style>
 
-      {/* 2 rows of 3 cards on desktop (grid-cols-3), responsive columns on smaller screens */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* 2 rows of 3 cards on desktop (grid-cols-3), with matching margins (8px mobile, 12px tablet/desktop) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
         
         {/* Card 1: Libri scolastici nuovi e usati (Orange Gradient) */}
         <div
