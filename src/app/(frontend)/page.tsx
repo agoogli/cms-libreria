@@ -2,6 +2,7 @@ import React from 'react'
 import { getPayload } from 'payload'
 import { headers as getHeaders } from 'next/headers'
 import config from '@/payload.config'
+import Image from 'next/image'
 
 import { TopBar } from '@/components/TopBar'
 import { Header } from '@/components/Header'
@@ -55,56 +56,76 @@ export default async function HomePage() {
 
       {/* 4. Proposta di Valore / Hero Section (60% width on desktop, light theme) */}
       <main className="flex-grow flex flex-col">
-        <section className="w-full bg-transparent py-16 sm:py-20">
+        <section className="w-full bg-transparent py-12 sm:py-16">
           {/* 60% width container on desktop */}
-          <div className="w-full lg:w-[60%] mx-auto px-4 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-12">
-            <div className="max-w-xl">
-              <span className="text-xs uppercase tracking-[0.2em] text-orange-600 font-sans font-bold">
-                Spazio Culturale &amp; Letterario
+          <div className="w-full lg:w-[60%] mx-auto px-4">
+            {/* Section Header */}
+            <div className="mb-8 text-left">
+              <span className="text-xs uppercase tracking-widest text-orange-600 font-sans font-bold">
+                Servizi &amp; Novità
               </span>
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-zinc-900 tracking-tight mt-3 mb-6 leading-tight">
-                Un universo di storie, <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-amber-500">
-                  senza gravità.
-                </span>
-              </h1>
-              <p className="text-base sm:text-lg text-zinc-600 font-normal leading-relaxed max-w-lg">
-                Benvenuti nella Libreria Antigravità. Esplora la nostra selezione curata di novità letterarie, classici senza tempo e settori specializzati. Un luogo dove le idee volano libere.
-              </p>
-              
-              {/* Call to Actions */}
-              <div className="mt-8 flex flex-wrap justify-center sm:justify-start gap-4">
-                <Button className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-semibold px-6 py-5 rounded-md shadow-lg shadow-orange-500/15 transition-all duration-200">
-                  Esplora il Catalogo
-                </Button>
-                <Button variant="outline" className="border-zinc-300 hover:border-zinc-500 text-zinc-700 hover:text-zinc-950 bg-transparent px-6 py-5 rounded-md transition-all duration-200">
-                  La Nostra Storia
-                </Button>
-              </div>
+              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-zinc-900 mt-1">
+                Bacheca Annunci
+              </h2>
             </div>
 
-            {/* Decorative Book Stack / Premium light-themed card */}
-            <div className="hidden lg:block w-72 h-80 relative bg-white rounded-2xl border border-zinc-200/80 shadow-xl p-6 overflow-hidden group select-none">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/5 rounded-full blur-3xl group-hover:bg-orange-500/10 transition-colors duration-500" />
-              <div className="h-full flex flex-col justify-between">
-                <div className="flex justify-between items-start">
-                  <span className="text-[10px] font-mono text-orange-600 uppercase tracking-wider font-semibold">
-                    Consiglio del libraio
-                  </span>
-                  <span className="text-xs text-zinc-400 font-mono">N° 42</span>
-                </div>
-                <div>
-                  <h3 className="font-serif text-xl font-bold text-zinc-900 mt-2 group-hover:text-orange-600 transition-colors duration-200 leading-snug">
-                    La fisica delle storie che cambiano la vita.
+            {/* 4 Tiles Grid with entrance animations and hover fade-in/fade-out effects */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {/* Tile 1: Libri scolastici nuovi e usati (Orange Gradient) */}
+              <div className="group relative flex flex-col justify-between h-48 bg-gradient-to-br from-orange-500 to-amber-500 text-white rounded-xl p-6 shadow-md border border-orange-400/20 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <div className="absolute -top-12 -right-12 w-24 h-24 bg-white/10 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500" />
+                <div className="text-xs uppercase tracking-widest text-orange-100 font-sans font-semibold">Scuola</div>
+                <h3 className="font-sans text-base sm:text-lg font-bold leading-snug mt-2">
+                  Libri scolastici nuovi e usati
+                </h3>
+                <p className="text-[11px] text-orange-50 mt-auto leading-normal opacity-90 font-sans">
+                  Servizio prenotazioni attivo per medie e superiori.
+                </p>
+              </div>
+
+              {/* Tile 2: Image background (Bestseller) */}
+              <div className="group relative flex flex-col justify-between h-48 rounded-xl overflow-hidden shadow-md border border-zinc-200/60 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:100ms]">
+                <Image
+                  src="https://picsum.photos/id/1018/600/400"
+                  alt="Bestseller"
+                  fill
+                  sizes="(max-width: 768px) 50vw, 15vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-black/45 group-hover:bg-black/35 transition-colors duration-500" />
+                <div className="relative z-10 p-6 h-full flex flex-col justify-between text-white">
+                  <div className="text-xs uppercase tracking-widest text-zinc-300 font-sans font-semibold">Consigliati</div>
+                  <h3 className="font-sans text-base sm:text-lg font-bold leading-snug mt-2">
+                    Le nostre novità editoriali
                   </h3>
-                  <p className="text-xs text-zinc-500 mt-2 font-sans line-clamp-2">
-                    Una lettura coinvolgente che ridefinisce il concetto di gravità intellettuale.
+                  <p className="text-[11px] text-zinc-200 mt-auto leading-normal opacity-90 font-sans">
+                    Esplora le ultime uscite scelte per te.
                   </p>
                 </div>
-                <div className="border-t border-zinc-100 pt-4 flex justify-between items-center text-xs text-zinc-500">
-                  <span>Copertina Rigida</span>
-                  <span className="font-mono text-orange-600 font-bold">18,00 €</span>
-                </div>
+              </div>
+
+              {/* Tile 3: Eventi & Incontri (Dark Anthracite) */}
+              <div className="group relative flex flex-col justify-between h-48 bg-[#363537] text-white rounded-xl p-6 shadow-md border border-zinc-700/50 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:200ms]">
+                <div className="absolute -top-12 -right-12 w-24 h-24 bg-orange-500/5 rounded-full blur-xl group-hover:bg-orange-500/10 transition-colors duration-500" />
+                <div className="text-xs uppercase tracking-widest text-orange-400 font-sans font-semibold">Cultura</div>
+                <h3 className="font-sans text-base sm:text-lg font-bold leading-snug mt-2">
+                  Incontri &amp; Presentazioni
+                </h3>
+                <p className="text-[11px] text-zinc-300 mt-auto leading-normal opacity-90 font-sans">
+                  Ogni venerdì club del libro e presentazioni con gli autori.
+                </p>
+              </div>
+
+              {/* Tile 4: Spedizioni Veloci (Warm Cream/Sand) */}
+              <div className="group relative flex flex-col justify-between h-48 bg-amber-50/80 text-zinc-800 rounded-xl p-6 shadow-md border border-amber-200/60 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:300ms]">
+                <div className="absolute -top-12 -right-12 w-24 h-24 bg-amber-200/20 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500" />
+                <div className="text-xs uppercase tracking-widest text-amber-600 font-sans font-semibold">Servizi</div>
+                <h3 className="font-sans text-base sm:text-lg font-bold leading-snug mt-2 text-zinc-900">
+                  Consegna a domicilio
+                </h3>
+                <p className="text-[11px] text-zinc-600 mt-auto leading-normal opacity-90 font-sans">
+                  Spedizioni Express in 24h e consegne gratuite in città.
+                </p>
               </div>
             </div>
           </div>
