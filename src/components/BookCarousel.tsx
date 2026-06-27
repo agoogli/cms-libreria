@@ -68,9 +68,9 @@ export function BookCarousel({ books }: BookCarouselProps) {
             className="w-full"
           >
             <CarouselContent className="-ml-2 sm:-ml-3 touch-pan-y select-none">
-              {books.map((book) => (
+              {books.map((book, index) => (
                 <CarouselItem
-                  key={book.id}
+                  key={`${book.id || index}-${index}`}
                   className="pl-2 sm:pl-3 basis-[70%] sm:basis-1/2 md:basis-1/4 lg:basis-1/6 select-none"
                 >
                   <div className="h-full pb-2">
@@ -81,8 +81,8 @@ export function BookCarousel({ books }: BookCarouselProps) {
             </CarouselContent>
 
             {/* Navigation Arrows positioned on the sides, hidden on mobile/tablet (screens < 1024px) and shown on desktop */}
-            <CarouselPrevious className="hidden lg:inline-flex absolute -left-4 sm:-left-12 lg:-left-16 bg-white border-zinc-200 text-zinc-700 hover:bg-orange-500 hover:text-white hover:border-orange-500 shadow-md transition-all duration-200 w-10 h-10 sm:w-12 sm:h-12" />
-            <CarouselNext className="hidden lg:inline-flex absolute -right-4 sm:-right-12 lg:-right-16 bg-white border-zinc-200 text-zinc-700 hover:bg-orange-500 hover:text-white hover:border-orange-500 shadow-md transition-all duration-200 w-10 h-10 sm:w-12 sm:h-12" />
+            {/* <CarouselPrevious className="hidden lg:inline-flex absolute -left-4 sm:-left-12 lg:-left-16 bg-white border-zinc-200 text-zinc-700 hover:bg-orange-500 hover:text-white hover:border-orange-500 shadow-md transition-all duration-200 w-10 h-10 sm:w-12 sm:h-12" />
+            <CarouselNext className="hidden lg:inline-flex absolute -right-4 sm:-right-12 lg:-right-16 bg-white border-zinc-200 text-zinc-700 hover:bg-orange-500 hover:text-white hover:border-orange-500 shadow-md transition-all duration-200 w-10 h-10 sm:w-12 sm:h-12" /> */}
           </Carousel>
         </div>
       </div>
