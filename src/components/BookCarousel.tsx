@@ -67,11 +67,11 @@ export function BookCarousel({ books }: BookCarouselProps) {
             }}
             className="w-full"
           >
-            <CarouselContent className="-ml-2 sm:-ml-3">
+            <CarouselContent className="-ml-2 sm:-ml-3 touch-pan-y select-none">
               {books.map((book) => (
                 <CarouselItem
                   key={book.id}
-                  className="pl-2 sm:pl-3 basis-[70%] sm:basis-1/2 md:basis-1/4 lg:basis-1/6"
+                  className="pl-2 sm:pl-3 basis-[70%] sm:basis-1/2 md:basis-1/4 lg:basis-1/6 select-none"
                 >
                   <div className="h-full pb-2">
                     <BookCard book={book} />
