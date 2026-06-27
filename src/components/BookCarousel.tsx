@@ -14,7 +14,9 @@ interface Book {
   id: number | string
   titolo: string
   autore?: string | null
+  editore?: string | null
   prezzo: number
+  prezzoScontato?: number | null
   imgCopertina?: {
     url?: string | null
     alt?: string | null

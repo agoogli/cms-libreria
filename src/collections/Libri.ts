@@ -36,6 +36,14 @@ export const Libri: CollectionConfig = {
       },
     },
     {
+      name: 'prezzoScontato',
+      type: 'number',
+      min: 0,
+      admin: {
+        placeholder: '0.00',
+      },
+    },
+    {
       name: 'editore',
       type: 'text',
       required: true,

@@ -6,7 +6,9 @@ export interface BookCardProps {
     id: number | string
     titolo: string
     autore?: string | null
+    editore?: string | null
     prezzo: number
+    prezzoScontato?: number | null
     imgCopertina?: {
       url?: string | null
       alt?: string | null
@@ -29,6 +31,13 @@ export function BookCard({ book }: BookCardProps) {
     style: 'currency',
     currency: 'EUR',
   }).format(book.prezzo)
+
+  const formattedDiscountPrice = book.prezzoScontato !== undefined && book.prezzoScontato !== null
+    ? new Intl.NumberFormat('it-IT', {
+        style: 'currency',
+        currency: 'EUR',
+      }).format(book.prezzoScontato)
+    : null
 
   return (
     <div className="group cursor-pointer flex flex-col h-full select-none bg-white px-8 pt-3 pb-3 rounded-lg border border-zinc-200/80 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 ease-out font-sans">
@@ -69,11 +78,23 @@ export function BookCard({ book }: BookCardProps) {
         </h3>
         <p className="text-xs text-zinc-500 mt-0.5 line-clamp-2 font-sans font-normal">
           {book.autore || 'Autori vari'}
+          {book.editore ? ` - ${book.editore}` : ''}
         </p>
-        <div className="mt-auto flex items-center justify-between border-t border-zinc-100/80">
-          <span className="text-xs sm:text-sm font-semibold text-orange-600 font-sans">
-            {formattedPrice}
-          </span>
+        <div className="mt-auto flex items-center justify-between border-t border-zinc-100/80 pt-1.5">
+          {formattedDiscountPrice ? (
+            <div className="flex items-center justify-between w-full">
+              <span className="text-xs text-zinc-400 line-through font-sans">
+                {formattedPrice}
+              </span>
+              <span className="text-xs sm:text-sm font-bold text-red-600 font-sans">
+                {formattedDiscountPrice}
+              </span>
+            </div>
+          ) : (
+            <span className="text-xs sm:text-sm font-semibold text-orange-600 font-sans">
+              {formattedPrice}
+            </span>
+          )}
         </div>
       </div>
     </div>

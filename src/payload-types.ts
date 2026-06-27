@@ -184,6 +184,7 @@ export interface Libro {
   titolo: string;
   autore?: string | null;
   prezzo: number;
+  prezzoScontato?: number | null;
   editore: string;
   ean?: string | null;
   settore?: (number | null) | Settore;
@@ -332,6 +333,7 @@ export interface LibriSelect<T extends boolean = true> {
   titolo?: T;
   autore?: T;
   prezzo?: T;
+  prezzoScontato?: T;
   editore?: T;
   ean?: T;
   settore?: T;
