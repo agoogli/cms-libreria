@@ -46,7 +46,7 @@ export function BachecaGrid() {
 
   return (
     <>
-      {/* Self-contained custom animation styles */}
+      {/* Self-contained custom animation and font styles */}
       <style jsx global>{`
         @keyframes bacheca-card-bounce {
           0%, 100% {
@@ -63,10 +63,14 @@ export function BachecaGrid() {
           animation: bacheca-card-bounce 1.5s ease-in-out;
           z-index: 20;
         }
+        .bacheca-grid-container,
+        .bacheca-grid-container * {
+          font-family: var(--font-sans), 'Inter', sans-serif !important;
+        }
       `}</style>
 
       {/* 2 rows of 3 cards on desktop (grid-cols-3), with matching margins (8px mobile, 12px tablet/desktop) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
+      <div className="bacheca-grid-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
         
         {/* Card 1: Libri scolastici nuovi e usati (Orange Gradient) */}
         <div

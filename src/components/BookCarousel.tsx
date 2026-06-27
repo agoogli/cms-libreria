@@ -36,18 +36,15 @@ export function BookCarousel({ books }: BookCarouselProps) {
   }
 
   return (
-    <section className="w-full bg-transparent py-12 text-zinc-900">
+    <section className="w-full bg-transparent pt-3 pb-12 text-zinc-900">
       {/* 60% width container on desktop */}
       <div className="w-full lg:w-[60%] mx-auto px-4">
-        {/* Section Title */}
-        <div className="flex justify-between items-end mb-6">
+        {/* Section Header */}
+        <div className="flex justify-between items-end mb-3">
           <div>
             <span className="text-xs uppercase tracking-widest text-orange-600 font-sans font-bold">
-              Ultime Uscite
+              Novità in vetrina
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-zinc-900 mt-1">
-              Novità in Vetrina
-            </h2>
           </div>
           <div className="text-xs text-zinc-500 font-sans">
             Mostrati {Math.min(books.length, 6)} di {books.length} libri

@@ -19,8 +19,8 @@ export function Header() {
 
   return (
     <header className="w-full bg-transparent text-zinc-900">
-      {/* 60% width container on desktop, reduced padding by 30% (py-6 -> py-4) */}
-      <div className="w-full lg:w-[60%] mx-auto px-4 py-4 flex justify-between items-center">
+      {/* 60% width container on desktop, reduced padding and logo height for 20% nav bar height reduction */}
+      <div className="w-full lg:w-[60%] mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center select-none">
           <Image
@@ -28,7 +28,7 @@ export function Header() {
             alt="Libreria Antigravità"
             width={180}
             height={50}
-            className="h-10 w-auto object-contain"
+            className="h-8 w-auto object-contain"
             priority
           />
         </Link>

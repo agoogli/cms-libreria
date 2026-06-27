@@ -51,7 +51,7 @@ body,
 }
 
 body {
-  font-family: var(--font-sans), system-ui;
+  font-family: var(--font-sans), 'Inter', sans-serif !important;
   font-size: 18px;
   line-height: 32px;
 
@@ -62,6 +62,11 @@ body {
     font-size: 15px;
     line-height: 24px;
   }
+}
+
+/* Force Inter font everywhere across the site, including buttons, inputs, links, headings and labels */
+html, body, button, input, select, textarea, a, p, h1, h2, h3, h4, h5, h6, span, label, div {
+  font-family: var(--font-sans), 'Inter', sans-serif !important;
 }
 
 img {

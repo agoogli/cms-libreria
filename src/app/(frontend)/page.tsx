@@ -57,17 +57,14 @@ export default async function HomePage() {
 
       {/* 4. Proposta di Valore / Hero Section (60% width on desktop, light theme) */}
       <main className="flex-grow flex flex-col">
-        <section className="w-full bg-transparent py-12 sm:py-16">
+        <section className="w-full bg-transparent pt-3 pb-0">
           {/* 60% width container on desktop */}
           <div className="w-full lg:w-[60%] mx-auto px-4">
             {/* Section Header */}
-            <div className="mb-8 text-left">
+            <div className="mb-3 text-left">
               <span className="text-xs uppercase tracking-widest text-orange-600 font-sans font-bold">
-                Servizi &amp; Novità
+                Servizi &amp; offerte speciali
               </span>
-              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-zinc-900 mt-1">
-                Bacheca Annunci
-              </h2>
             </div>
 
             {/* 4 Tiles Grid with periodic animations in a 2x2 layout */}
