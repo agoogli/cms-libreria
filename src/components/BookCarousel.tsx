@@ -39,10 +39,10 @@ export function BookCarousel({ books }: BookCarouselProps) {
 
   return (
     <section className="w-full bg-transparent pt-3 pb-12 text-zinc-900">
-      {/* 60% width container on desktop */}
-      <div className="w-full lg:w-[60%] mx-auto px-4">
-        {/* Section Header */}
-        <div className="flex justify-between items-end mb-3">
+      {/* 60% width container on desktop, aligned left on mobile (pl-4 pr-0), normal on desktop (lg:px-4) */}
+      <div className="w-full lg:w-[60%] mx-auto pl-4 pr-0 lg:px-4">
+        {/* Section Header (needs standard right margin on mobile, so we add pr-4) */}
+        <div className="flex justify-between items-end mb-3 pr-4 lg:pr-0">
           <div>
             <span className="text-xs uppercase tracking-widest text-orange-600 font-sans font-bold">
               Novità in vetrina
@@ -54,7 +54,7 @@ export function BookCarousel({ books }: BookCarouselProps) {
         </div>
 
         {/* Carousel Wrapper */}
-        <div className="relative px-8 sm:px-0">
+        <div className="relative">
           <Carousel
             opts={{
               align: 'start',
@@ -72,7 +72,7 @@ export function BookCarousel({ books }: BookCarouselProps) {
               {books.map((book, index) => (
                 <CarouselItem
                   key={`${book.id || index}-${index}`}
-                  className="pl-2 sm:pl-3 basis-[70%] sm:basis-1/2 md:basis-1/4 lg:basis-1/6 select-none"
+                  className="pl-2 sm:pl-3 basis-[75%] sm:basis-1/2 md:basis-1/4 lg:basis-1/6 select-none"
                 >
                   <div className="h-full pb-2">
                     <BookCard book={book} />
