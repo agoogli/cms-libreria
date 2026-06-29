@@ -58,11 +58,12 @@ export function BookCarousel({ books }: BookCarouselProps) {
           <Carousel
             opts={{
               align: 'start',
-              slidesToScroll: 6, // Advances by 6 items on desktop
+              slidesToScroll: 1, // Default for mobile (width < 640px)
+              skipSnaps: false,  // Prevents skipping slides on fast swipes
               breakpoints: {
-                '(max-width: 640px)': { slidesToScroll: 1 }, // 1 on mobile
-                '(max-width: 1024px)': { slidesToScroll: 2 }, // 2 on tablet
-                '(max-width: 1280px)': { slidesToScroll: 4 }, // 4 on small desktop
+                '(min-width: 640px)': { slidesToScroll: 2, skipSnaps: false },  // Tablet
+                '(min-width: 1024px)': { slidesToScroll: 4, skipSnaps: false }, // Small Desktop
+                '(min-width: 1280px)': { slidesToScroll: 6, skipSnaps: false }, // Large Desktop
               },
             }}
             className="w-full"
@@ -81,8 +82,8 @@ export function BookCarousel({ books }: BookCarouselProps) {
             </CarouselContent>
 
             {/* Navigation Arrows positioned on the sides, hidden on mobile/tablet (screens < 1024px) and shown on desktop */}
-            {/* <CarouselPrevious className="hidden lg:inline-flex absolute -left-4 sm:-left-12 lg:-left-16 bg-white border-zinc-200 text-zinc-700 hover:bg-orange-500 hover:text-white hover:border-orange-500 shadow-md transition-all duration-200 w-10 h-10 sm:w-12 sm:h-12" />
-            <CarouselNext className="hidden lg:inline-flex absolute -right-4 sm:-right-12 lg:-right-16 bg-white border-zinc-200 text-zinc-700 hover:bg-orange-500 hover:text-white hover:border-orange-500 shadow-md transition-all duration-200 w-10 h-10 sm:w-12 sm:h-12" /> */}
+            <CarouselPrevious className="hidden lg:inline-flex absolute -left-4 sm:-left-12 lg:-left-16 bg-white border-zinc-200 text-zinc-700 hover:bg-orange-500 hover:text-white hover:border-orange-500 shadow-md transition-all duration-200 w-10 h-10 sm:w-12 sm:h-12" />
+            <CarouselNext className="hidden lg:inline-flex absolute -right-4 sm:-right-12 lg:-right-16 bg-white border-zinc-200 text-zinc-700 hover:bg-orange-500 hover:text-white hover:border-orange-500 shadow-md transition-all duration-200 w-10 h-10 sm:w-12 sm:h-12" />
           </Carousel>
         </div>
       </div>

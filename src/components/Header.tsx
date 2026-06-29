@@ -21,17 +21,18 @@ export function Header() {
     <header className="w-full bg-transparent text-zinc-900">
       {/* 60% width container on desktop, relative positioning for absolute mobile menu positioning */}
       <div className="w-full lg:w-[60%] mx-auto px-4 py-3 flex items-center justify-between relative">
-        {/* Mobile menu button (left aligned, z-index to stay above content) */}
+        {/* Mobile menu button (left aligned, normal flow, z-index to stay above content) */}
         <button
+          type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden absolute left-4 p-2 text-zinc-600 hover:text-zinc-900 focus:outline-none z-30"
+          className="md:hidden p-2 text-zinc-600 hover:text-zinc-900 focus:outline-none z-30 relative"
           aria-label="Toggle Menu"
         >
-          <Menu className="w-6 h-6" />
+          <Menu className="w-6 h-6 pointer-events-none" />
         </button>
 
         {/* Logo (Centered on mobile, left-aligned on desktop) */}
-        <div className="flex md:block justify-center w-full md:w-auto">
+        <div className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 flex md:block justify-center z-20">
           <Link href="/" className="flex items-center select-none">
             <Image
               src="/assets/logo.png"
