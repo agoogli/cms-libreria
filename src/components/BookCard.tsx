@@ -40,35 +40,38 @@ export function BookCard({ book }: BookCardProps) {
     : null
 
   return (
-    <div className="group cursor-pointer flex flex-col h-full select-none bg-white px-6 sm:px-8 pt-4 pb-4 rounded-lg border border-zinc-200/80 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 ease-out font-sans">
-      {/* Book Cover Container - negative horizontal margins keep its size exactly as before */}
-      <div className="relative aspect-[3/4] w-auto -mx-2.5 rounded-none overflow-hidden bg-zinc-100 shadow-sm border border-zinc-200/60">
-        {imageUrl ? (
-          <Image
-            src={imageUrl}
-            alt={imageAlt}
-            fill
-            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 10vw"
-            className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-            priority={false}
-          />
-        ) : (
-          /* Fallback Cover: Elegant gradient with initials for books without images */
-          <div className="absolute inset-0 bg-gradient-to-br from-zinc-800 via-zinc-900 to-black flex flex-col justify-between p-2.5 text-center border-l-4 border-orange-500">
-            <div className="text-[9px] uppercase tracking-widest text-zinc-500 font-sans mt-1">
-              {book.autore || 'Autore Sconosciuto'}
+    <div className="group cursor-pointer flex flex-col h-full select-none bg-white p-4 rounded-lg border border-zinc-200/80 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 ease-out font-sans">
+      {/* Book Cover Container - padded wrapper to reduce cover proportions by 40% */}
+      <div className="px-5 py-2.5">
+        <div className="relative aspect-[3/4] w-full rounded-md overflow-hidden bg-zinc-100 shadow-sm border border-zinc-200/60">
+          {imageUrl ? (
+            <Image
+              src={imageUrl}
+              alt={imageAlt}
+              fill
+              sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 10vw"
+              className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+              priority={false}
+              draggable={false}
+            />
+          ) : (
+            /* Fallback Cover: Elegant gradient with initials for books without images */
+            <div className="absolute inset-0 bg-gradient-to-br from-zinc-800 via-zinc-900 to-black flex flex-col justify-between p-2.5 text-center border-l-4 border-orange-500">
+              <div className="text-[9px] uppercase tracking-widest text-zinc-500 font-sans mt-1">
+                {book.autore || 'Autore Sconosciuto'}
+              </div>
+              <div className="font-sans text-xs sm:text-sm text-zinc-200 font-semibold line-clamp-3 my-auto px-1">
+                {book.titolo}
+              </div>
+              <div className="text-[8px] uppercase tracking-widest text-orange-500/80 font-sans mb-1">
+                Antigravità
+              </div>
             </div>
-            <div className="font-sans text-xs sm:text-sm text-zinc-200 font-semibold line-clamp-3 my-auto px-1">
-              {book.titolo}
-            </div>
-            <div className="text-[8px] uppercase tracking-widest text-orange-500/80 font-sans mb-1">
-              Antigravità
-            </div>
-          </div>
-        )}
-        
-        {/* Decorative Overlay for realistic book spine reflection */}
-        <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-white/10 via-transparent to-black/10" />
+          )}
+          
+          {/* Decorative Overlay for realistic book spine reflection */}
+          <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-white/10 via-transparent to-black/10" />
+        </div>
       </div>
 
       {/* Book Details (Inter font, increased horizontal padding, compacted vertical spacing) */}
