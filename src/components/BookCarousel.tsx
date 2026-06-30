@@ -25,14 +25,16 @@ interface Book {
 
 interface BookCarouselProps {
   books: Book[]
+  title: string
+  subtitle?: string
 }
 
-export function BookCarousel({ books }: BookCarouselProps) {
+export function BookCarousel({ books, title, subtitle }: BookCarouselProps) {
   // If there are no books, we show a message
   if (!books || books.length === 0) {
     return (
       <div className="w-full lg:w-[60%] mx-auto px-4 py-16 text-center text-zinc-500">
-        Nessun libro disponibile al momento.
+        Nessun libro disponibile nel settore {title} al momento.
       </div>
     )
   }
@@ -45,8 +47,11 @@ export function BookCarousel({ books }: BookCarouselProps) {
         <div className="flex justify-between items-end mb-3 pr-4 lg:pr-0">
           <div>
             <span className="text-xs uppercase tracking-widest text-orange-600 font-sans font-bold">
-              Novità in vetrina
+              {subtitle || 'Novità in vetrina'}
             </span>
+            <h2 className="font-serif text-xl sm:text-2xl font-bold text-zinc-900 mt-0.5">
+              {title}
+            </h2>
           </div>
           <div className="text-xs text-zinc-500 font-sans">
             Mostrati {Math.min(books.length, 6)} di {books.length} libri

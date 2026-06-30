@@ -44,6 +44,11 @@ export function BookCard({ book }: BookCardProps) {
       {/* Book Cover Container - padded wrapper to reduce cover proportions by 40% */}
       <div className="px-5 py-2.5">
         <div className="relative aspect-[3/4] w-full rounded-md overflow-hidden bg-zinc-100 shadow-sm border border-zinc-200/60">
+          {formattedDiscountPrice && (
+            <div className="absolute top-2 right-2 bg-orange-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded z-20 font-sans tracking-wide shadow-sm">
+              SCONTO
+            </div>
+          )}
           {imageUrl ? (
             <Image
               src={imageUrl}
