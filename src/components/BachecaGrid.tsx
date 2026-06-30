@@ -284,26 +284,8 @@ export function BachecaGrid() {
                 <div className="text-xs uppercase tracking-widest text-orange-500 font-sans font-semibold">
                   Offerta Speciale
                 </div>
-                <h3 className="font-sans text-base sm:text-lg font-bold leading-snug text-zinc-900 mt-2">
-                  Kit Lettura Estiva
-                </h3>
-                <p className="text-xs text-zinc-600 mt-1.5 leading-normal opacity-90 font-sans">
-                  Acquista il best seller del mese e ricevi in omaggio la tazza letteraria esclusiva e la shopper della libreria.
-                </p>
               </div>
 
-              <div className="flex justify-between items-center mt-auto">
-                <div>
-                  <span className="text-[10px] text-zinc-400 line-through">€45.90</span>
-                  <span className="text-sm font-bold text-orange-600 ml-1.5">€34.90</span>
-                </div>
-                <a
-                  href="#"
-                  className="inline-flex items-center text-[10px] font-bold uppercase tracking-wider bg-orange-600 text-white px-3 py-1.5 rounded-md shadow-sm hover:bg-orange-700 transition-colors"
-                >
-                  Scopri il Kit
-                </a>
-              </div>
             </div>
           </CarouselItem>
 
