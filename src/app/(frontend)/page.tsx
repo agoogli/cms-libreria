@@ -13,17 +13,17 @@ import { Button } from '@/components/ui/button'
 import { BachecaGrid } from '@/components/BachecaGrid'
 
 export const metadata = {
-  title: 'Libreria Antigravità | Homepage',
-  description: 'Benvenuti nella Libreria Antigravità. Scopri la nostra selezione curata di libri, novità editoriali ed eventi culturali.',
+  title: 'Libreria Nunnari & Sfameni',
+  description: 'Libreria Nunnari & Sfameni. A Messina dal 1932. Testi universitari scolastici professionali e concorsi',
 }
 
 export default async function HomePage() {
   const headers = await getHeaders()
-  
+
   // Initialize Payload Local API for ultra-efficient server-side direct database queries (no HTTP requests)
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
-  
+
   let dbBooks: any[] = []
   try {
     const response = await payload.find({
@@ -40,7 +40,7 @@ export default async function HomePage() {
   // Combine database books with mock books for testing
   // If the DB has books, we prepend them to the mock books so they are shown first.
   // This ensures there are always at least 12 books to test the carousel scrolling (6 by 6)
-  const displayBooks = dbBooks.length > 0 
+  const displayBooks = dbBooks.length > 0
     ? [...dbBooks, ...mockBooks.filter(mb => !dbBooks.some(db => db.titolo === mb.titolo))]
     : mockBooks
 

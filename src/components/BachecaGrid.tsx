@@ -89,14 +89,52 @@ export function BachecaGrid() {
         className="w-full"
       >
         <CarouselContent className="bacheca-grid-container -ml-2 sm:-ml-3 touch-pan-y select-none md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-3 md:ml-0 md:overflow-visible">
-          
-          {/* Column 1: Card 1 & Card 2 */}
+
+          {/* Column 1: Row 1 Card 5 (Slideshow) & Row 2 Card 1 (Libri scolastici) */}
           <CarouselItem className="pl-2 sm:pl-3 basis-[80%] select-none flex flex-col gap-2 md:pl-0 md:basis-auto md:w-auto md:gap-3">
+            {/* Card 5: Slideshow (La Libreria) */}
+            <div
+              className={`group relative flex flex-col justify-between h-52 bg-zinc-950 rounded-xl overflow-hidden shadow-md border border-zinc-800 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:200ms] ${animatedCard === 4 ? 'animate-bacheca-card' : ''
+                }`}
+            >
+              {/* Automatic slideshow images from assets with object-contain */}
+              {slideshowImages.map((src, index) => (
+                <Image
+                  key={src}
+                  src={src}
+                  alt={`Libreria Slide ${index + 1}`}
+                  fill
+                  sizes="(max-width: 768px) 50vw, 30vw"
+                  className={`object-contain transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100 z-0' : 'opacity-0'
+                    }`}
+                />
+              ))}
+              {/* Subtle bottom gradient overlay for readability of footer text without opacifying the image */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10" />
+
+              {/* Dots Indicator */}
+              <div className="absolute top-4 right-4 z-20 flex gap-1">
+                {slideshowImages.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`w-1.5 h-1.5 rounded-full transition-colors duration-300 ${index === currentSlide ? 'bg-orange-500' : 'bg-white/40'
+                      }`}
+                  />
+                ))}
+              </div>
+
+              {/* Only footer text remaining */}
+              <div className="relative z-20 p-5 h-full flex flex-col justify-end text-white">
+                <span className="text-xs font-bold uppercase tracking-widest text-center text-zinc-100 drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)] font-sans">
+                  a Messina dal 1932
+                </span>
+              </div>
+            </div>
+
             {/* Card 1: Libri scolastici nuovi e usati (Orange Gradient) */}
             <div
-              className={`group relative flex flex-col justify-between h-52 bg-gradient-to-br from-orange-500 to-amber-500 text-white rounded-xl p-6 shadow-md border border-orange-400/20 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 ${
-                animatedCard === 0 ? 'animate-bacheca-card' : ''
-              }`}
+              className={`group relative flex flex-col justify-between h-52 bg-gradient-to-br from-orange-500 to-amber-500 text-white rounded-xl p-6 shadow-md border border-orange-400/20 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 ${animatedCard === 0 ? 'animate-bacheca-card' : ''
+                }`}
             >
               <div className="absolute -top-12 -right-12 w-24 h-24 bg-white/10 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500" />
               <div className="text-xs uppercase tracking-widest text-orange-100 font-sans font-semibold">
@@ -109,12 +147,14 @@ export function BachecaGrid() {
                 Servizio prenotazioni attivo per medie e superiori. Portaci la tua lista scolastica.
               </p>
             </div>
+          </CarouselItem>
 
+          {/* Column 2: Row 1 Card 2 (LybroApp) & Row 2 Card 3 (Carta Cultura) */}
+          <CarouselItem className="pl-2 sm:pl-3 basis-[80%] select-none flex flex-col gap-2 md:pl-0 md:basis-auto md:w-auto md:gap-3">
             {/* Card 2: LybroApp (Indigo/Violet Gradient) */}
             <div
-              className={`group relative flex flex-col justify-between h-52 bg-gradient-to-br from-violet-600 to-indigo-600 text-white rounded-xl p-6 shadow-md border border-violet-400/20 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:50ms] ${
-                animatedCard === 1 ? 'animate-bacheca-card' : ''
-              }`}
+              className={`group relative flex flex-col justify-between h-52 bg-gradient-to-br from-violet-600 to-indigo-600 text-white rounded-xl p-6 shadow-md border border-violet-400/20 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:50ms] ${animatedCard === 1 ? 'animate-bacheca-card' : ''
+                }`}
             >
               <div className="absolute top-4 right-4 w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center border border-white/20 group-hover:bg-white/20 transition-colors duration-300">
                 <svg
@@ -129,13 +169,13 @@ export function BachecaGrid() {
               </div>
               <div>
                 <div className="text-xs uppercase tracking-widest text-violet-200 font-sans font-semibold">
-                  App &amp; Tech
+                  App libreria
                 </div>
                 <h3 className="font-sans text-base sm:text-lg font-bold leading-snug mt-2">
                   LybroApp
                 </h3>
                 <p className="text-[11px] text-violet-100 mt-2 leading-normal opacity-90 font-sans max-w-[80%]">
-                  Gestisci le tue letture, prenota i libri e accumula punti sulla tua tessera fedeltà.
+                  Da oggi puoi consultare lo stato del tuo ordine dal tuo smartphone con LybroApp
                 </p>
               </div>
               <div className="mt-auto">
@@ -143,19 +183,15 @@ export function BachecaGrid() {
                   href="#"
                   className="inline-flex items-center text-[10px] font-bold uppercase tracking-wider bg-white text-indigo-700 px-3 py-1.5 rounded-md shadow-sm hover:bg-indigo-50 transition-colors"
                 >
-                  Scarica l'App
+                  Vai a Lybro
                 </a>
               </div>
             </div>
-          </CarouselItem>
 
-          {/* Column 2: Card 3 & Card 4 */}
-          <CarouselItem className="pl-2 sm:pl-3 basis-[80%] select-none flex flex-col gap-2 md:pl-0 md:basis-auto md:w-auto md:gap-3">
             {/* Card 3: Carta Cultura 2026 (Image Background with Footer Text) */}
             <div
-              className={`group relative flex flex-col justify-between h-52 rounded-xl overflow-hidden shadow-md border border-zinc-200/60 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:100ms] ${
-                animatedCard === 2 ? 'animate-bacheca-card' : ''
-              }`}
+              className={`group relative flex flex-col justify-between h-52 rounded-xl overflow-hidden shadow-md border border-zinc-200/60 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:100ms] ${animatedCard === 2 ? 'animate-bacheca-card' : ''
+                }`}
             >
               <Image
                 src="https://picsum.photos/id/145/600/400"
@@ -165,7 +201,7 @@ export function BachecaGrid() {
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-black/60 group-hover:bg-black/50 transition-colors duration-500" />
-              
+
               <div className="relative z-10 p-6 h-full flex flex-col justify-between text-white">
                 <div>
                   <div className="text-xs uppercase tracking-widest text-orange-400 font-sans font-semibold">
@@ -175,7 +211,7 @@ export function BachecaGrid() {
                     Carta Cultura 2026
                   </h3>
                 </div>
-                
+
                 <div className="w-full mt-auto pt-2 border-t border-white/20">
                   <p className="text-[10px] text-zinc-200 leading-normal font-sans font-medium">
                     Fino a 500€ per l'acquisto di libri. Attiva per tutti i nati nel 2007. Spendi qui il tuo buono.
@@ -183,12 +219,14 @@ export function BachecaGrid() {
                 </div>
               </div>
             </div>
+          </CarouselItem>
 
+          {/* Column 3: Row 1 Card 4 (Social Connect) & Row 2 Card 6 (Offerta Kit) */}
+          <CarouselItem className="pl-2 sm:pl-3 basis-[80%] select-none flex flex-col gap-2 md:pl-0 md:basis-auto md:w-auto md:gap-3">
             {/* Card 4: Social Connect (Facebook & Instagram with simulated feed) */}
             <div
-              className={`group relative flex flex-col justify-between h-52 bg-[#363537] text-white rounded-xl p-6 shadow-md border border-zinc-700/50 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:150ms] ${
-                animatedCard === 3 ? 'animate-bacheca-card' : ''
-              }`}
+              className={`group relative flex flex-col justify-between h-52 bg-[#363537] text-white rounded-xl p-6 shadow-md border border-zinc-700/50 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:150ms] ${animatedCard === 3 ? 'animate-bacheca-card' : ''
+                }`}
             >
               <div className="flex justify-between items-start">
                 <div>
@@ -232,64 +270,14 @@ export function BachecaGrid() {
                 </button>
               </div>
             </div>
-          </CarouselItem>
-
-          {/* Column 3: Card 5 & Card 6 */}
-          <CarouselItem className="pl-2 sm:pl-3 basis-[80%] select-none flex flex-col gap-2 md:pl-0 md:basis-auto md:w-auto md:gap-3">
-            {/* Card 5: Slideshow (La Libreria) - Centered in the bottom row */}
-            <div
-              className={`group relative flex flex-col justify-between h-52 rounded-xl overflow-hidden shadow-md border border-zinc-200/60 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:200ms] ${
-                animatedCard === 4 ? 'animate-bacheca-card' : ''
-              }`}
-            >
-              {/* Automatic slideshow images from assets */}
-              {slideshowImages.map((src, index) => (
-                <Image
-                  key={src}
-                  src={src}
-                  alt={`Libreria Slide ${index + 1}`}
-                  fill
-                  sizes="(max-width: 768px) 50vw, 30vw"
-                  className={`object-cover transition-opacity duration-1000 ${
-                    index === currentSlide ? 'opacity-100 z-0' : 'opacity-0'
-                  }`}
-                />
-              ))}
-              <div className="absolute inset-0 bg-black/50 z-10" />
-
-              {/* Dots Indicator */}
-              <div className="absolute top-4 right-4 z-20 flex gap-1">
-                {slideshowImages.map((_, index) => (
-                  <div
-                    key={index}
-                    className={`w-1.5 h-1.5 rounded-full transition-colors duration-300 ${
-                      index === currentSlide ? 'bg-orange-500' : 'bg-white/40'
-                    }`}
-                  />
-                ))}
-              </div>
-
-              <div className="relative z-20 p-6 h-full flex flex-col justify-between text-white">
-                <div className="text-xs uppercase tracking-widest text-zinc-300 font-sans font-semibold">
-                  La Libreria
-                </div>
-                <h3 className="font-sans text-base sm:text-lg font-bold leading-snug mt-2">
-                  I Nostri Spazi
-                </h3>
-                <p className="text-[11px] text-zinc-200 mt-auto leading-normal opacity-90 font-sans">
-                  Esplora i locali del nostro negozio in centro città, pensati per tutti i lettori.
-                </p>
-              </div>
-            </div>
 
             {/* Card 6: Offerta Kit (Warm Cream / Promotion) */}
             <div
-              className={`group relative flex flex-col justify-between h-52 bg-amber-50/80 text-zinc-800 rounded-xl p-6 shadow-md border border-amber-200/60 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:250ms] ${
-                animatedCard === 5 ? 'animate-bacheca-card' : ''
-              }`}
+              className={`group relative flex flex-col justify-between h-52 bg-amber-50/80 text-zinc-800 rounded-xl p-6 shadow-md border border-amber-200/60 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:250ms] ${animatedCard === 5 ? 'animate-bacheca-card' : ''
+                }`}
             >
               <div className="absolute -top-12 -right-12 w-24 h-24 bg-orange-500/5 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500" />
-              
+
               <div>
                 <span className="inline-block bg-orange-500 text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full mb-1">
                   Offerta Speciale
@@ -301,7 +289,7 @@ export function BachecaGrid() {
                   Acquista il best seller del mese e ricevi in omaggio la tazza letteraria esclusiva e la shopper della libreria.
                 </p>
               </div>
-              
+
               <div className="flex justify-between items-center mt-auto">
                 <div>
                   <span className="text-[10px] text-zinc-400 line-through">€45.90</span>
