@@ -125,7 +125,7 @@ export function BachecaGrid() {
 
               {/* Only footer text remaining */}
               <div className="relative z-20 p-5 h-full flex flex-col justify-end text-white">
-                <span className="text-xs font-bold uppercase tracking-widest text-center text-zinc-100 drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)] font-sans">
+                <span className="text-xs uppercase tracking-widest text-center text-zinc-100 drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)] font-sans">
                   a Messina dal 1932
                 </span>
               </div>
@@ -138,17 +138,17 @@ export function BachecaGrid() {
             >
               <div className="relative z-10 h-full flex flex-col justify-between">
                 <div>
-                  <div className="text-xs uppercase tracking-widest text-orange-500 font-sans font-semibold">
+                  <div className="text-xs uppercase tracking-widest text-white font-sans font-semibold">
                     Scuola
                   </div>
-                  <h3 className="font-sans text-base sm:text-lg font-bold leading-snug text-orange-600 mt-1">
+                  <h3 className="font-sans text-base sm:text-lg font-bold leading-snug text-white mt-1">
                     Libri scolastici nuovi e usati
                   </h3>
                 </div>
 
-                <div className="w-full mt-auto pt-2 border-t border-zinc-100">
-                  <p className="text-xs text-zinc-600 leading-normal font-sans font-medium">
-                    Prenota oggi i tuoi libri per le scuole elementari, medie e superiori ed evita le code
+                <div className="w-full mt-auto pt-2 border-t border-white/20">
+                  <p className="text-xs text-orange-50 leading-normal font-sans font-medium">
+                    Prenota oggi i tuoi libri per le scuole elementari, medie e superiori ed evita le code a settembre.
                   </p>
                 </div>
               </div>
@@ -184,7 +184,7 @@ export function BachecaGrid() {
               {/* Description in the center (text-xs size) */}
               <div className="flex-grow flex items-center my-2">
                 <p className="text-xs text-zinc-600 leading-normal font-sans">
-                  Da oggi puoi consultare lo stato del tuo ordine dal tuo smartphone con LybroApp
+                  Da oggi puoi seguire lo stato dei tuoi ordini con la nostra applicazione per Android e Apple con LybroApp
                 </p>
               </div>
 
@@ -200,9 +200,9 @@ export function BachecaGrid() {
               </div>
             </div>
 
-            {/* Card 3: Carta Cultura 2026 (White Background, Orange Title, Grey Description) */}
+            {/* Card 3: Carta Cultura 2026 (Azure Background, White Title) */}
             <div
-              className={`group relative flex flex-col justify-between h-52 bg-white rounded-xl p-6 shadow-md border border-zinc-200/60 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:100ms] ${animatedCard === 2 ? 'animate-bacheca-card' : ''
+              className={`group relative flex flex-col justify-between h-52 bg-[#007fff] text-white rounded-xl p-6 shadow-md border border-blue-400/20 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:100ms] ${animatedCard === 2 ? 'animate-bacheca-card' : ''
                 }`}
             >
               <Image
@@ -210,22 +210,22 @@ export function BachecaGrid() {
                 alt="Carta Cultura 2026"
                 fill
                 sizes="(max-width: 768px) 50vw, 30vw"
-                className="object-contain opacity-35 transition-opacity duration-500"
+                className="object-contain opacity-20 transition-opacity duration-500 z-0"
               />
 
               <div className="relative z-10 h-full flex flex-col justify-between">
                 <div>
-                  <div className="text-xs uppercase tracking-widest text-orange-500 font-sans font-semibold">
-                    Bonus Giovani
+                  <div className="text-xs uppercase tracking-widest text-blue-100 font-sans font-semibold">
+                    Bonus
                   </div>
-                  <h3 className="font-sans text-base sm:text-lg font-bold leading-snug text-orange-600 mt-1">
+                  <h3 className="font-sans text-base sm:text-lg font-bold leading-snug text-white mt-1">
                     Carta Cultura 2026
                   </h3>
                 </div>
 
-                <div className="w-full mt-auto pt-2 border-t border-zinc-100">
-                  <p className="text-xs text-zinc-600 leading-normal font-sans font-medium">
-                    Fino a 500€ per l'acquisto di libri. Attiva per tutti i nati nel 2007. Spendi qui il tuo buono.
+                <div className="w-full mt-auto pt-2 border-t border-white/20">
+                  <p className="text-xs text-blue-50 leading-normal font-sans font-medium">
+                    Carta della Cultura Giovani e Carta del Merito : spendi qui il tuo buono, fino a 500€ per l'acquisto di libri.
                   </p>
                 </div>
               </div>
@@ -234,9 +234,9 @@ export function BachecaGrid() {
 
           {/* Column 3: Row 1 Card 4 (Social Connect) & Row 2 Card 6 (Offerta Kit) */}
           <CarouselItem className="pl-2 sm:pl-3 basis-[80%] select-none flex flex-col gap-2 md:pl-0 md:basis-auto md:w-auto md:gap-3">
-            {/* Card 4: Social Connect (Facebook & Instagram in FB Blue style) */}
+            {/* Card 4: Social Connect (Facebook & Instagram in Azure style) */}
             <div
-              className={`group relative flex flex-col justify-between h-52 bg-[#1877f2] text-white rounded-xl p-6 shadow-md border border-blue-400/20 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:150ms] ${animatedCard === 3 ? 'animate-bacheca-card' : ''
+              className={`group relative flex flex-col justify-between h-52 bg-[#007fff] text-white rounded-xl p-6 shadow-md border border-blue-400/20 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:150ms] ${animatedCard === 3 ? 'animate-bacheca-card' : ''
                 }`}
             >
               <div className="absolute -top-12 -right-12 w-24 h-24 bg-white/10 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500" />
@@ -262,7 +262,7 @@ export function BachecaGrid() {
                     </svg>
                     <span className="text-[9px] font-bold font-sans tracking-wide">Facebook</span>
                   </div>
-                  <button type="button" className="w-full text-[9px] font-bold uppercase tracking-wider bg-white text-[#1877f2] hover:bg-zinc-100 py-1 rounded shadow-sm transition-colors font-sans">
+                  <button type="button" className="w-full text-[9px] font-bold uppercase tracking-wider bg-white text-[#007fff] hover:bg-zinc-100 py-1 rounded shadow-sm transition-colors font-sans">
                     Mi Piace
                   </button>
                 </div>
@@ -275,7 +275,7 @@ export function BachecaGrid() {
                     </svg>
                     <span className="text-[9px] font-bold font-sans tracking-wide">Instagram</span>
                   </div>
-                  <button type="button" className="w-full text-[9px] font-bold uppercase tracking-wider bg-white text-[#1877f2] hover:bg-zinc-100 py-1 rounded shadow-sm transition-colors font-sans">
+                  <button type="button" className="w-full text-[9px] font-bold uppercase tracking-wider bg-white text-[#007fff] hover:bg-zinc-100 py-1 rounded shadow-sm transition-colors font-sans">
                     Mi Piace
                   </button>
                 </div>

@@ -63,7 +63,7 @@ export default async function HomePage() {
             {/* Section Header (needs standard right margin on mobile, so we add pr-4) */}
             <div className="mb-3 text-left pr-4 lg:pr-0">
               <span className="text-xs uppercase tracking-widest text-orange-600 font-sans font-bold">
-                Servizi &amp; offerte speciali
+                Testi universitari, scolastici, professionali e concorsi
               </span>
             </div>
 
