@@ -133,7 +133,7 @@ export function BachecaGrid() {
 
             {/* Card 1: Libri scolastici nuovi e usati (Orange Gradient) */}
             <div
-              className={`group relative flex flex-col justify-between h-52 bg-gradient-to-br from-orange-500 to-amber-500 text-white rounded-xl p-6 shadow-md border border-orange-400/20 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 ${animatedCard === 0 ? 'animate-bacheca-card' : ''
+              className={`group relative flex flex-col justify-between h-52 bg-gradient-to-br from-orange-500 to-amber-500 text-white rounded-xl p-5 shadow-md border border-orange-400/20 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 ${animatedCard === 0 ? 'animate-bacheca-card' : ''
                 }`}
             >
               <div className="absolute -top-12 -right-12 w-24 h-24 bg-white/10 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500" />
@@ -143,49 +143,51 @@ export function BachecaGrid() {
               <h3 className="font-sans text-base sm:text-lg font-bold leading-snug mt-2">
                 Libri scolastici nuovi e usati
               </h3>
-              <p className="text-[11px] text-orange-50 mt-auto leading-normal opacity-90 font-sans">
-                Servizio prenotazioni attivo per medie e superiori. Portaci la tua lista scolastica.
+              <p className="text-xs text-orange-50 mt-auto leading-normal opacity-90 font-sans">
+                Prenota oggi i tuoi libri per le scuole elementari, medie e superiori ed evita le code
               </p>
             </div>
           </CarouselItem>
 
           {/* Column 2: Row 1 Card 2 (LybroApp) & Row 2 Card 3 (Carta Cultura) */}
           <CarouselItem className="pl-2 sm:pl-3 basis-[80%] select-none flex flex-col gap-2 md:pl-0 md:basis-auto md:w-auto md:gap-3">
-            {/* Card 2: LybroApp (Indigo/Violet Gradient) */}
+            {/* Card 2: LybroApp (Cream background matching Kit card, centered logo, footer details) */}
             <div
-              className={`group relative flex flex-col justify-between h-52 bg-gradient-to-br from-violet-600 to-indigo-600 text-white rounded-xl p-6 shadow-md border border-violet-400/20 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:50ms] ${animatedCard === 1 ? 'animate-bacheca-card' : ''
+              className={`group relative flex flex-col justify-between h-52 bg-amber-50/80 text-zinc-800 rounded-xl p-5 shadow-md border border-amber-200/60 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:50ms] ${animatedCard === 1 ? 'animate-bacheca-card' : ''
                 }`}
             >
-              <div className="absolute top-4 right-4 w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center border border-white/20 group-hover:bg-white/20 transition-colors duration-300">
-                <svg
-                  className="w-6 h-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <rect x="5" y="2" width="14" height="20" rx="2" strokeWidth="2" />
-                  <circle cx="12" cy="18" r="1" fill="currentColor" />
-                </svg>
-              </div>
+              <div className="absolute -top-12 -right-12 w-24 h-24 bg-orange-500/5 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500" />
+
+              {/* Header Title */}
               <div>
-                <div className="text-xs uppercase tracking-widest text-violet-200 font-sans font-semibold">
-                  App libreria
+                <div className="text-xs uppercase tracking-widest text-orange-500 font-sans font-semibold">
+                  App Nunnari
                 </div>
-                <h3 className="font-sans text-base sm:text-lg font-bold leading-snug mt-2">
-                  LybroApp
-                </h3>
-                <p className="text-[11px] text-violet-100 mt-2 leading-normal opacity-90 font-sans max-w-[80%]">
-                  Da oggi puoi consultare lo stato del tuo ordine dal tuo smartphone con LybroApp
-                </p>
               </div>
-              <div className="mt-auto">
+
+              {/* Centered Logo (Enlarged to fill space) */}
+              <div className="flex-grow flex items-center justify-center my-1">
+                <div className="relative w-40 h-16 select-none">
+                  <Image
+                    src="/assets/lybro-app.jpg"
+                    alt="Lybro App Logo"
+                    fill
+                    sizes="(max-width: 768px) 40vw, 30vw"
+                    className="object-contain rounded-md"
+                  />
+                </div>
+              </div>
+
+              <p className="text-xs text-orange-50 mt-auto leading-normal opacity-90 font-sans">
+                Da oggi puoi consultare lo stato del tuo ordine dal tuo smartphone con LybroApp
                 <a
                   href="#"
-                  className="inline-flex items-center text-[10px] font-bold uppercase tracking-wider bg-white text-indigo-700 px-3 py-1.5 rounded-md shadow-sm hover:bg-indigo-50 transition-colors"
+                  style={{ backgroundColor: '#81a440' }}
+                  className="inline-flex items-center justify-center text-[10px] font-bold uppercase tracking-wider text-white px-3 py-1.5 rounded-md shadow-sm hover:opacity-90 transition-opacity shrink-0 font-sans"
                 >
-                  Vai a Lybro
+                  vai a Lybro
                 </a>
-              </div>
+              </p>
             </div>
 
             {/* Card 3: Carta Cultura 2026 (Image Background with Footer Text) */}
@@ -202,9 +204,9 @@ export function BachecaGrid() {
               />
               <div className="absolute inset-0 bg-black/60 group-hover:bg-black/50 transition-colors duration-500" />
 
-              <div className="relative z-10 p-6 h-full flex flex-col justify-between text-white">
+              <div className="relative z-10 p-5 h-full flex flex-col justify-between text-white">
                 <div>
-                  <div className="text-xs uppercase tracking-widest text-orange-400 font-sans font-semibold">
+                  <div className="text-xs uppercase tracking-widest text-orange-500 font-sans font-semibold">
                     Bonus Giovani
                   </div>
                   <h3 className="font-sans text-base sm:text-lg font-bold leading-snug mt-2">
@@ -213,7 +215,7 @@ export function BachecaGrid() {
                 </div>
 
                 <div className="w-full mt-auto pt-2 border-t border-white/20">
-                  <p className="text-[10px] text-zinc-200 leading-normal font-sans font-medium">
+                  <p className="text-[11px] text-zinc-200 leading-normal font-sans font-medium">
                     Fino a 500€ per l'acquisto di libri. Attiva per tutti i nati nel 2007. Spendi qui il tuo buono.
                   </p>
                 </div>
@@ -225,12 +227,12 @@ export function BachecaGrid() {
           <CarouselItem className="pl-2 sm:pl-3 basis-[80%] select-none flex flex-col gap-2 md:pl-0 md:basis-auto md:w-auto md:gap-3">
             {/* Card 4: Social Connect (Facebook & Instagram with simulated feed) */}
             <div
-              className={`group relative flex flex-col justify-between h-52 bg-[#363537] text-white rounded-xl p-6 shadow-md border border-zinc-700/50 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:150ms] ${animatedCard === 3 ? 'animate-bacheca-card' : ''
+              className={`group relative flex flex-col justify-between h-52 bg-[#363537] text-white rounded-xl p-5 shadow-md border border-zinc-700/50 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:150ms] ${animatedCard === 3 ? 'animate-bacheca-card' : ''
                 }`}
             >
               <div className="flex justify-between items-start">
                 <div>
-                  <div className="text-xs uppercase tracking-widest text-orange-400 font-sans font-semibold">
+                  <div className="text-xs uppercase tracking-widest text-orange-500 font-sans font-semibold">
                     Community
                   </div>
                   <h3 className="font-sans text-base sm:text-lg font-bold leading-snug mt-1">
@@ -252,7 +254,7 @@ export function BachecaGrid() {
               </div>
 
               <div className="bg-[#4a494b] rounded-lg p-3 my-2 border border-zinc-600/30">
-                <p className="text-[10px] text-zinc-200 line-clamp-2 font-sans">
+                <p className="text-[11px] text-zinc-200 line-clamp-2 font-sans">
                   ✨ Novità in arrivo! Questo venerdì ore 18:30 ospiteremo la presentazione del nuovo romanzo...
                 </p>
                 <div className="flex justify-between items-center mt-2 text-[9px] text-zinc-400">
@@ -273,19 +275,19 @@ export function BachecaGrid() {
 
             {/* Card 6: Offerta Kit (Warm Cream / Promotion) */}
             <div
-              className={`group relative flex flex-col justify-between h-52 bg-amber-50/80 text-zinc-800 rounded-xl p-6 shadow-md border border-amber-200/60 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:250ms] ${animatedCard === 5 ? 'animate-bacheca-card' : ''
+              className={`group relative flex flex-col justify-between h-52 bg-amber-50/80 text-zinc-800 rounded-xl p-5 shadow-md border border-amber-200/60 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:250ms] ${animatedCard === 5 ? 'animate-bacheca-card' : ''
                 }`}
             >
               <div className="absolute -top-12 -right-12 w-24 h-24 bg-orange-500/5 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500" />
 
               <div>
-                <span className="inline-block bg-orange-500 text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full mb-1">
+                <div className="text-xs uppercase tracking-widest text-orange-500 font-sans font-semibold">
                   Offerta Speciale
-                </span>
-                <h3 className="font-sans text-base sm:text-lg font-bold leading-snug text-zinc-900 mt-1">
+                </div>
+                <h3 className="font-sans text-base sm:text-lg font-bold leading-snug text-zinc-900 mt-2">
                   Kit Lettura Estiva
                 </h3>
-                <p className="text-[11px] text-zinc-600 mt-1 leading-normal opacity-90 font-sans">
+                <p className="text-xs text-zinc-600 mt-1.5 leading-normal opacity-90 font-sans">
                   Acquista il best seller del mese e ricevi in omaggio la tazza letteraria esclusiva e la shopper della libreria.
                 </p>
               </div>
