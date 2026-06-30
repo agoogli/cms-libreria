@@ -60,8 +60,8 @@ export default async function HomePage() {
         <section className="w-full bg-transparent pt-3 pb-0">
           {/* 60% width container on desktop, aligned left on mobile (pl-4 pr-0), normal on desktop (lg:px-4) */}
           <div className="w-full lg:w-[60%] mx-auto pl-4 pr-0 lg:px-4">
-            {/* Section Header (needs standard right margin on mobile, so we add pr-4) */}
-            <div className="mb-3 text-left pr-4 lg:pr-0">
+            {/* Section Header centered horizontally */}
+            <div className="mb-3 text-center w-full">
               <span className="text-xs uppercase tracking-widest text-orange-600 font-sans font-bold">
                 Testi universitari, scolastici, professionali e concorsi
               </span>

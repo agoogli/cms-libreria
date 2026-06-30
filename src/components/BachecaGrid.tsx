@@ -94,7 +94,7 @@ export function BachecaGrid() {
           <CarouselItem className="pl-2 sm:pl-3 basis-[80%] select-none flex flex-col gap-2 md:pl-0 md:basis-auto md:w-auto md:gap-3">
             {/* Card 5: Slideshow (La Libreria) */}
             <div
-              className={`group relative flex flex-col justify-between h-52 bg-zinc-950 rounded-xl overflow-hidden shadow-md border border-zinc-800 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:200ms] ${animatedCard === 4 ? 'animate-bacheca-card' : ''
+              className={`group relative flex flex-col justify-between h-52 bg-[#363537] rounded-xl overflow-hidden shadow-md border border-zinc-700/60 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:200ms] ${animatedCard === 4 ? 'animate-bacheca-card' : ''
                 }`}
             >
               {/* Automatic slideshow images from assets with object-contain */}
@@ -137,13 +137,24 @@ export function BachecaGrid() {
                 }`}
             >
               <div className="relative z-10 h-full flex flex-col justify-between">
-                <div>
-                  <div className="text-xs uppercase tracking-widest text-white font-sans font-semibold">
-                    Scuola
+                <div className="flex justify-between items-start w-full">
+                  <div>
+                    <div className="text-xs uppercase tracking-widest text-white font-sans font-semibold">
+                      Scuola
+                    </div>
+                    <h3 className="font-sans text-base sm:text-lg font-bold leading-snug text-white mt-1 pr-6">
+                      Libri scolastici nuovi e usati
+                    </h3>
                   </div>
-                  <h3 className="font-sans text-base sm:text-lg font-bold leading-snug text-white mt-1">
-                    Libri scolastici nuovi e usati
-                  </h3>
+                  <div className="relative w-9 h-9 select-none shrink-0 ml-2">
+                    <Image
+                      src="/assets/scuola.png"
+                      alt="Icona Scuola"
+                      fill
+                      sizes="36px"
+                      className="object-contain"
+                    />
+                  </div>
                 </div>
 
                 <div className="w-full mt-auto pt-2 border-t border-white/20">
@@ -170,12 +181,12 @@ export function BachecaGrid() {
                 <div className="text-xs uppercase tracking-widest text-orange-500 font-sans font-semibold mt-1">
                   App Nunnari
                 </div>
-                <div className="relative w-16 h-6 select-none shrink-0">
+                <div className="relative w-9 h-9 select-none shrink-0 ml-2">
                   <Image
                     src="/assets/lybro-app.jpg"
                     alt="Lybro App Logo"
                     fill
-                    sizes="80px"
+                    sizes="36px"
                     className="object-contain"
                   />
                 </div>
@@ -241,7 +252,7 @@ export function BachecaGrid() {
             >
               <div className="absolute -top-12 -right-12 w-24 h-24 bg-white/10 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500" />
 
-              <div className="flex justify-between items-start">
+              <div className="flex justify-between items-start w-full">
                 <div>
                   <div className="text-xs uppercase tracking-widest text-blue-100 font-sans font-semibold">
                     Community
@@ -249,6 +260,15 @@ export function BachecaGrid() {
                   <h3 className="font-sans text-base sm:text-lg font-bold leading-snug mt-1">
                     Seguici sui Social
                   </h3>
+                </div>
+                <div className="relative w-9 h-9 select-none shrink-0 ml-2">
+                  <Image
+                    src="/assets/social-media.png"
+                    alt="Icona Social Media"
+                    fill
+                    sizes="36px"
+                    className="object-contain"
+                  />
                 </div>
               </div>
 
