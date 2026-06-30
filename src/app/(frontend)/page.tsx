@@ -58,16 +58,16 @@ export default async function HomePage() {
       {/* 4. Proposta di Valore / Hero Section (60% width on desktop, light theme) */}
       <main className="flex-grow flex flex-col">
         <section className="w-full bg-transparent pt-3 pb-0">
-          {/* 60% width container on desktop */}
-          <div className="w-full lg:w-[60%] mx-auto px-4">
-            {/* Section Header */}
-            <div className="mb-3 text-left">
+          {/* 60% width container on desktop, aligned left on mobile (pl-4 pr-0), normal on desktop (lg:px-4) */}
+          <div className="w-full lg:w-[60%] mx-auto pl-4 pr-0 lg:px-4">
+            {/* Section Header (needs standard right margin on mobile, so we add pr-4) */}
+            <div className="mb-3 text-left pr-4 lg:pr-0">
               <span className="text-xs uppercase tracking-widest text-orange-600 font-sans font-bold">
                 Servizi &amp; offerte speciali
               </span>
             </div>
 
-            {/* 4 Tiles Grid with periodic animations in a 2x2 layout */}
+            {/* 6 Tiles Grid wrapped in Carousel on mobile */}
             <BachecaGrid />
           </div>
         </section>
