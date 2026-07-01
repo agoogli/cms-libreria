@@ -146,12 +146,12 @@ export function BachecaGrid() {
                       Libri scolastici nuovi e usati
                     </h3>
                   </div>
-                  <div className="relative w-9 h-9 select-none shrink-0 ml-2">
+                  <div className="relative w-8 h-8 select-none shrink-0 ml-2">
                     <Image
                       src="/assets/scuola.png"
                       alt="Icona Scuola"
                       fill
-                      sizes="36px"
+                      sizes="32px"
                       className="object-contain"
                     />
                   </div>
@@ -181,12 +181,12 @@ export function BachecaGrid() {
                 <div className="text-xs uppercase tracking-widest text-orange-500 font-sans font-semibold mt-1">
                   App Nunnari
                 </div>
-                <div className="relative w-9 h-9 select-none shrink-0 ml-2">
+                <div className="relative w-8 h-8 select-none shrink-0 ml-2">
                   <Image
-                    src="/assets/lybro-app.jpg"
-                    alt="Lybro App Logo"
+                    src="/assets/app.png"
+                    alt="Icona App"
                     fill
-                    sizes="36px"
+                    sizes="32px"
                     className="object-contain"
                   />
                 </div>
@@ -261,14 +261,25 @@ export function BachecaGrid() {
                     Seguici sui Social
                   </h3>
                 </div>
-                <div className="relative w-9 h-9 select-none shrink-0 ml-2">
-                  <Image
-                    src="/assets/social-media.png"
-                    alt="Icona Social Media"
-                    fill
-                    sizes="36px"
-                    className="object-contain"
-                  />
+                <div className="flex gap-1.5 items-center ml-2 shrink-0">
+                  <div className="relative w-8 h-8 select-none">
+                    <Image
+                      src="/assets/facebook.png"
+                      alt="Icona Facebook"
+                      fill
+                      sizes="32px"
+                      className="object-contain"
+                    />
+                  </div>
+                  <div className="relative w-8 h-8 select-none">
+                    <Image
+                      src="/assets/instagram.png"
+                      alt="Icona Instagram"
+                      fill
+                      sizes="32px"
+                      className="object-contain"
+                    />
+                  </div>
                 </div>
               </div>
 

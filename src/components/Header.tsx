@@ -9,12 +9,9 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false)
 
   const links = [
-    { name: 'Homepage', href: '/' },
     { name: 'La libreria', href: '/la-libreria' },
     { name: 'Dove siamo', href: '/dove-siamo' },
     { name: 'Contattaci', href: '/contattaci' },
-    { name: 'Pagamenti', href: '/pagamenti' },
-    { name: 'Spedizioni', href: '/spedizioni' },
   ]
 
   return (
@@ -63,11 +60,11 @@ export function Header() {
       {isOpen && (
         <div className="md:hidden fixed inset-0 z-50 flex">
           {/* Dark backdrop overlay with fade transition */}
-          <div 
+          <div
             className="fixed inset-0 bg-black/45 transition-opacity duration-300 animate-in fade-in"
             onClick={() => setIsOpen(false)}
           />
-          
+
           {/* Drawer Menu Panel sliding in from left to right */}
           <div className="relative w-72 max-w-[80vw] bg-white h-full shadow-2xl flex flex-col p-6 z-50 border-r border-zinc-200 animate-in slide-in-from-left duration-300 ease-in-out">
             {/* Header of Drawer */}
