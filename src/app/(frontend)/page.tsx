@@ -150,7 +150,8 @@ export default async function HomePage() {
       {/* Footer (Anthracite #363537 background, 60% width container on desktop) */}
       <footer className="w-full bg-[#363537] border-t border-zinc-800 py-8 text-zinc-400 text-xs">
         <div className="w-full lg:w-[60%] mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p>© {new Date().getFullYear()} Libreria Antigravità. Tutti i diritti riservati.</p>
+          <p>© {new Date().getFullYear()} Libreria Nunnari e Sfameni snc. Tutti i diritti riservati.</p>
+          <p>Partita IVA: 03027400831 - Via T.Cannizzaro 112 98122 Messina (ME)</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-zinc-200 transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-zinc-200 transition-colors">Termini e Condizioni</a>
