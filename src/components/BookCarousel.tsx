@@ -27,10 +27,9 @@ interface Book {
 interface BookCarouselProps {
   books: Book[]
   title: string
-  subtitle?: string
 }
 
-export function BookCarousel({ books, title, subtitle }: BookCarouselProps) {
+export function BookCarousel({ books, title }: BookCarouselProps) {
   // If there are no books, we show a message
   if (!books || books.length === 0) {
     return (
@@ -47,8 +46,8 @@ export function BookCarousel({ books, title, subtitle }: BookCarouselProps) {
         {/* Section Header (needs standard right margin on mobile, so we add pr-4) */}
         <div className="flex justify-between items-center mb-3 pr-4 lg:pr-0">
           <div>
-            <span className="text-xs uppercase tracking-widest text-orange-600 font-sans font-bold">
-              {subtitle || 'Novità in vetrina'}
+            <span className="text-xs uppercase tracking-widest text-[#363537] font-sans font-bold">
+              {title}
             </span>
           </div>
           <div>
@@ -56,7 +55,7 @@ export function BookCarousel({ books, title, subtitle }: BookCarouselProps) {
               href="#"
               className="text-xs font-bold uppercase tracking-wider text-orange-600 hover:text-orange-700 transition-colors font-sans"
             >
-              Vedi tutti
+              Vedi tutti &gt;
             </Link>
           </div>
         </div>

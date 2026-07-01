@@ -126,28 +126,24 @@ export default async function HomePage() {
         <BookCarousel
           books={displayBooks}
           title="Novità in Vetrina"
-          subtitle="Tutti i settori"
         />
 
         {/* Carousel 2: Concorsi (Filtered by Concorsi sector, ordered newest to oldest, max 20) */}
         <BookCarousel
           books={concorsiBooks}
           title="Concorsi"
-          subtitle="Settore Concorsi e Abilitazioni"
         />
 
         {/* Carousel 3: Giuridica (Filtered by Giuridica sector, ordered newest to oldest, max 20) */}
         <BookCarousel
           books={giuridicaBooks}
           title="Diritto e Codici"
-          subtitle="Settore Diritto e Codici"
         />
 
         {/* Carousel 4: Umanistica (Filtered by Umanistica sector, ordered newest to oldest, max 20) */}
         <BookCarousel
           books={umanisticaBooks}
           title="Umanistica"
-          subtitle="Settore Storia, Filosofia e Letteratura"
         />
       </main>
 
