@@ -40,12 +40,15 @@ export function BookCard({ book }: BookCardProps) {
     : null
 
   return (
-    <div className="group cursor-pointer flex flex-col h-full select-none bg-white p-4 rounded-lg border border-zinc-200/80 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 ease-out font-sans">
+    <div
+      title={book.titolo}
+      className="group cursor-pointer flex flex-col h-full select-none bg-white p-4 rounded-lg border border-zinc-200/80 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 ease-out font-sans"
+    >
       {/* Book Cover Container - padded wrapper to reduce cover proportions by 40% */}
       <div className="px-5 py-2.5">
         <div className="relative aspect-[3/4] w-full rounded-md overflow-hidden bg-zinc-100 shadow-sm border border-zinc-200/60">
           {formattedDiscountPrice && (
-            <div className="absolute top-2 right-2 bg-orange-600 text-white text-[8px] font-bold w-[18px] h-[18px] rounded-full flex items-center justify-center z-20 font-sans shadow-sm">
+            <div className="absolute top-2 right-2 bg-orange-600 text-white text-[10px] font-bold w-6 h-6 rounded-full flex items-center justify-center z-20 font-sans shadow-sm">
               %
             </div>
           )}

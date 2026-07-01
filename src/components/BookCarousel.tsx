@@ -53,7 +53,7 @@ export function BookCarousel({ books, title }: BookCarouselProps) {
           <div>
             <Link
               href="#"
-              className="text-xs font-bold uppercase tracking-wider text-orange-600 hover:text-orange-700 transition-colors font-sans"
+              className="text-xs font-bold uppercase tracking-wider !text-orange-600 hover:!text-orange-700 transition-colors font-sans"
             >
               Vedi tutti &gt;
             </Link>
