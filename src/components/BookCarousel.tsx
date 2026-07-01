@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import Link from 'next/link'
 import {
   Carousel,
   CarouselContent,
@@ -40,21 +41,23 @@ export function BookCarousel({ books, title, subtitle }: BookCarouselProps) {
   }
 
   return (
-    <section className="w-full bg-transparent pt-3 pb-12 text-zinc-900">
+    <section className="w-full bg-transparent pt-3 pb-0 text-zinc-900">
       {/* 60% width container on desktop, aligned left on mobile (pl-4 pr-0), normal on desktop (lg:px-4) */}
       <div className="w-full lg:w-[60%] mx-auto pl-4 pr-0 lg:px-4">
         {/* Section Header (needs standard right margin on mobile, so we add pr-4) */}
-        <div className="flex justify-between items-end mb-3 pr-4 lg:pr-0">
+        <div className="flex justify-between items-center mb-3 pr-4 lg:pr-0">
           <div>
             <span className="text-xs uppercase tracking-widest text-orange-600 font-sans font-bold">
               {subtitle || 'Novità in vetrina'}
             </span>
-            <h2 className="font-serif text-xl sm:text-2xl font-bold text-zinc-900 mt-0.5">
-              {title}
-            </h2>
           </div>
-          <div className="text-xs text-zinc-500 font-sans">
-            Mostrati {Math.min(books.length, 6)} di {books.length} libri
+          <div>
+            <Link
+              href="#"
+              className="text-xs font-bold uppercase tracking-wider text-orange-600 hover:text-orange-700 transition-colors font-sans"
+            >
+              Vedi tutti
+            </Link>
           </div>
         </div>
 
