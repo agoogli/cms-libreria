@@ -15,8 +15,8 @@ export default function CarteCulturaPage() {
         </span>
       </div>
 
-      {/* Structured paragraphs matching home page card description size & color */}
-      <div className="flex flex-col gap-6 text-[11px] text-zinc-600 leading-relaxed font-sans opacity-95">
+      {/* Structured paragraphs matching home page card description size & color (text-xs) */}
+      <div className="flex flex-col gap-6 text-xs text-zinc-600 leading-relaxed font-sans opacity-95">
         {/* Section 1 */}
         <section className="bg-white p-5 rounded-xl border border-zinc-200/80 shadow-sm">
           <h3 className="text-zinc-800 font-bold text-xs mb-2 uppercase tracking-wider text-orange-500/95">

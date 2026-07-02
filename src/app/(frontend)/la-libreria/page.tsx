@@ -30,8 +30,8 @@ export default function LaLibreriaPage() {
         </span>
       </div>
 
-      {/* Centered Gallery Slideshow */}
-      <div className="relative w-full max-w-xl aspect-[3/2] rounded-xl overflow-hidden shadow-lg border border-zinc-200/80 bg-zinc-100">
+      {/* Centered Gallery Slideshow with object-contain to fit images completely */}
+      <div className="relative w-full max-w-xl aspect-[3/2] rounded-xl overflow-hidden shadow-lg border border-zinc-200/80 bg-zinc-50 flex items-center justify-center">
         {photos.map((src, index) => (
           <Image
             key={src}
@@ -39,7 +39,7 @@ export default function LaLibreriaPage() {
             alt={`Interni Libreria ${index + 1}`}
             fill
             sizes="(max-width: 768px) 100vw, 600px"
-            className={`object-cover transition-opacity duration-1000 ${
+            className={`object-contain transition-opacity duration-1000 ${
               index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
             }`}
             priority={index === 0}
@@ -62,8 +62,8 @@ export default function LaLibreriaPage() {
         </div>
       </div>
 
-      {/* History Text matching homepage description size & gray color */}
-      <div className="w-full flex flex-col gap-4 text-[11px] text-zinc-600 leading-relaxed font-sans opacity-95">
+      {/* History Text matching homepage description size & gray color (text-xs) */}
+      <div className="w-full flex flex-col gap-4 text-xs text-zinc-600 leading-relaxed font-sans opacity-95">
         <p>
           Dal lontano 1932 la Libreria Nunnari e Sfameni è presente a Messina nella storica sede di Via Cannizzaro al centro della città, a due passi dall’università centrale e dal tribunale.
         </p>
