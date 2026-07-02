@@ -2,32 +2,71 @@ import React from 'react'
 
 export const metadata = {
   title: 'Carte Cultura - Libreria Nunnari & Sfameni',
-  description: 'Spendi i tuoi buoni Carta della Cultura Giovani e Carta del Merito da 500€.',
+  description: 'Tutte le informazioni per spendere il tuo Bonus Carta Cultura Giovani e Carta del Merito.',
 }
 
 export default function CarteCulturaPage() {
   return (
-    <div className="w-full lg:w-[60%] mx-auto px-4 py-8">
-      Cos’è la Carta della Cultura Giovani?
+    <div className="w-full lg:w-[60%] mx-auto px-4 py-8 flex flex-col gap-6">
+      {/* Title */}
+      <div className="w-full text-left">
+        <span className="text-xs uppercase tracking-widest text-orange-600 font-sans font-bold">
+          Carte Cultura 2026
+        </span>
+      </div>
 
-      La Carta della Cultura Giovani, un'iniziativa dedicata a promuovere la cultura tra i giovani con un valore nominale di € 500 spendibili in cinema, musica e concerti, eventi culturali, libri, musei, visite a monumenti e parchi archeologici, teatro e danza, prodotti dell’editoria audiovisiva, corsi di musica, teatro e lingua straniera, nonché abbonamenti a quotidiani anche in formato digitale. L’iniziativa, realizzata a partire dal 2024, quest'anno è dedicata ai ragazzi nati nel 2007, i quali, secondo la legge, potranno richiederla nel 2026 essendo residenti in Italia e avendo compiuto 18 anni nel 2025.
-      Cos’è la Carta del Merito?
+      {/* Structured paragraphs matching home page card description size & color */}
+      <div className="flex flex-col gap-6 text-[11px] text-zinc-600 leading-relaxed font-sans opacity-95">
+        {/* Section 1 */}
+        <section className="bg-white p-5 rounded-xl border border-zinc-200/80 shadow-sm">
+          <h3 className="text-zinc-800 font-bold text-xs mb-2 uppercase tracking-wider text-orange-500/95">
+            Carta Cultura Giovani e Carta del Merito
+          </h3>
+          <p className="mb-2">
+            Le nuove agevolazioni ministeriali mettono a disposizione dei giovani due distinti buoni spesa cumulabili del valore di 500 euro ciascuno:
+          </p>
+          <ul className="list-disc pl-4 flex flex-col gap-1.5 text-zinc-500">
+            <li>
+              <strong>Carta della Cultura Giovani:</strong> Spetta ai ragazzi residenti in Italia appartenenti a famiglie con un indicatore ISEE non superiore a 35.000 euro. È richiedibile a partire dal 31 gennaio dell'anno successivo al compimento del 18° anno di età.
+            </li>
+            <li>
+              <strong>Carta del Merito:</strong> Assegnata agli studenti che conseguono il diploma di maturità con il massimo dei voti (100/100 o 100/100 con lode) prima del compimento del 19° anno di età.
+            </li>
+          </ul>
+        </section>
 
-      La Carta del Merito è un’iniziativa dedicate a promuovere la cultura fra i giovani. Ha un valore nominale di € 500 da spendere in cinema, musica e concerti, eventi culturali, libri, musei, visite a monumenti e parchi archeologici, teatro e danza, prodotti dell’editoria audiovisiva, corsi di musica, corsi diteatro e corsi di lingua straniera, nonché abbonamenti a quotidiani anche in formato digitale. L’iniziativa, realizzata a partire dal 2024 è  dedicata ai ragazzi meritevoli.
-      Cosa si può comprare con il Bonus Carte Cultura?
+        {/* Section 2 */}
+        <section className="bg-white p-5 rounded-xl border border-zinc-200/80 shadow-sm">
+          <h3 className="text-zinc-800 font-bold text-xs mb-2 uppercase tracking-wider text-orange-500/95">
+            Cosa puoi acquistare presso di noi
+          </h3>
+          <p className="mb-2">
+            Presso la nostra libreria puoi utilizzare entrambi i bonus per acquistare:
+          </p>
+          <ul className="list-disc pl-4 flex flex-col gap-1.5 text-zinc-500">
+            <li>Libri di ogni genere, narrativa, saggistica e novità editoriali.</li>
+            <li>Testi scolastici per scuole medie e superiori.</li>
+            <li>Manuali universitari e testi professionali.</li>
+            <li>E-book, audiolibri, CD musicali e dischi in vinile.</li>
+          </ul>
+          <p className="mt-2.5">
+            I buoni sono strettamente personali, non sono trasferibili a terzi e possono essere utilizzati solo per l'acquisto delle categorie di beni consentite dalla normativa vigente.
+          </p>
+        </section>
 
-      Le Carte della Cultura possono essere utilizzate per l’acquisto di libri, testi universitari, libri scolastici, libri in lingua straniera, e-book, audiolibri, CD musicali, vinili, DVD e Blu-ray. Qualsiasi altro tipo di prodotto non può essere pagato con il Bonus Carta della Cultura o Carta del merito. É possibile utilizzare il bonus a partire dal 31/01/2026, una volta completata la procedura di registrazione e ottenute le credenziali di accesso alla piattaforma dedicata.
-      Ricorda che il Bonus Cultura è strettamente personale e non può essere ceduto a terzi.
-      Come fare per ottenerle?
-
-      La Carta della Cultura Giovani e la Carta del Merito possono essere richieste e utilizzate l'anno successivo al compimento del diciottesimo anno di età. Per accedere a tali servizi, è necessario registrarsi sulla piattaforma informatica ufficiale all'indirizzo cartegiovani.cultura.gov.it, utilizzando una delle seguenti opzioni: Identità digitale ottenuta tramite un contratto con uno dei fornitori di identità digitale aderenti al Sistema pubblico di identità digitale (SPID); Carta d'Identità Elettronica (CIE).
-      Cumulabilità e scadenza
-
-      Qualora siano soddisfatti i requisiti stabiliti, è possibile cumulare entrambe le Carte della Cultura. La registrazione è ammessa, previa accettazione dei termini e delle condizioni, dal 31 gennaio al 30 giugno dell'anno successivo al raggiungimento del diciottesimo anno di età. Le Carte della Cultura devono essere utilizzate entro il 31 dicembre dell'anno in cui sono state registrate.
-      Cos'è lo SPID e come richiederlo?
-
-      Lo SPID è il Sistema Pubblico di Identità Digitale della Pubblica Amministrazione che ti permette di accedere con username e password. Puoi richiederlo a uno degli Identity Provider abilitati. Lo SPID è il mezzo più utile e comodo per rapportarsi con la Pubblica Amministrazione. Oltre che per utilizzare Carta della Cultura Giovani, SPID ti sarà utile per prenotarti delle visite sanitarie, iscriverti a scuola o all’università, usufruire di vari bonus dell’INPS e, in alcuni luoghi, la si utilizza anche per accedere alla Wifi pubblica. Lo SPID altro non è che la tua carta di identità digitale con la quale potrai accedere a qualsiasi tipologia di servizio richieda la presentazione di un documento.
-      Per ottenere le credenziali SPID dovrai scegliere uno degli Identity Provider. Vai su https://spid.gov.it/richiedi-spid e avvia la procedura di registrazione.
+        {/* Section 3 */}
+        <section className="bg-white p-5 rounded-xl border border-zinc-200/80 shadow-sm">
+          <h3 className="text-zinc-800 font-bold text-xs mb-2 uppercase tracking-wider text-orange-500/95">
+            Requisiti e procedura di attivazione
+          </h3>
+          <p>
+            Per attivare e generare i tuoi buoni cultura è necessario registrarsi sul portale ministeriale ufficiale <code>cartegiovani.cultura.gov.it</code>. La registrazione richiede l'accesso tramite SPID (Sistema Pubblico di Identità Digitale) o Carta d'Identità Elettronica (CIE).
+          </p>
+          <p className="mt-2">
+            Le domande di registrazione possono essere inoltrate ogni anno a partire dal 31 gennaio fino alla scadenza del 30 giugno. Una volta completata la registrazione ed ottenuto il portafoglio digitale, i buoni spesa dovranno essere spesi obbligatoriamente entro il 31 dicembre dello stesso anno di attivazione.
+          </p>
+        </section>
+      </div>
     </div>
   )
 }
