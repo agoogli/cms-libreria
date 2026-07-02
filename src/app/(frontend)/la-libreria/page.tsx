@@ -22,16 +22,16 @@ export default function LaLibreriaPage() {
   }, [])
 
   return (
-    <div className="w-full lg:w-[60%] mx-auto px-4 py-8 flex flex-col items-center gap-8">
-      {/* Title */}
-      <div className="w-full text-left">
+    <div className="w-full lg:w-[60%] mx-auto px-4 pt-3 pb-8 flex flex-col gap-3">
+      {/* Title with exact pt-3 page padding and mb-3 title margin */}
+      <div className="mb-3 text-left">
         <span className="text-xs uppercase tracking-widest text-orange-600 font-sans font-bold">
           La Nostra Storia
         </span>
       </div>
 
-      {/* Centered Gallery Slideshow with object-contain to fit images completely */}
-      <div className="relative w-full max-w-xl aspect-[3/2] rounded-xl overflow-hidden shadow-lg border border-zinc-200/80 bg-zinc-50 flex items-center justify-center">
+      {/* Left-aligned Slideshow with transparent card background */}
+      <div className="relative w-full max-w-xl aspect-[3/2] rounded-xl overflow-hidden bg-transparent flex items-center justify-start self-start">
         {photos.map((src, index) => (
           <Image
             key={src}
@@ -46,7 +46,7 @@ export default function LaLibreriaPage() {
           />
         ))}
 
-        {/* Slide Indicator dots */}
+        {/* Slide Indicator dots centered within the slideshow layout */}
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-1.5 bg-black/30 px-3 py-1.5 rounded-full backdrop-blur-sm">
           {photos.map((_, index) => (
             <button
@@ -62,8 +62,8 @@ export default function LaLibreriaPage() {
         </div>
       </div>
 
-      {/* History Text matching homepage description size & gray color (text-xs) */}
-      <div className="w-full flex flex-col gap-4 text-xs text-zinc-600 leading-relaxed font-sans opacity-95">
+      {/* Compact History Text with text-xs, color matching the homepage and reset paragraph vertical margins */}
+      <div className="w-full flex flex-col gap-2 text-xs text-zinc-600 leading-relaxed font-sans opacity-95 [&_p]:my-0 mt-2">
         <p>
           Dal lontano 1932 la Libreria Nunnari e Sfameni è presente a Messina nella storica sede di Via Cannizzaro al centro della città, a due passi dall’università centrale e dal tribunale.
         </p>

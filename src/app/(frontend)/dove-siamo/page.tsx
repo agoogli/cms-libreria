@@ -7,17 +7,17 @@ export const metadata = {
 
 export default function DoveSiamoPage() {
   return (
-    <div className="w-full lg:w-[60%] mx-auto px-4 py-8 flex flex-col gap-6">
-      {/* Title */}
-      <div className="w-full text-left">
+    <div className="w-full lg:w-[60%] mx-auto px-4 pt-3 pb-8 flex flex-col gap-6">
+      {/* Title with exact pt-3 page padding and mb-3 title margin */}
+      <div className="mb-3 text-left">
         <span className="text-xs uppercase tracking-widest text-orange-600 font-sans font-bold">
           Dove Siamo
         </span>
       </div>
 
       {/* Description matching home page card description size & color (text-xs) */}
-      <div className="text-xs text-zinc-600 leading-relaxed font-sans opacity-95">
-        <p className="mt-2 text-zinc-500">Ci troviamo a Messina in via Tommaso Cannizzaro 112, a due passi dal tribunale e dall'università centrale, facilmente raggiungibili a piedi, in auto o con i mezzi pubblici.</p>
+      <div className="text-xs text-zinc-600 leading-relaxed font-sans opacity-95 [&_p]:my-0 flex flex-col gap-1">
+        <p className="mt-1 text-zinc-500">Ci troviamo a Messina in via Tommaso Cannizzaro 112, a due passi dal tribunale e dall'università centrale, facilmente raggiungibili a piedi, in auto o con i mezzi pubblici.</p>
       </div>
 
       {/* Map Embed Card */}

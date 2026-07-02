@@ -79,9 +79,9 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
   }
 
   return (
-    <div className="w-full lg:w-[60%] mx-auto px-4 py-8">
-      {/* Sector Header */}
-      <div className="mb-6 text-left border-b border-zinc-200 pb-3">
+    <div className="w-full lg:w-[60%] mx-auto px-4 pt-3 pb-8">
+      {/* Sector Header with standard padding and margins matching the home page title spacing */}
+      <div className="mb-3 text-left">
         <span className="text-xs uppercase tracking-widest text-orange-600 font-sans font-bold">
           Settore
         </span>
@@ -96,7 +96,7 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
           Nessun libro disponibile in questo settore al momento.
         </div>
       ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 mt-4">
           {dbBooks.map((book) => (
             <div key={book.id} className="h-full">
               <BookCard book={book} />
