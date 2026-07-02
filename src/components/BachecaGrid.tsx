@@ -179,15 +179,15 @@ export function BachecaGrid() {
               {/* Header Title & Top-Right Logo */}
               <div className="flex justify-between items-start w-full">
                 <div className="text-xs uppercase tracking-widest text-orange-500 font-sans font-semibold mt-1">
-                  App Nunnari
+                  LybroApp
                 </div>
                 <div className="relative w-8 h-8 select-none shrink-0 ml-2">
                   <Image
-                    src="/assets/app.png"
-                    alt="Icona App"
+                    src="/assets/lybro-app.jpg"
+                    alt="Icona Lybro"
                     fill
                     sizes="32px"
-                    className="object-contain"
+                    className="object-contain rounded-md"
                   />
                 </div>
               </div>
@@ -225,13 +225,35 @@ export function BachecaGrid() {
               />
 
               <div className="relative z-10 h-full flex flex-col justify-between">
-                <div>
-                  <div className="text-xs uppercase tracking-widest text-blue-100 font-sans font-semibold">
-                    Bonus
+                <div className="flex justify-between items-start w-full">
+                  <div>
+                    <div className="text-xs uppercase tracking-widest text-blue-100 font-sans font-semibold">
+                      Bonus
+                    </div>
+                    <h3 className="font-sans text-base sm:text-lg font-bold leading-snug text-white mt-1 pr-4">
+                      Carta Cultura 2026
+                    </h3>
                   </div>
-                  <h3 className="font-sans text-base sm:text-lg font-bold leading-snug text-white mt-1">
-                    Carta Cultura 2026
-                  </h3>
+                  <div className="flex gap-1.5 items-center ml-2 shrink-0">
+                    <div className="relative w-8 h-8 select-none">
+                      <Image
+                        src="/assets/carta-docente.png"
+                        alt="Icona Carta Docente"
+                        fill
+                        sizes="32px"
+                        className="object-contain"
+                      />
+                    </div>
+                    <div className="relative w-8 h-8 select-none">
+                      <Image
+                        src="/assets/carte-giovani.png"
+                        alt="Icona Carte Giovani"
+                        fill
+                        sizes="32px"
+                        className="object-contain"
+                      />
+                    </div>
+                  </div>
                 </div>
 
                 <div className="w-full mt-auto pt-2 border-t border-white/20">

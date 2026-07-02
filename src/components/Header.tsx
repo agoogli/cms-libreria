@@ -11,6 +11,9 @@ export function Header() {
   const links = [
     { name: 'La libreria', href: '/la-libreria' },
     { name: 'Dove siamo', href: '/dove-siamo' },
+    { name: 'Settori', href: '/settori' },
+    { name: 'Carta docente', href: '/carta-docente' },
+    { name: 'Carte cultura', href: '/carte-cultura' },
     { name: 'Contattaci', href: '/contattaci' },
   ]
 
