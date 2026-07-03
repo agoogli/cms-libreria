@@ -31,21 +31,21 @@ export default function LaLibreriaPage() {
       </div>
 
       {/* Left-aligned Slideshow with transparent card background */}
-      <div className="relative w-full max-w-xl aspect-[3/2] rounded-xl overflow-hidden bg-transparent flex items-center justify-start self-start">
+      <div className="relative w-full max-w-xs sm:max-w-sm aspect-[3/4] overflow-hidden bg-transparent flex items-center justify-center self-start">
         {photos.map((src, index) => (
           <Image
             key={src}
             src={src}
             alt={`Interni Libreria ${index + 1}`}
             fill
-            sizes="(max-width: 768px) 100vw, 600px"
-            className={`object-contain object-left transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+            sizes="(max-width: 768px) 100vw, 400px"
+            className={`object-contain object-center transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
               }`}
             priority={index === 0}
           />
         ))}
 
-        {/* Slide Indicator dots centered within the slideshow layout */}
+        {/* Slide Indicator dots centered relative to the visible photo */}
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-1.5 bg-black/30 px-3 py-1.5 rounded-full backdrop-blur-sm">
           {photos.map((_, index) => (
             <button
