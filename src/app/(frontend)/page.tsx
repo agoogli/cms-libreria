@@ -63,13 +63,13 @@ export default async function HomePage() {
   // Seed mock database if empty
   await seedDatabase(payload)
 
-  // 1. Fetch general newest books (overall newest)
+  // 1. Fetch general newest books (overall newest, limit to 100)
   let dbBooks: any[] = []
   try {
     const response = await payload.find({
       collection: 'libri',
       depth: 2,
-      limit: 24,
+      limit: 100, // Limit general carousel to 100 books
       sort: '-createdAt',
       overrideAccess: true,
     })
@@ -106,28 +106,32 @@ export default async function HomePage() {
       </section>
 
       {/* 5. Sector Carousels */}
-      {/* Carousel 1: Novità in Vetrina (All categories) */}
+      {/* Carousel 1: Novità in Vetrina (All categories, limit 100) */}
       <BookCarousel
         books={displayBooks}
         title="Novità in Vetrina"
+        viewAllHref="/libri"
       />
 
       {/* Carousel 2: Concorsi (Filtered by Concorsi sector, ordered newest to oldest, max 20) */}
       <BookCarousel
         books={concorsiBooks}
         title="Concorsi"
+        viewAllHref="/settori/concorsi"
       />
 
       {/* Carousel 3: Giuridica (Filtered by Giuridica sector, ordered newest to oldest, max 20) */}
       <BookCarousel
         books={giuridicaBooks}
         title="Diritto e Codici"
+        viewAllHref="/settori/giuridica"
       />
 
       {/* Carousel 4: Umanistica (Filtered by Umanistica sector, ordered newest to oldest, max 20) */}
       <BookCarousel
         books={umanisticaBooks}
         title="Umanistica"
+        viewAllHref="/settori/umanistica"
       />
     </>
   )

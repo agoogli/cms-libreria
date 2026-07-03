@@ -27,9 +27,10 @@ interface Book {
 interface BookCarouselProps {
   books: Book[]
   title: string
+  viewAllHref?: string
 }
 
-export function BookCarousel({ books, title }: BookCarouselProps) {
+export function BookCarousel({ books, title, viewAllHref = '#' }: BookCarouselProps) {
   // If there are no books, we show a message
   if (!books || books.length === 0) {
     return (
@@ -52,7 +53,7 @@ export function BookCarousel({ books, title }: BookCarouselProps) {
           </div>
           <div>
             <Link
-              href="#"
+              href={viewAllHref}
               className="text-xs font-bold uppercase tracking-wider !text-orange-600 hover:!text-orange-700 transition-colors font-sans"
             >
               Vedi tutti &gt;
