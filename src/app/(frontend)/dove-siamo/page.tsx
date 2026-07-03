@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function DoveSiamoPage() {
   return (
-    <div className="w-full lg:w-[60%] mx-auto px-4 pt-3 pb-2 flex flex-col gap-3">
+    <div className="w-full lg:w-[60%] mx-auto px-4 pt-3 pb-2 flex flex-col">
       {/* Title with exact pt-3 page padding */}
       <div className="text-left">
         <span className="text-xs uppercase tracking-widest text-orange-600 font-sans font-bold">
@@ -16,7 +16,7 @@ export default function DoveSiamoPage() {
       </div>
 
       {/* Content wrapper with spacing */}
-      <div className="flex flex-col gap-6 mt-1">
+      <div className="flex flex-col gap-6">
         {/* Description matching home page card description size & color (text-xs) */}
         <div className="text-xs text-zinc-600 leading-relaxed font-sans opacity-95 [&_p]:my-0 flex flex-col gap-1">
           <p className="mt-1 text-zinc-500">Ci troviamo a Messina in via Tommaso Cannizzaro 112, a due passi dal tribunale e dall'università centrale, facilmente raggiungibili a piedi, in auto o con i mezzi pubblici.</p>

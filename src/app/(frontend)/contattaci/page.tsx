@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function ContattaciPage() {
   return (
-    <div className="w-full lg:w-[60%] mx-auto px-4 pt-3 pb-2 flex flex-col gap-3">
+    <div className="w-full lg:w-[60%] mx-auto px-4 pt-3 flex flex-col">
       {/* Title with exact pt-3 page padding */}
       <div className="text-left">
         <span className="text-xs uppercase tracking-widest text-orange-600 font-sans font-bold">
@@ -17,7 +17,7 @@ export default function ContattaciPage() {
       </div>
 
       {/* Catchy Subtitle matching home description style (text-xs) */}
-      <p className="text-xs text-zinc-500 leading-relaxed font-sans opacity-95 mt-1">
+      <p className="text-xs text-zinc-500 leading-relaxed font-sans opacity-95">
         Siamo sempre a tua disposizione per informazioni sulla disponibilità dei libri, le prenotazioni scolastiche e i consigli sugli acquisti. Scegli il metodo che preferisci.
       </p>
 
