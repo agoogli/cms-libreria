@@ -44,14 +44,10 @@ export default function CarteCulturaPage() {
             Presso la nostra libreria puoi utilizzare entrambi i bonus per acquistare:
           </p>
           <ul className="list-disc pl-4 flex flex-col gap-1.5 text-zinc-500">
-            <li>Libri di ogni genere, narrativa, saggistica e novità editoriali.</li>
-            <li>Testi scolastici per scuole medie e superiori.</li>
             <li>Manuali universitari e testi professionali.</li>
-            <li>E-book, audiolibri, CD musicali e dischi in vinile.</li>
+            <li>Testi scolastici per scuole medie e superiori.</li>
+            <li>Libri di ogni genere, narrativa, saggistica e novità editoriali.</li>
           </ul>
-          <p className="mt-2.5">
-            I buoni sono strettamente personali, non sono trasferibili a terzi e possono essere utilizzati solo per l'acquisto delle categorie di beni consentite dalla normativa vigente.
-          </p>
         </section>
 
         {/* Section 3 */}
@@ -60,7 +56,9 @@ export default function CarteCulturaPage() {
             Requisiti e procedura di attivazione
           </h3>
           <p>
-            Per attivare e generare i tuoi buoni cultura è necessario registrarsi sul portale ministeriale ufficiale <code>cartegiovani.cultura.gov.it</code>. La registrazione richiede l'accesso tramite SPID (Sistema Pubblico di Identità Digitale) o Carta d'Identità Elettronica (CIE).
+            Per attivare e generare i tuoi buoni cultura è necessario registrarsi sul portale ministeriale ufficiale <a href="https://cartegiovani.cultura.gov.it" target="_blank" rel="noopener noreferrer" className="text-orange-500 hover:underline">
+              cartegiovani.cultura.gov.it
+            </a>. La registrazione richiede l'accesso tramite SPID (Sistema Pubblico di Identità Digitale) o Carta d'Identità Elettronica (CIE).
           </p>
           <p className="mt-2">
             Le domande di registrazione possono essere inoltrate ogni anno a partire dal 31 gennaio fino alla scadenza del 30 giugno. Una volta completata la registrazione ed ottenuto il portafoglio digitale, i buoni spesa dovranno essere spesi obbligatoriamente entro il 31 dicembre dello stesso anno di attivazione.

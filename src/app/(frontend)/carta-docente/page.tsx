@@ -65,7 +65,7 @@ export default function CartaDocentePage() {
             L'accesso alla piattaforma ufficiale avviene autenticandosi tramite credenziali SPID (livello 2) o Carta d'Identità Elettronica (CIE). All'atto del primo accesso per l'anno scolastico in corso, è richiesto di accettare le condizioni di utilizzo aggiornate e verificare i propri dati di contatto.
           </p>
           <p className="mt-2">
-            Dal pannello personale è possibile creare nuovi buoni specificandone l'importo desiderato e la categoria merceologica corretta. I voucher generati possono essere scaricati in formato PDF, mostrati in cassa tramite codice QR o annullati qualora si decida di non procedere all'acquisto, riaccreditando immediatamente l'importo nel portafoglio.
+            Dal pannello personale è possibile creare nuovi buoni specificandone l'importo desiderato e la categoria merceologica corretta. I voucher generati possono essere scaricati in formato PDF o mostrati in libreria tramite codice QR.
           </p>
         </section>
       </div>
