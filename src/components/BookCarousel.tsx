@@ -81,9 +81,9 @@ export function BookCarousel({ books, title }: BookCarouselProps) {
                   key={`${book.id || index}-${index}`}
                   className="pl-2 sm:pl-3 basis-2/3 sm:basis-1/2 md:basis-1/4 lg:basis-1/6 select-none"
                 >
-                  <div className="h-full pb-2">
+                  <Link href={`/libri/${book.id}`} className="block h-full pb-2">
                     <BookCard book={book} />
-                  </div>
+                  </Link>
                 </CarouselItem>
               ))}
             </CarouselContent>

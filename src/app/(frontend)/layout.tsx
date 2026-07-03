@@ -54,7 +54,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
           <GradientDivider />
 
           {/* 4. Main Body Content area */}
-          <main className="flex-grow flex flex-col gap-4 pb-12">
+          <main className="flex-grow flex flex-col gap-4 pb-6">
             {children}
           </main>
 

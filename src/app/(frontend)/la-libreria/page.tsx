@@ -22,9 +22,9 @@ export default function LaLibreriaPage() {
   }, [])
 
   return (
-    <div className="w-full lg:w-[60%] mx-auto px-4 pt-3 pb-8 flex flex-col gap-3">
-      {/* Title with exact pt-3 page padding and mb-3 title margin */}
-      <div className="mb-3 text-left">
+    <div className="w-full lg:w-[60%] mx-auto px-4 pt-3 pb-2 flex flex-col gap-3">
+      {/* Title with exact pt-3 page padding */}
+      <div className="text-left">
         <span className="text-xs uppercase tracking-widest text-orange-600 font-sans font-bold">
           La Nostra Storia
         </span>
@@ -39,9 +39,8 @@ export default function LaLibreriaPage() {
             alt={`Interni Libreria ${index + 1}`}
             fill
             sizes="(max-width: 768px) 100vw, 600px"
-            className={`object-contain transition-opacity duration-1000 ${
-              index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
-            }`}
+            className={`object-contain object-left transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+              }`}
             priority={index === 0}
           />
         ))}
@@ -52,9 +51,8 @@ export default function LaLibreriaPage() {
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`w-1.5 h-1.5 rounded-full transition-colors duration-300 ${
-                index === currentSlide ? 'bg-orange-500' : 'bg-white/50 hover:bg-white'
-              }`}
+              className={`w-1.5 h-1.5 rounded-full transition-colors duration-300 ${index === currentSlide ? 'bg-orange-500' : 'bg-white/50 hover:bg-white'
+                }`}
               aria-label={`Visualizza foto ${index + 1}`}
               type="button"
             />
@@ -63,14 +61,12 @@ export default function LaLibreriaPage() {
       </div>
 
       {/* Compact History Text with text-xs, color matching the homepage and reset paragraph vertical margins */}
-      <div className="w-full flex flex-col gap-2 text-xs text-zinc-600 leading-relaxed font-sans opacity-95 [&_p]:my-0 mt-2">
+      <div className="w-full flex flex-col gap-2 text-xs text-zinc-600 leading-relaxed font-sans opacity-95 [&_p]:my-0 mt-1">
         <p>
           Dal lontano 1932 la Libreria Nunnari e Sfameni è presente a Messina nella storica sede di Via Cannizzaro al centro della città, a due passi dall’università centrale e dal tribunale.
-        </p>
-        <p>
+          <br /><br />
           Fondata dai Sig.ri Pasquale Sfameni e Rosario Nunnari, la ditta è stata rilevata nel 1982 da Rocco Guglielmo e successivamente trasferita ai figli, ed è una delle librerie più antiche della città e di tutta la Sicilia.
-        </p>
-        <p>
+          <br /><br />
           La libreria è da generazioni punto di riferimento per tantissimi studenti sia universitari che scolastici.
         </p>
       </div>

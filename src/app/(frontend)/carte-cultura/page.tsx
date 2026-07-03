@@ -7,16 +7,16 @@ export const metadata = {
 
 export default function CarteCulturaPage() {
   return (
-    <div className="w-full lg:w-[60%] mx-auto px-4 pt-3 pb-8 flex flex-col gap-6">
-      {/* Title with exact pt-3 page padding and mb-3 title margin */}
-      <div className="mb-3 text-left">
+    <div className="w-full lg:w-[60%] mx-auto px-4 pt-3 pb-2 flex flex-col gap-3">
+      {/* Title with exact pt-3 page padding */}
+      <div className="text-left">
         <span className="text-xs uppercase tracking-widest text-orange-600 font-sans font-bold">
           Carte Cultura 2026
         </span>
       </div>
 
       {/* Structured paragraphs matching home page card description size & color (text-xs) with margin resets */}
-      <div className="flex flex-col gap-6 text-xs text-zinc-600 leading-relaxed font-sans opacity-95 [&_p]:my-0">
+      <div className="flex flex-col gap-6 text-xs text-zinc-600 leading-relaxed font-sans opacity-95 [&_p]:my-0 mt-1">
         {/* Section 1 */}
         <section className="bg-white p-5 rounded-xl border border-zinc-200/80 shadow-sm">
           <h3 className="text-zinc-800 font-bold text-xs mb-2 uppercase tracking-wider text-orange-500/95">

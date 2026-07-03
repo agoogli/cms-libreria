@@ -7,47 +7,50 @@ export const metadata = {
 
 export default function DoveSiamoPage() {
   return (
-    <div className="w-full lg:w-[60%] mx-auto px-4 pt-3 pb-8 flex flex-col gap-6">
-      {/* Title with exact pt-3 page padding and mb-3 title margin */}
-      <div className="mb-3 text-left">
+    <div className="w-full lg:w-[60%] mx-auto px-4 pt-3 pb-2 flex flex-col gap-3">
+      {/* Title with exact pt-3 page padding */}
+      <div className="text-left">
         <span className="text-xs uppercase tracking-widest text-orange-600 font-sans font-bold">
           Dove Siamo
         </span>
       </div>
 
-      {/* Description matching home page card description size & color (text-xs) */}
-      <div className="text-xs text-zinc-600 leading-relaxed font-sans opacity-95 [&_p]:my-0 flex flex-col gap-1">
-        <p className="mt-1 text-zinc-500">Ci troviamo a Messina in via Tommaso Cannizzaro 112, a due passi dal tribunale e dall'università centrale, facilmente raggiungibili a piedi, in auto o con i mezzi pubblici.</p>
-      </div>
-
-      {/* Map Embed Card */}
-      <div className="w-full overflow-hidden rounded-xl border border-zinc-200/80 shadow-md bg-white p-2">
-        <div className="text-xs font-bold text-zinc-800 px-3 py-2 border-b border-zinc-100 bg-zinc-50/50 rounded-t-lg">
-          Mappa Interattiva
+      {/* Content wrapper with spacing */}
+      <div className="flex flex-col gap-6 mt-1">
+        {/* Description matching home page card description size & color (text-xs) */}
+        <div className="text-xs text-zinc-600 leading-relaxed font-sans opacity-95 [&_p]:my-0 flex flex-col gap-1">
+          <p className="mt-1 text-zinc-500">Ci troviamo a Messina in via Tommaso Cannizzaro 112, a due passi dal tribunale e dall'università centrale, facilmente raggiungibili a piedi, in auto o con i mezzi pubblici.</p>
         </div>
-        <iframe
-          title="Mappa Libreria Nunnari & Sfameni"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3135.5397441584994!2d15.54924767675549!3d38.19163297188737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1314349635b7ec3b%3A0xc3f60b457e5e3fd!2sVia%20Tommaso%20Cannizzaro%2C%20112%2C%2098122%20Messina%20ME%2C%20Italy!5e0!3m2!1sen!2sit!4v1719600000000!5m2!1sen!2sit"
-          className="w-full h-80 sm:h-96 rounded-b-lg border-0"
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        />
-      </div>
 
-      {/* Streetview Embed Card */}
-      <div className="w-full overflow-hidden rounded-xl border border-zinc-200/80 shadow-md bg-white p-2">
-        <div className="text-xs font-bold text-zinc-800 px-3 py-2 border-b border-zinc-100 bg-zinc-50/50 rounded-t-lg">
-          Vista della Vetrina (Street View)
+        {/* Map Embed Card */}
+        <div className="w-full overflow-hidden rounded-xl border border-zinc-200/80 shadow-md bg-white p-2">
+          <div className="text-xs font-bold text-zinc-800 px-3 py-2 border-b border-zinc-100 bg-zinc-50/50 rounded-t-lg">
+            Mappa Interattiva
+          </div>
+          <iframe
+            title="Mappa Libreria Nunnari & Sfameni"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3135.5397441584994!2d15.54924767675549!3d38.19163297188737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1314349635b7ec3b%3A0xc3f60b457e5e3fd!2sVia%20Tommaso%20Cannizzaro%2C%20112%2C%2098122%20Messina%20ME%2C%20Italy!5e0!3m2!1sen!2sit!4v1719600000000!5m2!1sen!2sit"
+            className="w-full h-80 sm:h-96 rounded-b-lg border-0"
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
-        <iframe
-          title="Street View Libreria Nunnari & Sfameni"
-          src="https://www.google.com/maps/embed?pb=!4v1783007568076!6m8!1m7!1sYUlpgMix_qMv1187eSg-wQ!2m2!1d38.18786033999771!2d15.55431496419072!3f2.5917054568216145!4f-6.210920883994234!5f1.4554514330659938"
-          className="w-full h-80 sm:h-96 rounded-b-lg border-0"
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="strict-origin-when-cross-origin"
-        />
+
+        {/* Streetview Embed Card */}
+        <div className="w-full overflow-hidden rounded-xl border border-zinc-200/80 shadow-md bg-white p-2">
+          <div className="text-xs font-bold text-zinc-800 px-3 py-2 border-b border-zinc-100 bg-zinc-50/50 rounded-t-lg">
+            Vista della Vetrina (Street View)
+          </div>
+          <iframe
+            title="Street View Libreria Nunnari & Sfameni"
+            src="https://www.google.com/maps/embed?pb=!4v1783007568076!6m8!1m7!1sYUlpgMix_qMv1187eSg-wQ!2m2!1d38.18786033999771!2d15.55431496419072!3f2.5917054568216145!4f-6.210920883994234!5f1.4554514330659938"
+            className="w-full h-80 sm:h-96 rounded-b-lg border-0"
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="strict-origin-when-cross-origin"
+          />
+        </div>
       </div>
     </div>
   )
