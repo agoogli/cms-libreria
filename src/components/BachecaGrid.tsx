@@ -216,7 +216,7 @@ export function BachecaGrid() {
               </div>
             </div>
 
-             {/* Card 3: Carta Cultura 2026 (Azure Background, White Title) */}
+            {/* Card 3: Carta Cultura 2026 (Azure Background, White Title) */}
             <div
               className={`group relative flex flex-col justify-between h-52 bg-[#007fff] text-white rounded-xl p-6 shadow-md border border-blue-400/20 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:100ms] ${animatedCard === 2 ? 'animate-bacheca-card' : ''
                 }`}
@@ -302,9 +302,9 @@ export function BachecaGrid() {
               {/* Side-by-side Connection Badges with follow buttons */}
               <div className="flex gap-2.5 my-1.5 z-10">
                 {/* Facebook Badge */}
-                <a 
-                  href="https://www.facebook.com/librerianunnari/" 
-                  target="_blank" 
+                <a
+                  href="https://www.facebook.com/librerianunnari/"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 bg-white/10 backdrop-blur-sm rounded-lg p-2 flex flex-col justify-between items-center text-center border border-white/15 h-[84px] hover:bg-white/20 transition-colors z-10 block cursor-pointer"
                 >
@@ -314,15 +314,15 @@ export function BachecaGrid() {
                     </svg>
                     <span className="text-xs font-bold font-sans tracking-wide text-white">Facebook</span>
                   </div>
-                  <span className="w-full text-xs font-bold uppercase tracking-wider bg-white text-[#007fff] py-1.5 rounded shadow-sm transition-colors font-sans mt-2">
+                  <span className="w-full text-[12px] font-bold uppercase tracking-wider bg-white text-[#007fff] py-1 rounded shadow-sm transition-colors font-sans mt-2">
                     Mi Piace
                   </span>
                 </a>
 
                 {/* Instagram Badge */}
-                <a 
-                  href="https://www.instagram.com/librerianunnarisfameni/" 
-                  target="_blank" 
+                <a
+                  href="https://www.instagram.com/librerianunnarisfameni/"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 bg-white/10 backdrop-blur-sm rounded-lg p-2 flex flex-col justify-between items-center text-center border border-white/15 h-[84px] hover:bg-white/20 transition-colors z-10 block cursor-pointer"
                 >
@@ -332,7 +332,7 @@ export function BachecaGrid() {
                     </svg>
                     <span className="text-xs font-bold font-sans tracking-wide text-white">Instagram</span>
                   </div>
-                  <span className="w-full text-xs font-bold uppercase tracking-wider bg-white text-[#007fff] py-1.5 rounded shadow-sm transition-colors font-sans mt-2">
+                  <span className="w-full text-[12px] font-bold uppercase tracking-wider bg-white text-[#007fff] py-1 rounded shadow-sm transition-colors font-sans mt-2">
                     Segui
                   </span>
                 </a>
