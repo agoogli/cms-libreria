@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import {
   Carousel,
   CarouselContent,
@@ -138,11 +139,11 @@ export function BachecaGrid() {
             >
               <div className="relative z-10 h-full flex flex-col justify-between">
                 <div className="flex justify-between items-start w-full">
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <div className="text-xs uppercase tracking-widest text-white font-sans font-semibold">
                       Scuola
                     </div>
-                    <h3 className="font-sans text-base sm:text-lg font-bold leading-snug text-white mt-1 pr-6">
+                    <h3 className="font-sans text-sm sm:text-base font-bold leading-snug text-white mt-1 pr-6 truncate" title="Libri scolastici nuovi e usati">
                       Libri scolastici nuovi e usati
                     </h3>
                   </div>
@@ -169,7 +170,7 @@ export function BachecaGrid() {
 
           {/* Column 2: Row 1 Card 2 (LybroApp) & Row 2 Card 3 (Carta Cultura) */}
           <CarouselItem className="pl-2 sm:pl-3 basis-[80%] select-none flex flex-col gap-2 md:pl-0 md:basis-auto md:w-auto md:gap-3">
-            {/* Card 2: LybroApp (Cream background matching Kit card, top-right logo, description in body, button in footer) */}
+            {/* Card 2: LybroApp (Cream background matching Kit card, top-right logo, description in body, link in footer) */}
             <div
               className={`group relative flex flex-col justify-between h-52 bg-amber-50/80 text-zinc-800 rounded-xl p-6 shadow-md border border-amber-200/60 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:50ms] ${animatedCard === 1 ? 'animate-bacheca-card' : ''
                 }`}
@@ -178,8 +179,13 @@ export function BachecaGrid() {
 
               {/* Header Title & Top-Right Logo */}
               <div className="flex justify-between items-start w-full">
-                <div className="text-xs uppercase tracking-widest text-orange-500 font-sans font-semibold mt-1">
-                  LybroApp
+                <div className="min-w-0 flex-1">
+                  <div className="text-xs uppercase tracking-widest text-orange-500 font-sans font-semibold mt-1">
+                    LybroApp
+                  </div>
+                  <h3 className="font-sans text-sm sm:text-base font-bold leading-snug text-orange-500 mt-1 truncate" title="Scaricala subito">
+                    Scaricala subito
+                  </h3>
                 </div>
                 <div className="relative w-8 h-8 select-none shrink-0 ml-2">
                   <Image
@@ -199,19 +205,18 @@ export function BachecaGrid() {
                 </p>
               </div>
 
-              {/* Button in the footer */}
+              {/* Link in the footer */}
               <div className="mt-auto">
-                <a
-                  href="#"
-                  style={{ backgroundColor: '#81a440' }}
-                  className="inline-flex items-center justify-center text-[10px] font-bold uppercase tracking-wider text-white px-3 py-1.5 rounded-md shadow-sm hover:opacity-90 transition-opacity font-sans"
+                <Link
+                  href="/lybro-app"
+                  className="text-xs font-bold text-orange-600 hover:text-orange-700 transition-colors font-sans flex items-center gap-1"
                 >
-                  vai a Lybro
-                </a>
+                  Vai a Lybro &gt;
+                </Link>
               </div>
             </div>
 
-            {/* Card 3: Carta Cultura 2026 (Azure Background, White Title) */}
+             {/* Card 3: Carta Cultura 2026 (Azure Background, White Title) */}
             <div
               className={`group relative flex flex-col justify-between h-52 bg-[#007fff] text-white rounded-xl p-6 shadow-md border border-blue-400/20 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:100ms] ${animatedCard === 2 ? 'animate-bacheca-card' : ''
                 }`}
@@ -226,11 +231,11 @@ export function BachecaGrid() {
 
               <div className="relative z-10 h-full flex flex-col justify-between">
                 <div className="flex justify-between items-start w-full">
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <div className="text-xs uppercase tracking-widest text-blue-100 font-sans font-semibold">
                       Bonus
                     </div>
-                    <h3 className="font-sans text-base sm:text-lg font-bold leading-snug text-white mt-1 pr-4">
+                    <h3 className="font-sans text-sm sm:text-base font-bold leading-snug text-white mt-1 pr-4 truncate" title="Carta Cultura 2026">
                       Carta Cultura 2026
                     </h3>
                   </div>
@@ -264,11 +269,11 @@ export function BachecaGrid() {
               <div className="absolute -top-12 -right-12 w-24 h-24 bg-white/10 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500" />
 
               <div className="flex justify-between items-start w-full">
-                <div>
+                <div className="min-w-0 flex-1">
                   <div className="text-xs uppercase tracking-widest text-blue-100 font-sans font-semibold">
                     Community
                   </div>
-                  <h3 className="font-sans text-base sm:text-lg font-bold leading-snug mt-1">
+                  <h3 className="font-sans text-sm sm:text-base font-bold leading-snug mt-1 truncate" title="Seguici sui Social">
                     Seguici sui Social
                   </h3>
                 </div>
@@ -297,9 +302,9 @@ export function BachecaGrid() {
               {/* Side-by-side Connection Badges with follow buttons */}
               <div className="flex gap-2.5 my-1.5 z-10">
                 {/* Facebook Badge */}
-                <a
-                  href="https://www.facebook.com/librerianunnari/"
-                  target="_blank"
+                <a 
+                  href="https://www.facebook.com/librerianunnari/" 
+                  target="_blank" 
                   rel="noopener noreferrer"
                   className="flex-1 bg-white/10 backdrop-blur-sm rounded-lg p-2 flex flex-col justify-between items-center text-center border border-white/15 h-[84px] hover:bg-white/20 transition-colors z-10 block cursor-pointer"
                 >
@@ -309,15 +314,15 @@ export function BachecaGrid() {
                     </svg>
                     <span className="text-xs font-bold font-sans tracking-wide text-white">Facebook</span>
                   </div>
-                  <span className="w-full text-[9px] font-bold uppercase tracking-wider bg-white text-[#007fff] py-1 rounded shadow-sm transition-colors font-sans mt-2">
+                  <span className="w-full text-xs font-bold uppercase tracking-wider bg-white text-[#007fff] py-1.5 rounded shadow-sm transition-colors font-sans mt-2">
                     Mi Piace
                   </span>
                 </a>
 
                 {/* Instagram Badge */}
-                <a
-                  href="https://www.instagram.com/librerianunnarisfameni/"
-                  target="_blank"
+                <a 
+                  href="https://www.instagram.com/librerianunnarisfameni/" 
+                  target="_blank" 
                   rel="noopener noreferrer"
                   className="flex-1 bg-white/10 backdrop-blur-sm rounded-lg p-2 flex flex-col justify-between items-center text-center border border-white/15 h-[84px] hover:bg-white/20 transition-colors z-10 block cursor-pointer"
                 >
@@ -327,7 +332,7 @@ export function BachecaGrid() {
                     </svg>
                     <span className="text-xs font-bold font-sans tracking-wide text-white">Instagram</span>
                   </div>
-                  <span className="w-full text-[9px] font-bold uppercase tracking-wider bg-white text-[#007fff] py-1 rounded shadow-sm transition-colors font-sans mt-2">
+                  <span className="w-full text-xs font-bold uppercase tracking-wider bg-white text-[#007fff] py-1.5 rounded shadow-sm transition-colors font-sans mt-2">
                     Segui
                   </span>
                 </a>
@@ -341,11 +346,11 @@ export function BachecaGrid() {
             >
               <div className="absolute -top-12 -right-12 w-24 h-24 bg-orange-500/5 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500" />
 
-              <div>
+              <div className="min-w-0">
                 <div className="text-xs uppercase tracking-widest text-orange-500 font-sans font-semibold">
                   Offerta Speciale
                 </div>
-                <h3 className="font-sans text-base sm:text-lg font-bold leading-snug text-zinc-900 mt-2">
+                <h3 className="font-sans text-sm sm:text-base font-bold leading-snug text-zinc-900 mt-2 truncate" title="Kit Lettura Estiva">
                   Kit Lettura Estiva
                 </h3>
                 <p className="text-xs text-zinc-600 mt-1.5 leading-normal opacity-90 font-sans">
