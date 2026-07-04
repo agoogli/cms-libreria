@@ -234,25 +234,14 @@ export function BachecaGrid() {
                       Carta Cultura 2026
                     </h3>
                   </div>
-                  <div className="flex gap-1.5 items-center ml-2 shrink-0">
-                    <div className="relative w-8 h-8 select-none">
-                      <Image
-                        src="/assets/carta-docente.png"
-                        alt="Icona Carta Docente"
-                        fill
-                        sizes="32px"
-                        className="object-contain"
-                      />
-                    </div>
-                    <div className="relative w-8 h-8 select-none">
-                      <Image
-                        src="/assets/carte-giovani.png"
-                        alt="Icona Carte Giovani"
-                        fill
-                        sizes="32px"
-                        className="object-contain"
-                      />
-                    </div>
+                  <div className="relative w-8 h-8 select-none shrink-0 ml-2">
+                    <Image
+                      src="/assets/smartphone.png"
+                      alt="Icona Scuola"
+                      fill
+                      sizes="32px"
+                      className="object-contain"
+                    />
                   </div>
                 </div>
 
