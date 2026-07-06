@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { getPayload } from 'payload'
 import { headers as getHeaders } from 'next/headers'
 import config from '@/payload.config'
@@ -116,7 +117,10 @@ export default async function HomePage() {
       {/* Indicazioni sulle Consegne */}
       <section className="w-full bg-transparent py-4 text-zinc-800">
         <div className="w-full lg:w-[60%] mx-auto px-4 lg:px-4">
-          <div className="bg-white rounded-xl border border-zinc-200/80 shadow-sm overflow-hidden flex flex-col">
+          <Link
+            href="/spedizioni-pagamenti"
+            className="group block bg-white rounded-xl border border-zinc-200/80 shadow-sm overflow-hidden flex flex-col hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
+          >
             <div className="p-5 md:p-6 flex flex-col md:flex-row md:items-stretch gap-0 divide-y md:divide-y-0 md:divide-x divide-zinc-200">
               {/* Box 1: Consegne Messina */}
               <div className="flex-1 flex gap-3.5 items-start pb-6 md:pb-0 md:pr-6">
@@ -170,7 +174,7 @@ export default async function HomePage() {
                 Per i volumi non disponibili in sede sarete avvisati sui tempi di arrivo.
               </p>
             </div>
-          </div>
+          </Link>
         </div>
       </section>
 

@@ -281,3 +281,17 @@ svg {
     @apply font-sans;
   }
 }
+
+/* Explicit orange link color overrides to bypass global currentColor link resets */
+a.text-orange-500 {
+  color: #f97316 !important;
+}
+a.text-orange-500:hover {
+  color: #ea580c !important;
+}
+a.text-orange-600 {
+  color: #ea580c !important;
+}
+a.text-orange-600:hover {
+  color: #c2410c !important;
+}

@@ -6,6 +6,7 @@ import config from '@/payload.config'
 import { TopBar } from '@/components/TopBar'
 import { Header } from '@/components/Header'
 import { GradientDivider } from '@/components/GradientDivider'
+import Link from 'next/link'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -60,12 +61,15 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 
           {/* 5. Footer */}
           <footer className="w-full bg-[#363537] border-t border-zinc-800 py-8 text-zinc-400 text-xs">
-            <div className="w-full lg:w-[60%] mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-              <p>© {new Date().getFullYear()} Libreria Nunnari e Sfameni snc. Tutti i diritti riservati.</p>
-              <p>Partita IVA: 03027400831 - Via T.Cannizzaro 112 98122 Messina (ME)</p>
-              <div className="flex gap-6">
-                <a href="#" className="hover:text-zinc-200 transition-colors">Privacy Policy</a>
-                <a href="#" className="hover:text-zinc-200 transition-colors">Termini e Condizioni</a>
+            <div className="w-full lg:w-[60%] mx-auto px-4 flex flex-col md:flex-row justify-between items-center md:items-start gap-6">
+              <div className="flex flex-col gap-2 text-center md:text-left">
+                <p>© {new Date().getFullYear()} Libreria Nunnari e Sfameni snc. Tutti i diritti riservati.</p>
+                <p>Partita IVA: 03027400831 - Via T.Cannizzaro 112 98122 Messina (ME)</p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 text-center sm:text-left font-medium">
+                <Link href="/spedizioni-pagamenti" className="hover:text-zinc-200 transition-colors">Spedizioni e Pagamenti</Link>
+                <Link href="/privacy-policy" className="hover:text-zinc-200 transition-colors">Privacy Policy</Link>
+                <Link href="/termini-condizioni" className="hover:text-zinc-200 transition-colors">Termini e Condizioni</Link>
               </div>
             </div>
           </footer>
