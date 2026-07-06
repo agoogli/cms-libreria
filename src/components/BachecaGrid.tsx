@@ -143,7 +143,7 @@ export function BachecaGrid() {
                     <div className="text-xs uppercase tracking-widest text-white font-sans font-semibold">
                       Scuola
                     </div>
-                    <h3 className="font-sans text-sm sm:text-base font-bold leading-snug text-white mt-1 pr-6 truncate" title="Libri scolastici nuovi e usati">
+                    <h3 className="font-sans text-sm sm:text-base font-bold leading-snug text-white mt-1 pr-6" title="Libri scolastici nuovi e usati">
                       Libri scolastici nuovi e usati
                     </h3>
                   </div>
@@ -183,7 +183,7 @@ export function BachecaGrid() {
                   <div className="text-xs uppercase tracking-widest text-orange-500 font-sans font-semibold mt-1">
                     LybroApp
                   </div>
-                  <h3 className="font-sans text-sm sm:text-base font-bold leading-snug text-orange-500 mt-1 truncate" title="Scaricala subito">
+                  <h3 className="font-sans text-sm sm:text-base font-bold leading-snug text-orange-500 mt-1" title="Scaricala subito">
                     Scaricala subito
                   </h3>
                 </div>
@@ -209,7 +209,7 @@ export function BachecaGrid() {
               <div className="mt-auto">
                 <Link
                   href="/lybro-app"
-                  className="text-xs font-bold text-orange-600 hover:text-orange-700 transition-colors font-sans flex items-center gap-1"
+                  className="text-xs font-bold text-orange-500 hover:text-orange-600 transition-colors font-sans flex items-center gap-1 cursor-pointer"
                 >
                   Vai a Lybro &gt;
                 </Link>
@@ -235,7 +235,7 @@ export function BachecaGrid() {
                     <div className="text-xs uppercase tracking-widest text-blue-100 font-sans font-semibold">
                       Bonus
                     </div>
-                    <h3 className="font-sans text-sm sm:text-base font-bold leading-snug text-white mt-1 pr-4 truncate" title="Carta Cultura 2026">
+                    <h3 className="font-sans text-sm sm:text-base font-bold leading-snug text-white mt-1 pr-4" title="Carta Cultura 2026">
                       Carta Cultura 2026
                     </h3>
                   </div>
@@ -273,7 +273,7 @@ export function BachecaGrid() {
                   <div className="text-xs uppercase tracking-widest text-blue-100 font-sans font-semibold">
                     Community
                   </div>
-                  <h3 className="font-sans text-sm sm:text-base font-bold leading-snug mt-1 truncate" title="Seguici sui Social">
+                  <h3 className="font-sans text-sm sm:text-base font-bold leading-snug mt-1" title="Seguici sui Social">
                     Seguici sui Social
                   </h3>
                 </div>
@@ -299,14 +299,14 @@ export function BachecaGrid() {
                 </div>
               </div>
 
-              {/* Side-by-side Connection Badges with follow buttons */}
-              <div className="flex gap-2.5 my-1.5 z-10">
+              {/* Side-by-side Connection Badges centered horizontally */}
+              <div className="flex gap-2.5 my-auto justify-center items-center w-full z-10">
                 {/* Facebook Badge */}
                 <a
                   href="https://www.facebook.com/librerianunnari/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 bg-white/10 backdrop-blur-sm rounded-lg p-2 flex flex-col justify-between items-center text-center border border-white/15 h-[84px] hover:bg-white/20 transition-colors z-10 block cursor-pointer"
+                  className="flex-1 max-w-[130px] bg-white/10 backdrop-blur-sm rounded-lg p-2 flex flex-col justify-between items-center text-center border border-white/15 h-[84px] hover:bg-white/20 transition-colors z-10 block cursor-pointer"
                 >
                   <div className="flex items-center gap-1">
                     <svg className="w-4 h-4 text-white fill-white" viewBox="0 0 24 24" style={{ fill: 'white' }}>
@@ -324,7 +324,7 @@ export function BachecaGrid() {
                   href="https://www.instagram.com/librerianunnarisfameni/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 bg-white/10 backdrop-blur-sm rounded-lg p-2 flex flex-col justify-between items-center text-center border border-white/15 h-[84px] hover:bg-white/20 transition-colors z-10 block cursor-pointer"
+                  className="flex-1 max-w-[130px] bg-white/10 backdrop-blur-sm rounded-lg p-2 flex flex-col justify-between items-center text-center border border-white/15 h-[84px] hover:bg-white/20 transition-colors z-10 block cursor-pointer"
                 >
                   <div className="flex items-center gap-1">
                     <svg className="w-4 h-4 text-white fill-white" viewBox="0 0 24 24" style={{ fill: 'white' }}>
@@ -350,7 +350,7 @@ export function BachecaGrid() {
                 <div className="text-xs uppercase tracking-widest text-orange-500 font-sans font-semibold">
                   Offerta Speciale
                 </div>
-                <h3 className="font-sans text-sm sm:text-base font-bold leading-snug text-zinc-900 mt-2 truncate" title="Kit Lettura Estiva">
+                <h3 className="font-sans text-sm sm:text-base font-bold leading-snug text-zinc-900 mt-2" title="Kit Lettura Estiva">
                   Kit Lettura Estiva
                 </h3>
                 <p className="text-xs text-zinc-600 mt-1.5 leading-normal opacity-90 font-sans">
