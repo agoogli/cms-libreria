@@ -117,10 +117,7 @@ export default async function HomePage() {
       {/* Indicazioni sulle Consegne */}
       <section className="w-full bg-transparent py-4 text-zinc-800">
         <div className="w-full lg:w-[60%] mx-auto px-4 lg:px-4">
-          <Link
-            href="/spedizioni-pagamenti"
-            className="group block bg-white rounded-xl border border-zinc-200/80 shadow-sm overflow-hidden flex flex-col hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
-          >
+          <div className="bg-white rounded-xl border border-zinc-200/80 shadow-sm overflow-hidden flex flex-col">
             <div className="p-5 md:p-6 flex flex-col md:flex-row md:items-stretch gap-0 divide-y md:divide-y-0 md:divide-x divide-zinc-200">
               {/* Box 1: Consegne Messina */}
               <div className="flex-1 flex gap-3.5 items-start pb-6 md:pb-0 md:pr-6">
@@ -163,18 +160,26 @@ export default async function HomePage() {
               </div>
             </div>
 
-            {/* Note su Disponibilità inside the card footer */}
-            <div className="bg-orange-50/40 border-t border-orange-100/80 p-4 flex items-center gap-2.5">
-              <div className="w-5 h-5 rounded-full bg-orange-100 flex items-center justify-center shrink-0">
-                <svg className="w-3.5 h-3.5 text-orange-600 fill-currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
-                </svg>
+            {/* Note su Disponibilità (Aligned matching top columns layout, same padding alignment, with link) */}
+            <div className="bg-orange-50/40 border-t border-orange-100/80 px-5 md:px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <div className="flex gap-3.5 items-center">
+                <div className="w-10 h-10 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center shrink-0">
+                  <svg className="w-5 h-5 fill-currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+                  </svg>
+                </div>
+                <p className="text-xs text-orange-900 font-sans font-medium">
+                  Per i volumi non disponibili in sede sarete avvisati sui tempi di arrivo.
+                </p>
               </div>
-              <p className="text-xs text-orange-900 font-sans font-medium">
-                Per i volumi non disponibili in sede sarete avvisati sui tempi di arrivo.
-              </p>
+              <Link 
+                href="/spedizioni-pagamenti"
+                className="text-xs font-bold text-orange-600 hover:text-orange-700 transition-colors uppercase tracking-wider flex items-center gap-1 whitespace-nowrap shrink-0 sm:ml-auto"
+              >
+                Scopri di più &gt;
+              </Link>
             </div>
-          </Link>
+          </div>
         </div>
       </section>
 

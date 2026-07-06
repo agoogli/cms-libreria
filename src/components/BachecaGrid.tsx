@@ -149,8 +149,8 @@ export function BachecaGrid() {
                   </div>
                   <div className="relative w-8 h-8 select-none shrink-0 ml-2">
                     <Image
-                      src="/assets/scuola.png"
-                      alt="Icona Scuola"
+                      src="/assets/libro.png"
+                      alt="Icona Libro"
                       fill
                       sizes="32px"
                       className="object-contain"
@@ -277,25 +277,14 @@ export function BachecaGrid() {
                     Seguici sui Social
                   </h3>
                 </div>
-                <div className="flex gap-1.5 items-center ml-2 shrink-0">
-                  <div className="relative w-8 h-8 select-none">
-                    <Image
-                      src="/assets/facebook.png"
-                      alt="Icona Facebook"
-                      fill
-                      sizes="32px"
-                      className="object-contain"
-                    />
-                  </div>
-                  <div className="relative w-8 h-8 select-none">
-                    <Image
-                      src="/assets/instagram.png"
-                      alt="Icona Instagram"
-                      fill
-                      sizes="32px"
-                      className="object-contain"
-                    />
-                  </div>
+                <div className="relative w-8 h-8 select-none shrink-0 ml-2">
+                  <Image
+                    src="/assets/social.png"
+                    alt="Icona Social"
+                    fill
+                    sizes="32px"
+                    className="object-contain"
+                  />
                 </div>
               </div>
 
