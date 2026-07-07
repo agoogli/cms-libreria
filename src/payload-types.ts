@@ -71,7 +71,7 @@ export interface Config {
     media: Media;
     settori: Settore;
     libri: Libro;
-    'utenti-registrati': UtentiRegistratus;
+    'utenti-registrati': UtenteRegistrato;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -200,7 +200,7 @@ export interface Libro {
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "utenti-registrati".
  */
-export interface UtentiRegistratus {
+export interface UtenteRegistrato {
   id: number;
   nome: string;
   cognome: string;
@@ -254,7 +254,7 @@ export interface PayloadLockedDocument {
       } | null)
     | ({
         relationTo: 'utenti-registrati';
-        value: number | UtentiRegistratus;
+        value: number | UtenteRegistrato;
       } | null);
   globalSlug?: string | null;
   user: {

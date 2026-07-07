@@ -2,6 +2,9 @@ import type { CollectionConfig } from 'payload'
 
 export const UtentiRegistrati: CollectionConfig = {
   slug: 'utenti-registrati',
+  typescript: {
+    interface: 'UtenteRegistrato',
+  },
   labels: {
     singular: 'Utente Registrato',
     plural: 'Utenti Registrati',
