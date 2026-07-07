@@ -71,6 +71,7 @@ export interface Config {
     media: Media;
     settori: Settore;
     libri: Libro;
+    'utenti-registrati': UtentiRegistratus;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -82,6 +83,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     settori: SettoriSelect<false> | SettoriSelect<true>;
     libri: LibriSelect<false> | LibriSelect<true>;
+    'utenti-registrati': UtentiRegistratiSelect<false> | UtentiRegistratiSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -196,6 +198,22 @@ export interface Libro {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "utenti-registrati".
+ */
+export interface UtentiRegistratus {
+  id: number;
+  nome: string;
+  cognome: string;
+  cellulare: string;
+  email?: string | null;
+  scuola?: string | null;
+  classe?: number | null;
+  sezione?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -233,6 +251,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'libri';
         value: number | Libro;
+      } | null)
+    | ({
+        relationTo: 'utenti-registrati';
+        value: number | UtentiRegistratus;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -340,6 +362,21 @@ export interface LibriSelect<T extends boolean = true> {
   annoPubblicazione?: T;
   imgCopertina?: T;
   descrizione?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "utenti-registrati_select".
+ */
+export interface UtentiRegistratiSelect<T extends boolean = true> {
+  nome?: T;
+  cognome?: T;
+  cellulare?: T;
+  email?: T;
+  scuola?: T;
+  classe?: T;
+  sezione?: T;
   updatedAt?: T;
   createdAt?: T;
 }

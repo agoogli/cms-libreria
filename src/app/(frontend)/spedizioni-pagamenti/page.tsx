@@ -1,6 +1,7 @@
 import React from 'react'
 import { PageWrapper } from '@/components/PageWrapper'
 import { DeliveryCard } from '@/components/DeliveryCard'
+import Link from 'next/link'
 
 export const metadata = {
   title: 'Spedizioni e Pagamenti - Libreria Nunnari & Sfameni',
@@ -55,6 +56,14 @@ export default function SpedizioniPagamentiPage() {
           </div>
         </div>
       </section>
+
+      {/* Contact info link */}
+      <p className="text-xs text-zinc-550 font-sans mt-2">
+        Per info e prenotazioni, ecco i{' '}
+        <Link href="/contattaci" className="text-orange-500 hover:text-orange-600 font-bold transition-colors">
+          nostri contatti &gt;
+        </Link>
+      </p>
     </PageWrapper>
   )
 }

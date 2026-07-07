@@ -9,6 +9,7 @@ import { Utenti } from './collections/Utenti'
 import { Media } from './collections/Media'
 import { Settori } from './collections/Settori'
 import { Libri } from './collections/Libri'
+import { UtentiRegistrati } from './collections/UtentiRegistrati'
 import { en } from '@payloadcms/translations/languages/en'
 import { it } from '@payloadcms/translations/languages/it'
 
@@ -21,12 +22,17 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    components: {
+      beforeNavLinks: [
+        '@/components/BeforeNavCustomLink',
+      ],
+    },
   },
   i18n: {
     supportedLanguages: { en, it },
     fallbackLanguage: 'it',
   },
-  collections: [Utenti, Media, Settori, Libri],
+  collections: [Utenti, Media, Settori, Libri, UtentiRegistrati],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

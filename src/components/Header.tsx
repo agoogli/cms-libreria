@@ -15,6 +15,7 @@ export function Header({ settori = [] }: { settori?: Settore[] }) {
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false)
 
   const links = [
+    { name: 'Accedi', href: '/accedi' },
     { name: 'La libreria', href: '/la-libreria' },
     { name: 'Dove siamo', href: '/dove-siamo' },
     { name: 'Settori', href: '/settori', isDropdown: true },
