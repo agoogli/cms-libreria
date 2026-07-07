@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { PageWrapper } from '@/components/PageWrapper'
 
 const photos = [
   '/assets/foto-libreria/1.jpg',
@@ -22,14 +23,7 @@ export default function LaLibreriaPage() {
   }, [])
 
   return (
-    <div className="w-full lg:w-[60%] mx-auto px-4 pt-3 pb-2 flex flex-col gap-3">
-      {/* Title with exact pt-3 page padding */}
-      <div className="text-left">
-        <span className="text-xs uppercase tracking-widest text-orange-600 font-sans font-bold">
-          La Nostra Storia
-        </span>
-      </div>
-
+    <PageWrapper title="La Nostra Storia">
       {/* Left-aligned Slideshow with transparent card background */}
       <div className="relative w-full max-w-xs sm:max-w-sm aspect-[3/4] overflow-hidden bg-transparent flex items-center justify-center self-start">
         {photos.map((src, index) => (
@@ -70,6 +64,6 @@ export default function LaLibreriaPage() {
           La libreria è da generazioni punto di riferimento per tantissimi studenti sia universitari che scolastici.
         </p>
       </div>
-    </div>
+    </PageWrapper>
   )
 }

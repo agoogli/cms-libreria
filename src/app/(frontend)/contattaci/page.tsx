@@ -1,5 +1,6 @@
 import React from 'react'
 import { Phone, MessageCircle, Mail } from 'lucide-react'
+import { PageWrapper } from '@/components/PageWrapper'
 
 export const metadata = {
   title: 'Contattaci - Libreria Nunnari & Sfameni',
@@ -8,21 +9,14 @@ export const metadata = {
 
 export default function ContattaciPage() {
   return (
-    <div className="w-full lg:w-[60%] mx-auto px-4 pt-3 flex flex-col">
-      {/* Title with exact pt-3 page padding */}
-      <div className="text-left">
-        <span className="text-xs uppercase tracking-widest text-orange-600 font-sans font-bold">
-          Contattaci
-        </span>
-      </div>
-
+    <PageWrapper title="Contattaci">
       {/* Catchy Subtitle matching home description style (text-xs) */}
       <p className="text-xs text-zinc-500 leading-relaxed font-sans opacity-95">
         Siamo sempre a tua disposizione per informazioni sulla disponibilità dei libri, le prenotazioni scolastiche e i consigli sugli acquisti. Scegli il metodo che preferisci.
       </p>
 
       {/* Grid of Contacts */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-3">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {/* Telephone */}
         <a
           href="tel:+39090710469"
@@ -64,6 +58,6 @@ export default function ContattaciPage() {
           <span className="text-[10px] text-zinc-400 mt-2 font-sans group-hover:text-orange-500 transition-colors">Scrivici una mail</span>
         </a>
       </div>
-    </div>
+    </PageWrapper>
   )
 }
