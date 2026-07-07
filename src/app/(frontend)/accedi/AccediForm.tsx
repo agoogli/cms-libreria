@@ -14,6 +14,7 @@ export function AccediForm() {
     sezione: '',
   })
   const [privacyAccepted, setPrivacyAccepted] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false)
   const [loading, setLoading] = useState(false)
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
@@ -92,7 +93,7 @@ export function AccediForm() {
 
   return (
     <PageWrapper title="Accedi / Registrazione">
-      <div className="bg-white rounded-xl border border-zinc-200/80 shadow-sm p-6 max-w-xl mr-auto w-full">
+      <div className="bg-white rounded-xl border border-zinc-200/80 shadow-sm p-6 max-w-xl mr-auto w-full relative">
         {/* Info header instructions */}
         <div className="text-xs text-zinc-600 font-sans leading-relaxed mb-5 border-b border-zinc-100 pb-4">
           <p>
@@ -107,7 +108,7 @@ export function AccediForm() {
             </a>{' '}
             per visualizzare lo stato del tuo ordine.
           </p>
-          <p className="font-medium text-zinc-550">
+          <p className="mt-1 font-medium text-zinc-550">
             Oppure <b>registrati</b> per creare un account accessibile dalla nostra app
           </p>
         </div>
@@ -179,7 +180,7 @@ export function AccediForm() {
             {/* Email */}
             <div className="flex flex-col gap-1">
               <label htmlFor="email" className="font-bold text-zinc-700 font-sans">
-                E-mail
+                E-mail <span className="text-zinc-400 font-normal">(opzionale)</span>
               </label>
               <input
                 type="email"
@@ -196,7 +197,7 @@ export function AccediForm() {
           {/* Scuola */}
           <div className="flex flex-col gap-1">
             <label htmlFor="scuola" className="font-bold text-zinc-700 font-sans">
-              Scuola
+              Scuola <span className="text-zinc-400 font-normal">(opzionale)</span>
             </label>
             <input
               type="text"
@@ -257,11 +258,21 @@ export function AccediForm() {
               name="privacy"
               checked={privacyAccepted}
               onChange={(e) => setPrivacyAccepted(e.target.checked)}
-              className="mt-0.5 w-3.5 h-3.5 text-orange-600 border-zinc-300 rounded focus:ring-orange-500 focus:ring-2 accent-orange-600 cursor-pointer"
+              className="mt-0.5 w-3.5 h-3.5 text-orange-600 border-zinc-300 rounded focus:ring-orange-500/20 focus:border-orange-500 font-sans text-zinc-800 bg-white cursor-pointer"
               required
             />
             <label htmlFor="privacy" className="font-medium text-zinc-600 font-sans select-none cursor-pointer leading-normal">
-              Ho letto e accetto l'informativa sulla privacy
+              Ho letto e accetto l'
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault()
+                  setModalOpen(true)
+                }}
+                className="text-orange-500 hover:text-orange-600 font-bold underline ml-1 cursor-pointer bg-transparent border-0 p-0 inline"
+              >
+                informativa sulla privacy
+              </button>
             </label>
           </div>
 
@@ -274,6 +285,87 @@ export function AccediForm() {
           </button>
         </form>
       </div>
+
+      {/* GDPR Compliant Privacy Policy Modal */}
+      {modalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+          <div className="bg-white w-full max-w-lg rounded-xl border border-zinc-200 shadow-xl flex flex-col max-h-[85vh]">
+            {/* Modal Header */}
+            <div className="px-5 py-4 border-b border-zinc-150 flex justify-between items-center bg-zinc-50/80 rounded-t-xl">
+              <h3 className="font-bold text-xs uppercase tracking-wider text-orange-600 font-sans">
+                Informativa sulla Privacy (GDPR)
+              </h3>
+              <button
+                type="button"
+                onClick={() => setModalOpen(false)}
+                className="text-zinc-400 hover:text-zinc-600 text-lg font-bold font-sans cursor-pointer bg-transparent border-0 p-0"
+              >
+                &times;
+              </button>
+            </div>
+            {/* Modal Content */}
+            <div className="p-5 overflow-y-auto text-xs text-zinc-600 font-sans leading-relaxed flex flex-col gap-4">
+              <p className="font-bold text-zinc-800">
+                Informativa ai sensi del Regolamento UE 2016/679 ("GDPR")
+              </p>
+              <p>
+                La presente informativa descrive le modalità di trattamento dei dati personali forniti dagli utenti in fase di registrazione attraverso il sito web della <strong>Libreria Nunnari e Sfameni snc</strong>.
+              </p>
+              <div>
+                <h4 className="font-bold text-zinc-800 mb-1">1. Titolare del Trattamento</h4>
+                <p>
+                  Il Titolare del trattamento è: <strong>Libreria Nunnari e Sfameni snc</strong>, con sede legale in Via Tommaso Cannizzaro 112, 98122 Messina (ME), P.IVA 03027400831. Email di contatto: <a href="mailto:librerianunnari@gmail.com" className="text-orange-500 hover:underline">librerianunnari@gmail.com</a>.
+                </p>
+              </div>
+              <div>
+                <h4 className="font-bold text-zinc-800 mb-1">2. Tipi di Dati Raccolti</h4>
+                <p>
+                  I dati raccolti includono obbligatoriamente Nome, Cognome e numero di Cellulare. Opzionalmente possono essere forniti Indirizzo E-mail, Istituto Scolastico, Classe e Sezione dello studente.
+                </p>
+              </div>
+              <div>
+                <h4 className="font-bold text-zinc-800 mb-1">3. Finalità del Trattamento</h4>
+                <p>
+                  I dati vengono trattati esclusivamente per:
+                </p>
+                <ul className="list-disc pl-4 mt-1 flex flex-col gap-1">
+                  <li>Creare l'account personale dell'utente per l'accesso ai nostri servizi.</li>
+                  <li>Inviare aggiornamenti e comunicazioni relative allo stato di ordini, prenotazioni e arrivi di libri scolastici tramite WhatsApp, SMS o contatti telefonici.</li>
+                  <li>Adempiere ad obblighi amministrativi, contabili e di legge.</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-zinc-800 mb-1">4. Base Giuridica del Trattamento</h4>
+                <p>
+                  Il trattamento si basa sull'esecuzione di misure precontrattuali o contrattuali (la prenotazione dei volumi scolastici e universitari) e sul consenso esplicito dell'interessato prestato tramite la spunta del checkbox.
+                </p>
+              </div>
+              <div>
+                <h4 className="font-bold text-zinc-800 mb-1">5. Periodo di Conservazione dei Dati</h4>
+                <p>
+                  I dati personali saranno conservati per il tempo strettamente necessario a completare la gestione degli ordini e delle prenotazioni dell'anno scolastico in corso e, successivamente, per i termini previsti dalla legge (fino a 10 anni per obblighi fiscali).
+                </p>
+              </div>
+              <div>
+                <h4 className="font-bold text-zinc-800 mb-1">6. Diritti dell'Interessato</h4>
+                <p>
+                  In quanto interessato, hai il diritto in qualsiasi momento di richiedere l'accesso ai tuoi dati, la rettifica, la cancellazione, la limitazione del trattamento o di opporti allo stesso inviando una comunicazione all'indirizzo email <a href="mailto:librerianunnari@gmail.com" className="text-orange-500 hover:underline">librerianunnari@gmail.com</a>.
+                </p>
+              </div>
+            </div>
+            {/* Modal Footer */}
+            <div className="px-5 py-3 border-t border-zinc-150 bg-zinc-50 flex justify-end rounded-b-xl">
+              <button
+                type="button"
+                onClick={() => setModalOpen(false)}
+                className="px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white font-bold uppercase tracking-wider rounded-lg transition-colors text-[10px] cursor-pointer"
+              >
+                Ho Capito
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </PageWrapper>
   )
 }
