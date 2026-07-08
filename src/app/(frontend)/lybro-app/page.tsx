@@ -19,13 +19,18 @@ export default function LybroAppPage() {
           </p>
 
           {/* Reusable card with checkmark bullet points aligned center */}
-          <div className="bg-white p-5 rounded-xl border border-zinc-200/80 shadow-sm">
+          <div className="bg-white p-5 rounded-xl border border-zinc-200/80 shadow-sm flex flex-col gap-3">
+            {/* Card Header Title */}
+            <h3 className="text-zinc-800 font-bold text-xs uppercase tracking-wider text-orange-500/95 border-b border-zinc-150 pb-2">
+              Perché scaricare LybroApp?
+            </h3>
+            
             <ul className="flex flex-col gap-4">
               <li className="flex gap-3 items-center">
                 <div className="w-5 h-5 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center shrink-0 text-xs font-bold font-sans">
                   ✓
                 </div>
-                <p className="text-xs sm:text-sm font-semibold text-zinc-800 leading-none">
+                <p className="text-xs sm:text-sm font-semibold text-zinc-800 leading-normal">
                   Segui lo stato dei tuoi ordini
                 </p>
               </li>
@@ -33,7 +38,7 @@ export default function LybroAppPage() {
                 <div className="w-5 h-5 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center shrink-0 text-xs font-bold font-sans">
                   ✓
                 </div>
-                <p className="text-xs sm:text-sm font-semibold text-zinc-800 leading-none">
+                <p className="text-xs sm:text-sm font-semibold text-zinc-800 leading-normal">
                   Verifica la disponibilità di testi usati dalla tua lista libri scolastica
                 </p>
               </li>
@@ -48,19 +53,17 @@ export default function LybroAppPage() {
                 href="https://play.google.com/store/apps/details?id=it.lybro.appandroid&pcampaignid=web_share"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-orange-600 hover:bg-orange-700 text-white rounded-lg px-3.5 py-2 flex items-center gap-3 transition-all duration-300 border border-orange-500/35 shadow-sm w-44 hover:-translate-y-0.5 justify-center sm:justify-start"
+                className="bg-orange-600 hover:bg-orange-700 text-white rounded-lg px-4 py-2.5 md:px-3 md:py-1.5 flex items-center gap-2.5 transition-all duration-300 border border-orange-500/35 shadow-sm hover:-translate-y-0.5 justify-center inline-flex w-auto shrink-0"
               >
-                {/* Play Store SVG Asset */}
-                <Image
+                {/* Play Store SVG Asset - using standard img tag to prevent stretching */}
+                <img
                   src="/assets/play-store.svg"
                   alt="Google Play Logo"
-                  width={26}
-                  height={26}
-                  className="shrink-0"
+                  className="w-5.5 h-5.5 md:w-5 md:h-5 shrink-0 object-contain"
                 />
-                <div className="text-left font-sans">
-                  <p className="text-[8px] uppercase tracking-wider text-orange-200 leading-none">Disponibile su</p>
-                  <p className="text-xs font-bold leading-tight mt-0.5">Google Play</p>
+                <div className="text-left font-sans leading-none flex flex-col gap-0.5">
+                  <p className="text-[7.5px] md:text-[7px] uppercase tracking-wider text-orange-200">Disponibile su</p>
+                  <p className="text-xs md:text-[11px] font-bold">Google Play</p>
                 </div>
               </a>
 
@@ -69,19 +72,17 @@ export default function LybroAppPage() {
                 href="https://apps.apple.com/it/app/lybro-app/id880938755"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-orange-600 hover:bg-orange-700 text-white rounded-lg px-3.5 py-2 flex items-center gap-3 transition-all duration-300 border border-orange-500/35 shadow-sm w-44 hover:-translate-y-0.5 justify-center sm:justify-start"
+                className="bg-orange-600 hover:bg-orange-700 text-white rounded-lg px-4 py-2.5 md:px-3 md:py-1.5 flex items-center gap-2.5 transition-all duration-300 border border-orange-500/35 shadow-sm hover:-translate-y-0.5 justify-center inline-flex w-auto shrink-0"
               >
-                {/* App Store SVG Asset */}
-                <Image
+                {/* App Store SVG Asset - using standard img tag to prevent stretching */}
+                <img
                   src="/assets/app-store.svg"
                   alt="App Store Logo"
-                  width={26}
-                  height={26}
-                  className="shrink-0"
+                  className="w-5.5 h-5.5 md:w-5 md:h-5 shrink-0 object-contain"
                 />
-                <div className="text-left font-sans">
-                  <p className="text-[8px] uppercase tracking-wider text-orange-200 leading-none">Scarica su</p>
-                  <p className="text-xs font-bold leading-tight mt-0.5">App Store</p>
+                <div className="text-left font-sans leading-none flex flex-col gap-0.5">
+                  <p className="text-[7.5px] md:text-[7px] uppercase tracking-wider text-orange-200">Scarica su</p>
+                  <p className="text-xs md:text-[11px] font-bold">App Store</p>
                 </div>
               </a>
             </div>
