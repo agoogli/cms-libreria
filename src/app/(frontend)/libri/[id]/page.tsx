@@ -87,9 +87,9 @@ export default async function BookDetailPage({ params }: PageProps) {
 
   const formattedDiscountPrice = book.prezzoScontato !== undefined && book.prezzoScontato !== null
     ? new Intl.NumberFormat('it-IT', {
-        style: 'currency',
-        currency: 'EUR',
-      }).format(book.prezzoScontato)
+      style: 'currency',
+      currency: 'EUR',
+    }).format(book.prezzoScontato)
     : null
 
   // Sector name formatting
@@ -203,7 +203,7 @@ export default async function BookDetailPage({ params }: PageProps) {
               href="tel:+39090710469"
               className="inline-flex items-center justify-center text-[10px] font-bold uppercase tracking-wider bg-orange-600 text-white px-3.5 py-2 rounded-lg shadow-sm hover:bg-orange-700 transition-colors font-sans"
             >
-              Chiama per ordinare
+              Chiama per info
             </a>
             <a
               href="https://wa.me/393276687839"

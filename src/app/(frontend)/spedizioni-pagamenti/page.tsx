@@ -17,7 +17,7 @@ export default function SpedizioniPagamentiPage() {
       {/* Section 2: Pagamenti */}
       <section className="bg-white p-5 rounded-xl border border-zinc-200/80 shadow-sm flex flex-col gap-4 text-xs text-zinc-600 leading-relaxed font-sans opacity-95">
         <h3 className="text-zinc-800 font-bold text-xs uppercase tracking-wider text-orange-500/95 border-b border-zinc-150 pb-2">
-          Metodi di Pagamento per Testi Spediti
+          Metodi di Pagamento
         </h3>
 
         {/* Solution 1: Nexi */}

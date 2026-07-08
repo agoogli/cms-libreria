@@ -11,7 +11,7 @@ export default function DoveSiamoPage() {
     <PageWrapper title="Dove Siamo">
       {/* Description matching home page card description size & color (text-xs) */}
       <div className="text-xs text-zinc-655 leading-relaxed font-sans opacity-95 [&_p]:my-0 flex flex-col gap-1">
-        <p className="text-zinc-600">Ci troviamo a Messina in via Tommaso Cannizzaro 112, a due passi dal tribunale e dall'università centrale, facilmente raggiungibili a piedi, in auto o con i mezzi pubblici.</p>
+        <p className="text-zinc-600">Ci troviamo a Messina in <b>via Tommaso Cannizzaro 112</b>, a due passi dal tribunale e dall'università centrale, facilmente raggiungibili a piedi, in auto o con i mezzi pubblici.</p>
       </div>
 
       {/* Map Embed Card */}

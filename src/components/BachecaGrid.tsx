@@ -223,7 +223,7 @@ export function BachecaGrid() {
             >
               <Image
                 src="/assets/carte-cultura.png"
-                alt="Carta Cultura 2026"
+                alt="Carte Cultura 2026"
                 fill
                 sizes="(max-width: 768px) 50vw, 30vw"
                 className="object-contain opacity-20 transition-opacity duration-500 z-0"
@@ -236,7 +236,7 @@ export function BachecaGrid() {
                       Bonus
                     </div>
                     <h3 className="font-sans text-sm sm:text-base font-bold leading-snug text-white mt-1 pr-4" title="Carta Cultura 2026">
-                      Carta Cultura 2026
+                      Carte cultura 2026 e carta docente
                     </h3>
                   </div>
                   <div className="relative w-8 h-8 select-none shrink-0 ml-2">

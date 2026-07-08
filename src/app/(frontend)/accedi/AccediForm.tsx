@@ -180,7 +180,7 @@ export function AccediForm() {
             {/* Email */}
             <div className="flex flex-col gap-1">
               <label htmlFor="email" className="font-bold text-zinc-700 font-sans">
-                E-mail <span className="text-zinc-400 font-normal">(opzionale)</span>
+                E-mail
               </label>
               <input
                 type="email"
@@ -197,7 +197,7 @@ export function AccediForm() {
           {/* Scuola */}
           <div className="flex flex-col gap-1">
             <label htmlFor="scuola" className="font-bold text-zinc-700 font-sans">
-              Scuola <span className="text-zinc-400 font-normal">(opzionale)</span>
+              Scuola
             </label>
             <input
               type="text"
