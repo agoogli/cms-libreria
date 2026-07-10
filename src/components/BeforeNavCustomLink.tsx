@@ -39,7 +39,45 @@ export default function BeforeNavCustomLink() {
           <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
           <path d="M16 3.13a4 4 0 0 1 0 7.75" />
         </svg>
-        <span>Utenti Registrati</span>
+        <span>Utente Registrato</span>
+      </a>
+
+      <div className="nav-group__label" style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '1px', opacity: 0.5, marginTop: '1rem', marginBottom: '0.5rem', padding: '0 10px' }}>
+        Pagine Speciali
+      </div>
+      <a
+        href="/admin/globals/offerta-speciale"
+        className="nav-link"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '10px',
+          padding: '8px 10px',
+          borderRadius: '4px',
+          fontSize: '0.85rem',
+          fontWeight: 600,
+          color: 'inherit',
+          textDecoration: 'none',
+          backgroundColor: 'transparent',
+          transition: 'background-color 0.2s',
+        }}
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          style={{ opacity: 0.7 }}
+        >
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+          <line x1="3" y1="9" x2="21" y2="9" />
+          <line x1="9" y1="21" x2="9" y2="9" />
+        </svg>
+        <span>Offerta Speciale</span>
       </a>
     </div>
   )

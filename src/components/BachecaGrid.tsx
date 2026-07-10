@@ -23,6 +23,57 @@ export function BachecaGrid() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const lastAnimatedRef = React.useRef<number | null>(null)
 
+  // State to read OffertaSpeciale global contents client-side
+  const [offerta, setOfferta] = useState<{
+    titolo: string
+    sottotitolo: string
+    immagini: string[]
+  }>({
+    titolo: 'Offerta Speciale',
+    sottotitolo: 'Kit Lettura Estiva',
+    immagini: [
+      '/assets/libro.png',
+      '/assets/foto-libreria/1.jpg',
+      '/assets/foto-libreria/2.jpg',
+      '/assets/foto-libreria/3.jpg',
+      '/assets/foto-libreria/4.jpg',
+    ],
+  })
+
+  // Fetch offerta-speciale global client-side
+  useEffect(() => {
+    fetch('/api/globals/offerta-speciale')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && (data.titolo || data.sottotitolo || (data.immagini && data.immagini.length > 0))) {
+          const titolo = data.titolo || 'Offerta Speciale'
+          const sottotitolo = data.sottotitolo || 'Kit Lettura Estiva'
+          const immagini =
+            data.immagini && data.immagini.length > 0
+              ? data.immagini.map((item: any) => item.immagine?.url).filter(Boolean)
+              : []
+
+          setOfferta({
+            titolo,
+            sottotitolo,
+            immagini:
+              immagini.length > 0
+                ? immagini
+                : [
+                    '/assets/libro.png',
+                    '/assets/foto-libreria/1.jpg',
+                    '/assets/foto-libreria/2.jpg',
+                    '/assets/foto-libreria/3.jpg',
+                    '/assets/foto-libreria/4.jpg',
+                  ],
+          })
+        }
+      })
+      .catch((err) => {
+        console.error('Failed to fetch offerta speciale global:', err)
+      })
+  }, [])
+
   // Timer for the card bounce/glow animation (picks a random card, ensuring no consecutive duplicates)
   useEffect(() => {
     const interval = setInterval(() => {
@@ -74,6 +125,13 @@ export function BachecaGrid() {
         .bacheca-grid-container,
         .bacheca-grid-container * {
           font-family: var(--font-sans), 'Inter', sans-serif !important;
+        }
+        .scrollbar-none::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-none {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
         }
       `}</style>
 
@@ -335,29 +393,30 @@ export function BachecaGrid() {
             >
               <div className="absolute -top-12 -right-12 w-24 h-24 bg-orange-500/5 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500" />
 
-              <div className="min-w-0">
-                <div className="text-xs uppercase tracking-widest text-orange-500 font-sans font-semibold">
-                  Offerta Speciale
-                </div>
-                <h3 className="font-sans text-sm sm:text-base font-bold leading-snug text-zinc-900 mt-2" title="Kit Lettura Estiva">
-                  Kit Lettura Estiva
-                </h3>
-                <p className="text-xs text-zinc-600 mt-1.5 leading-normal opacity-90 font-sans">
-                  Acquista il best seller del mese e ricevi in omaggio la tazza letteraria esclusiva e la shopper della libreria.
-                </p>
-              </div>
-
-              <div className="flex justify-between items-center mt-auto">
+              <div className="min-w-0 flex flex-col h-full justify-between">
                 <div>
-                  <span className="text-[10px] text-zinc-400 line-through">€45.90</span>
-                  <span className="text-sm font-bold text-orange-600 ml-1.5">€34.90</span>
+                  <div className="text-xs uppercase tracking-widest text-orange-500 font-sans font-semibold">
+                    {offerta.titolo}
+                  </div>
+                  <h3 className="font-sans text-sm sm:text-base font-bold leading-snug text-zinc-900 mt-2" title={offerta.sottotitolo}>
+                    {offerta.sottotitolo}
+                  </h3>
                 </div>
-                <a
-                  href="#"
-                  className="inline-flex items-center text-[10px] font-bold uppercase tracking-wider bg-orange-600 text-white px-3 py-1.5 rounded-md shadow-sm hover:bg-orange-700 transition-colors"
-                >
-                  Scopri il Kit
-                </a>
+
+                {/* Horizontal scrolling cover carousel */}
+                <div className="flex gap-2.5 overflow-x-auto scrollbar-none py-1 mt-auto items-center justify-start w-full select-none touch-pan-x">
+                  {offerta.immagini.map((src, idx) => (
+                    <div key={idx} className="relative h-20 aspect-[3/4] rounded shadow-sm border border-zinc-200/60 overflow-hidden shrink-0 bg-white">
+                      <Image
+                        src={src}
+                        alt={`Copertina ${idx + 1}`}
+                        fill
+                        sizes="65px"
+                        className="object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </CarouselItem>

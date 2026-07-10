@@ -93,8 +93,12 @@ export interface Config {
     defaultIDType: number;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'offerta-speciale': OffertaSpeciale;
+  };
+  globalsSelect: {
+    'offerta-speciale': OffertaSpecialeSelect<false> | OffertaSpecialeSelect<true>;
+  };
   locale: null;
   widgets: {
     collections: CollectionsWidget;
@@ -419,6 +423,40 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "offerta-speciale".
+ */
+export interface OffertaSpeciale {
+  id: number;
+  titolo: string;
+  sottotitolo: string;
+  immagini?:
+    | {
+        immagine: number | Media;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "offerta-speciale_select".
+ */
+export interface OffertaSpecialeSelect<T extends boolean = true> {
+  titolo?: T;
+  sottotitolo?: T;
+  immagini?:
+    | T
+    | {
+        immagine?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

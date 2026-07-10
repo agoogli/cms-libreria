@@ -10,6 +10,7 @@ import { Media } from './collections/Media'
 import { Settori } from './collections/Settori'
 import { Libri } from './collections/Libri'
 import { UtentiRegistrati } from './collections/UtentiRegistrati'
+import { OffertaSpeciale } from './globals/OffertaSpeciale'
 import { en } from '@payloadcms/translations/languages/en'
 import { it } from '@payloadcms/translations/languages/it'
 
@@ -33,6 +34,7 @@ export default buildConfig({
     fallbackLanguage: 'it',
   },
   collections: [Utenti, Media, Settori, Libri, UtentiRegistrati],
+  globals: [OffertaSpeciale],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
