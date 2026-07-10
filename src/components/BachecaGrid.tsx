@@ -40,6 +40,8 @@ export function BachecaGrid() {
     ],
   })
 
+  const [coverIndex, setCoverIndex] = useState(0)
+
   // Fetch offerta-speciale global client-side
   useEffect(() => {
     fetch('/api/globals/offerta-speciale')
@@ -73,6 +75,22 @@ export function BachecaGrid() {
         console.error('Failed to fetch offerta speciale global:', err)
       })
   }, [])
+
+  // Timer to auto-scroll covers if they exceed 3
+  useEffect(() => {
+    const totalCovers = offerta.immagini.length
+    if (totalCovers > 3) {
+      const interval = setInterval(() => {
+        setCoverIndex((prev) => {
+          const maxIndex = totalCovers - 3
+          return prev >= maxIndex ? 0 : prev + 1
+        })
+      }, 3000)
+      return () => clearInterval(interval)
+    } else {
+      setCoverIndex(0)
+    }
+  }, [offerta.immagini])
 
   // Timer for the card bounce/glow animation (picks a random card, ensuring no consecutive duplicates)
   useEffect(() => {
@@ -132,6 +150,14 @@ export function BachecaGrid() {
         .scrollbar-none {
           -ms-overflow-style: none;
           scrollbar-width: none;
+        }
+        .offerta-carousel-track {
+          transform: translateX(var(--mobile-translate, 0px));
+        }
+        @media (min-width: 768px) {
+          .offerta-carousel-track {
+            transform: translateX(var(--desktop-translate, 0px));
+          }
         }
       `}</style>
 
@@ -403,19 +429,32 @@ export function BachecaGrid() {
                   </h3>
                 </div>
 
-                {/* Horizontal scrolling cover carousel */}
-                <div className="flex gap-2.5 overflow-x-auto scrollbar-none py-1 mt-auto items-center justify-start w-full select-none touch-pan-x">
-                  {offerta.immagini.map((src, idx) => (
-                    <div key={idx} className="relative h-20 aspect-[3/4] rounded shadow-sm border border-zinc-200/60 overflow-hidden shrink-0 bg-white">
-                      <Image
-                        src={src}
-                        alt={`Copertina ${idx + 1}`}
-                        fill
-                        sizes="65px"
-                        className="object-cover"
-                      />
-                    </div>
-                  ))}
+                {/* Horizontal scrolling cover carousel - responsive track */}
+                <div className="relative w-full overflow-hidden mt-auto py-1">
+                  <div
+                    className="flex gap-2.5 transition-transform duration-500 ease-in-out offerta-carousel-track"
+                    style={
+                      {
+                        '--mobile-translate': `-${coverIndex * (48 + 10)}px`,
+                        '--desktop-translate': `-${coverIndex * (60 + 10)}px`,
+                      } as React.CSSProperties
+                    }
+                  >
+                    {offerta.immagini.map((src, idx) => (
+                      <div
+                        key={idx}
+                        className="relative h-16 md:h-20 aspect-[3/4] rounded shadow-sm border border-zinc-200/60 overflow-hidden shrink-0 bg-white w-[48px] md:w-[60px]"
+                      >
+                        <Image
+                          src={src}
+                          alt={`Copertina ${idx + 1}`}
+                          fill
+                          sizes="(max-width: 768px) 48px, 60px"
+                          className="object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
