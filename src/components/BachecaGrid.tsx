@@ -183,8 +183,9 @@ export function BachecaGrid() {
           {/* Column 1: Row 1 Card 5 (Slideshow) & Row 2 Card 1 (Libri scolastici) */}
           <CarouselItem className="pl-2 sm:pl-3 basis-[80%] select-none flex flex-col gap-2 md:pl-0 md:basis-auto md:w-auto md:gap-3">
             {/* Card 5: Slideshow (La Libreria) */}
-            <div
-              className={`group relative flex flex-col justify-between h-52 bg-[#363537] rounded-xl overflow-hidden shadow-md border border-zinc-700/60 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:200ms] ${animatedCard === 4 ? 'animate-bacheca-card' : ''
+            <Link
+              href="/la-libreria"
+              className={`group relative flex flex-col justify-between h-52 bg-[#363537] rounded-xl overflow-hidden shadow-md border border-zinc-700/60 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:200ms] block cursor-pointer ${animatedCard === 4 ? 'animate-bacheca-card' : ''
                 }`}
             >
               {/* Automatic slideshow images from assets with object-contain */}
@@ -219,7 +220,7 @@ export function BachecaGrid() {
                   a Messina dal 1932
                 </span>
               </div>
-            </div>
+            </Link>
 
             {/* Card 1: Libri scolastici nuovi e usati (Orange Gradient) */}
             <div
@@ -343,6 +344,12 @@ export function BachecaGrid() {
                   <p className="text-xs text-blue-50 leading-normal font-sans font-medium">
                     Carta della Cultura Giovani e Carta del Merito : spendi qui il tuo buono, fino a 500€ per l'acquisto di libri.
                   </p>
+                  <Link
+                    href="/carta-docente"
+                    className="text-xs font-bold text-white hover:text-blue-100 transition-colors font-sans mt-2 flex items-center gap-1 cursor-pointer w-fit"
+                  >
+                    altre info &gt;
+                  </Link>
                 </div>
               </div>
             </div>
@@ -377,22 +384,22 @@ export function BachecaGrid() {
                 </div>
               </div>
 
-              {/* Side-by-side Connection Badges centered horizontally */}
-              <div className="flex gap-2.5 my-auto justify-center items-center w-full z-10">
+              {/* Side-by-side Connection Badges centered horizontally at the bottom */}
+              <div className="flex gap-3 mt-auto justify-center items-center w-full z-10 px-1">
                 {/* Facebook Badge */}
                 <a
                   href="https://www.facebook.com/librerianunnari/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 max-w-[130px] bg-white/10 backdrop-blur-sm rounded-lg p-2 flex flex-col justify-between items-center text-center border border-white/15 h-[84px] hover:bg-white/20 transition-colors z-10 block cursor-pointer"
+                  className="flex-1 max-w-[150px] bg-white/10 backdrop-blur-sm rounded-xl p-3 flex flex-col justify-between items-center text-center border border-white/15 h-[100px] hover:bg-white/20 transition-colors z-10 block cursor-pointer"
                 >
-                  <div className="flex items-center gap-1">
-                    <svg className="w-4 h-4 text-white fill-white" viewBox="0 0 24 24" style={{ fill: 'white' }}>
+                  <div className="flex items-center gap-1.5">
+                    <svg className="w-5 h-5 text-white fill-white" viewBox="0 0 24 24" style={{ fill: 'white' }}>
                       <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
                     </svg>
                     <span className="text-xs font-bold font-sans tracking-wide text-white">Facebook</span>
                   </div>
-                  <span className="w-full text-[12px] font-bold uppercase tracking-wider bg-white text-[#007fff] py-1 rounded shadow-sm transition-colors font-sans mt-2">
+                  <span className="w-full text-xs font-bold uppercase tracking-wider bg-white text-[#007fff] py-1.5 rounded shadow-sm transition-colors font-sans mt-2.5">
                     Mi Piace
                   </span>
                 </a>
@@ -402,15 +409,15 @@ export function BachecaGrid() {
                   href="https://www.instagram.com/librerianunnarisfameni/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 max-w-[130px] bg-white/10 backdrop-blur-sm rounded-lg p-2 flex flex-col justify-between items-center text-center border border-white/15 h-[84px] hover:bg-white/20 transition-colors z-10 block cursor-pointer"
+                  className="flex-1 max-w-[150px] bg-white/10 backdrop-blur-sm rounded-xl p-3 flex flex-col justify-between items-center text-center border border-white/15 h-[100px] hover:bg-white/20 transition-colors z-10 block cursor-pointer"
                 >
-                  <div className="flex items-center gap-1">
-                    <svg className="w-4 h-4 text-white fill-white" viewBox="0 0 24 24" style={{ fill: 'white' }}>
+                  <div className="flex items-center gap-1.5">
+                    <svg className="w-5 h-5 text-white fill-white" viewBox="0 0 24 24" style={{ fill: 'white' }}>
                       <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                     </svg>
                     <span className="text-xs font-bold font-sans tracking-wide text-white">Instagram</span>
                   </div>
-                  <span className="w-full text-[12px] font-bold uppercase tracking-wider bg-white text-[#007fff] py-1 rounded shadow-sm transition-colors font-sans mt-2">
+                  <span className="w-full text-xs font-bold uppercase tracking-wider bg-white text-[#007fff] py-1.5 rounded shadow-sm transition-colors font-sans mt-2.5">
                     Segui
                   </span>
                 </a>
