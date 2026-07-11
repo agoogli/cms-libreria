@@ -33,6 +33,12 @@ podman run -d \
 postgresql://cms:cms@localhost:5432/cms_db
 ```
 
+### ENV
+
+```
+TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
+```
+
 1. First [clone the repo](#clone) if you have not done so already
 2. `cd my-project && cp .env.example .env` to copy the example environment variables. You'll need to add the `MONGODB_URL` from your Cloud project to your `.env` if you want to use S3 storage and the MongoDB database that was created for you.
 

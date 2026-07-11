@@ -13,6 +13,7 @@ export function AccediForm() {
     classe: '',
     sezione: '',
   })
+  const [subject, setSubject] = useState('') // Honeypot state
   const [privacyAccepted, setPrivacyAccepted] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -41,7 +42,7 @@ export function AccediForm() {
     }
 
     try {
-      const response = await fetch('/api/utenti-registrati', {
+      const response = await fetch('/api/register-user', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -54,6 +55,7 @@ export function AccediForm() {
           scuola: formData.scuola || undefined,
           classe: formData.classe ? parseInt(formData.classe, 10) : undefined,
           sezione: formData.sezione || undefined,
+          subject, // Honeypot field
         }),
       })
 
@@ -121,6 +123,18 @@ export function AccediForm() {
         )}
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-xs">
+          {/* Honeypot field (hidden from human users, targets bots) */}
+          <div className="hidden absolute w-0 h-0 overflow-hidden" aria-hidden="true">
+            <input
+              type="text"
+              name="subject"
+              value={subject}
+              onChange={(e) => setSubject(e.target.value)}
+              tabIndex={-1}
+              autoComplete="off"
+            />
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Nome */}
             <div className="flex flex-col gap-1">

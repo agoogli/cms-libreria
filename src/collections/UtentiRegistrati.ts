@@ -14,7 +14,7 @@ export const UtentiRegistrati: CollectionConfig = {
     defaultColumns: ['cognome', 'nome', 'cellulare', 'email'],
   },
   access: {
-    create: () => true, // Everyone can submit the registration form!
+    create: () => false, // Locked down REST API! Creation only allowed via secure custom API route with overrideAccess: true.
     read: ({ req: { user } }) => !!user, // Only logged-in admin users can read!
     update: ({ req: { user } }) => !!user,
     delete: ({ req: { user } }) => !!user,
