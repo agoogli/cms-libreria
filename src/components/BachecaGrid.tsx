@@ -441,14 +441,23 @@ export function BachecaGrid() {
                   <div className="animate-spin rounded-full h-8 w-8 border-2 border-orange-500 border-t-transparent" />
                 </div>
               ) : (
-                <div className="min-w-0 flex flex-col h-full justify-between">
-                  <div>
-                    <div className="text-xs uppercase tracking-widest text-orange-500 font-sans font-semibold">
-                      {offerta.titolo}
+                <div className="relative z-10 min-w-0 flex flex-col h-full justify-between">
+                  <div className="flex justify-between items-start w-full">
+                    <div className="min-w-0 flex-1">
+                      <div className="text-xs uppercase tracking-widest text-orange-500 font-sans font-semibold">
+                        {offerta.titolo}
+                      </div>
+                      <h3 className="font-sans text-sm sm:text-base font-bold leading-snug text-orange-500 mt-2 pr-4" title={offerta.sottotitolo}>
+                        {offerta.sottotitolo}
+                      </h3>
                     </div>
-                    <h3 className="font-sans text-sm sm:text-base font-bold leading-snug text-orange-500 mt-2" title={offerta.sottotitolo}>
-                      {offerta.sottotitolo}
-                    </h3>
+                    <div className="w-8 h-8 select-none shrink-0 ml-2">
+                      <img
+                        src="/assets/offerta.png"
+                        alt="Icona Offerta"
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
                   </div>
                   {/* Horizontal scrolling cover carousel - responsive track */}
                   <div className="relative w-full overflow-hidden mt-auto py-1">
