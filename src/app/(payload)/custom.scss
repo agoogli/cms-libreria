@@ -9,3 +9,30 @@ label.field-label,
   margin-bottom: 8px !important;
   color: var(--theme-text, #333) !important;
 }
+
+/* Prevent cropping of book covers in all upload preview fields, relationship previews, media list view, grid cards, etc. */
+.file-details img,
+.file-field img,
+.file-field__preview img,
+.file-details__thumbnail img,
+.file-details__image img,
+.file-details__image-container img,
+.upload__preview img,
+.upload-card img,
+.relationship-fields img,
+.media-fields img,
+.card img,
+.card__thumbnail img,
+.card__image img,
+.media-card img,
+.media-card__image img,
+.thumbnail img,
+.thumbnail__image img,
+.media-cell img,
+.cell-image img,
+.table img,
+.list-view img,
+.grid-view img {
+  object-fit: contain !important;
+  background-color: transparent !important;
+}

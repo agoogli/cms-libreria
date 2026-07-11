@@ -427,30 +427,26 @@ export function BachecaGrid() {
                   <h3 className="font-sans text-sm sm:text-base font-bold leading-snug text-zinc-900 mt-2" title={offerta.sottotitolo}>
                     {offerta.sottotitolo}
                   </h3>
-                </div>
-
-                {/* Horizontal scrolling cover carousel - responsive track */}
+                </div>                 {/* Horizontal scrolling cover carousel - responsive track */}
                 <div className="relative w-full overflow-hidden mt-auto py-1">
                   <div
                     className="flex gap-2.5 transition-transform duration-500 ease-in-out offerta-carousel-track"
                     style={
                       {
-                        '--mobile-translate': `-${coverIndex * (48 + 10)}px`,
-                        '--desktop-translate': `-${coverIndex * (60 + 10)}px`,
+                        '--mobile-translate': `-${coverIndex * (53 + 10)}px`,
+                        '--desktop-translate': `-${coverIndex * (64 + 10)}px`,
                       } as React.CSSProperties
                     }
                   >
                     {offerta.immagini.map((src, idx) => (
                       <div
                         key={idx}
-                        className="relative h-16 md:h-20 aspect-[3/4] rounded shadow-sm border border-zinc-200/60 overflow-hidden shrink-0 bg-white w-[48px] md:w-[60px]"
+                        className="relative h-20 md:h-24 rounded shadow-sm border border-zinc-200/60 overflow-hidden shrink-0 bg-white"
                       >
-                        <Image
+                        <img
                           src={src}
                           alt={`Copertina ${idx + 1}`}
-                          fill
-                          sizes="(max-width: 768px) 48px, 60px"
-                          className="object-cover"
+                          className="h-full w-auto object-contain"
                         />
                       </div>
                     ))}
