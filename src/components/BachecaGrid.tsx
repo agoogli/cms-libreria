@@ -433,20 +433,22 @@ export function BachecaGrid() {
                     className="flex gap-2.5 transition-transform duration-500 ease-in-out offerta-carousel-track"
                     style={
                       {
-                        '--mobile-translate': `-${coverIndex * (53 + 10)}px`,
-                        '--desktop-translate': `-${coverIndex * (64 + 10)}px`,
+                        '--mobile-translate': `-${coverIndex * (60 + 10)}px`,
+                        '--desktop-translate': `-${coverIndex * (72 + 10)}px`,
                       } as React.CSSProperties
                     }
                   >
                     {offerta.immagini.map((src, idx) => (
                       <div
                         key={idx}
-                        className="relative h-20 md:h-24 rounded shadow-sm border border-zinc-200/60 overflow-hidden shrink-0 bg-white"
+                        className="relative h-20 md:h-24 aspect-[3/4] rounded shadow-sm border border-zinc-200/60 overflow-hidden shrink-0 bg-white w-[60px] md:w-[72px]"
                       >
-                        <img
+                        <Image
                           src={src}
                           alt={`Copertina ${idx + 1}`}
-                          className="h-full w-auto object-contain"
+                          fill
+                          sizes="(max-width: 768px) 60px, 72px"
+                          className="object-cover"
                         />
                       </div>
                     ))}
