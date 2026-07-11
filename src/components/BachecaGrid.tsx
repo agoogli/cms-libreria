@@ -42,6 +42,8 @@ export function BachecaGrid() {
 
   const [coverIndex, setCoverIndex] = useState(0)
 
+  const [isLoading, setIsLoading] = useState(true)
+
   // Fetch offerta-speciale global client-side
   useEffect(() => {
     fetch('/api/globals/offerta-speciale')
@@ -73,6 +75,9 @@ export function BachecaGrid() {
       })
       .catch((err) => {
         console.error('Failed to fetch offerta speciale global:', err)
+      })
+      .finally(() => {
+        setIsLoading(false)
       })
   }, [])
 
@@ -419,42 +424,49 @@ export function BachecaGrid() {
             >
               <div className="absolute -top-12 -right-12 w-24 h-24 bg-orange-500/5 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500" />
 
-              <div className="min-w-0 flex flex-col h-full justify-between">
-                <div>
-                  <div className="text-xs uppercase tracking-widest text-orange-500 font-sans font-semibold">
-                    {offerta.titolo}
+              {isLoading ? (
+                <div className="flex-grow flex items-center justify-center h-full w-full">
+                  <div className="animate-spin rounded-full h-8 w-8 border-2 border-orange-500 border-t-transparent" />
+                </div>
+              ) : (
+                <div className="min-w-0 flex flex-col h-full justify-between">
+                  <div>
+                    <div className="text-xs uppercase tracking-widest text-orange-500 font-sans font-semibold">
+                      {offerta.titolo}
+                    </div>
+                    <h3 className="font-sans text-sm sm:text-base font-bold leading-snug text-zinc-900 mt-2" title={offerta.sottotitolo}>
+                      {offerta.sottotitolo}
+                    </h3>
                   </div>
-                  <h3 className="font-sans text-sm sm:text-base font-bold leading-snug text-zinc-900 mt-2" title={offerta.sottotitolo}>
-                    {offerta.sottotitolo}
-                  </h3>
-                </div>                 {/* Horizontal scrolling cover carousel - responsive track */}
-                <div className="relative w-full overflow-hidden mt-auto py-1">
-                  <div
-                    className="flex gap-2.5 transition-transform duration-500 ease-in-out offerta-carousel-track"
-                    style={
-                      {
-                        '--mobile-translate': `-${coverIndex * (72 + 10)}px`,
-                        '--desktop-translate': `-${coverIndex * (72 + 10)}px`,
-                      } as React.CSSProperties
-                    }
-                  >
-                    {offerta.immagini.map((src, idx) => (
-                      <div
-                        key={idx}
-                        className="relative h-24 aspect-[3/4] rounded shadow-sm border border-zinc-200/60 overflow-hidden shrink-0 bg-white w-[72px]"
-                      >
-                        <Image
-                          src={src}
-                          alt={`Copertina ${idx + 1}`}
-                          fill
-                          sizes="72px"
-                          className="object-cover"
-                        />
-                      </div>
-                    ))}
+                  {/* Horizontal scrolling cover carousel - responsive track */}
+                  <div className="relative w-full overflow-hidden mt-auto py-1">
+                    <div
+                      className="flex gap-2.5 transition-transform duration-500 ease-in-out offerta-carousel-track"
+                      style={
+                        {
+                          '--mobile-translate': `-${coverIndex * (72 + 10)}px`,
+                          '--desktop-translate': `-${coverIndex * (72 + 10)}px`,
+                        } as React.CSSProperties
+                      }
+                    >
+                      {offerta.immagini.map((src, idx) => (
+                        <div
+                          key={idx}
+                          className="relative h-24 aspect-[3/4] rounded shadow-sm border border-zinc-200/60 overflow-hidden shrink-0 bg-white w-[72px]"
+                        >
+                          <Image
+                            src={src}
+                            alt={`Copertina ${idx + 1}`}
+                            fill
+                            sizes="72px"
+                            className="object-cover"
+                          />
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           </CarouselItem>
 
