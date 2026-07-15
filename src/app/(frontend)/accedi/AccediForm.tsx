@@ -1,7 +1,18 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { PageWrapper } from '@/components/PageWrapper'
+
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (container: string | HTMLElement, options: any) => string
+      reset: (widgetId?: string) => void
+      remove: (widgetId?: string) => void
+    }
+    onloadTurnstileCallback?: () => void
+  }
+}
 
 export function AccediForm() {
   const [formData, setFormData] = useState({
@@ -19,6 +30,56 @@ export function AccediForm() {
   const [loading, setLoading] = useState(false)
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
+  const [turnstileToken, setTurnstileToken] = useState('')
+
+  // Dynamically load Cloudflare Turnstile script and render the widget
+  useEffect(() => {
+    const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY
+    if (!siteKey) return
+
+    if (document.getElementById('cloudflare-turnstile-script')) {
+      if (window.turnstile) {
+        try {
+          window.turnstile.render('#turnstile-widget', {
+            sitekey: siteKey,
+            callback: (token: string) => {
+              setTurnstileToken(token)
+            },
+          })
+        } catch (e) {
+          console.error('Turnstile render error:', e)
+        }
+      }
+      return
+    }
+
+    const script = document.createElement('script')
+    script.id = 'cloudflare-turnstile-script'
+    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback'
+    script.async = true
+    script.defer = true
+
+    window.onloadTurnstileCallback = () => {
+      if (window.turnstile) {
+        try {
+          window.turnstile.render('#turnstile-widget', {
+            sitekey: siteKey,
+            callback: (token: string) => {
+              setTurnstileToken(token)
+            },
+          })
+        } catch (e) {
+          console.error('Turnstile render error in onload:', e)
+        }
+      }
+    }
+
+    document.body.appendChild(script)
+
+    return () => {
+      delete window.onloadTurnstileCallback
+    }
+  }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -56,6 +117,7 @@ export function AccediForm() {
           classe: formData.classe ? parseInt(formData.classe, 10) : undefined,
           sezione: formData.sezione || undefined,
           subject, // Honeypot field
+          turnstileToken,
         }),
       })
 
@@ -288,6 +350,17 @@ export function AccediForm() {
                 informativa sulla privacy
               </button>
             </label>
+          </div>
+
+          {/* Cloudflare Turnstile Verification Widget */}
+          <div className="mt-2">
+            {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ? (
+              <div id="turnstile-widget" className="flex justify-center sm:justify-start"></div>
+            ) : (
+              <div className="text-amber-700 text-[10px] p-2.5 bg-amber-50/70 border border-amber-200 rounded-lg font-sans leading-normal">
+                Attenzione: inserisci la chiave <code>NEXT_PUBLIC_TURNSTILE_SITE_KEY</code> nel file <code>.env</code> per attivare la verifica di sicurezza Turnstile nel form.
+              </div>
+            )}
           </div>
 
           <button

@@ -37,6 +37,7 @@ postgresql://cms:cms@localhost:5432/cms_db
 
 ```
 TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
+NEXT_PUBLIC_TURNSTILE_SITE_KEY=1x0000000000000000000000000000000AA
 ```
 
 1. First [clone the repo](#clone) if you have not done so already
