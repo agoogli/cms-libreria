@@ -396,12 +396,12 @@ export function AccediForm() {
                 Informativa ai sensi del Regolamento UE 2016/679 ("GDPR")
               </p>
               <p>
-                La presente informativa descrive le modalità di trattamento dei dati personali forniti dagli utenti in fase di registrazione attraverso il sito web della <strong>Libreria Nunnari e Sfameni snc</strong>.
+                La presente informativa descrive le modalità di trattamento dei dati personali forniti dagli utenti in fase di registrazione attraverso il sito web della <strong>Libreria Nunnari & Sfameni s.a.s.</strong>.
               </p>
               <div>
                 <h4 className="font-bold text-zinc-800 mb-1">1. Titolare del Trattamento</h4>
                 <p>
-                  Il Titolare del trattamento è: <strong>Libreria Nunnari e Sfameni snc</strong>, con sede legale in Via Tommaso Cannizzaro 112, 98122 Messina (ME), P.IVA 03027400831. Email di contatto: <a href="mailto:librerianunnari@gmail.com" className="text-orange-500 hover:underline">librerianunnari@gmail.com</a>.
+                  Il Titolare del trattamento è: <strong>Libreria Nunnari & Sfameni s.a.s.</strong>, con sede legale in Via Tommaso Cannizzaro 112, 98122 Messina (ME), P.IVA 03027400831. Email di contatto: <a href="mailto:librerianunnari@gmail.com" className="text-orange-500 hover:underline">librerianunnari@gmail.com</a>.
                 </p>
               </div>
               <div>
