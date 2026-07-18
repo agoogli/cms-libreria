@@ -1,0 +1,33 @@
+name: CI/CD Pipeline Produzione
+
+on:
+  push:
+    branches:
+      - release  # Si attiva al push sul branch release
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Downcase repository name
+        id: lowercase_repo
+        run: echo "repo=${GITHUB_REPOSITORY,,}" >> $GITHUB_OUTPUT
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Build & Push PayloadCMS Image
+      - name: Build and Push PayloadCMS Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: Dockerfile
+          push: true
+          tags: ghcr.io/${{ steps.lowercase_repo.outputs.repo }}:latest

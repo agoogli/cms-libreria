@@ -7,6 +7,7 @@ const __filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(__filename)
 
 const nextConfig: NextConfig = {
+  output: 'standalone',
   allowedDevOrigins: ['pericarditic-marco-unweeded.ngrok-free.dev', '192.168.10.61', '192.168.1.62'],
   images: {
     remotePatterns: [
