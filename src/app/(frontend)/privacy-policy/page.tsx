@@ -9,7 +9,7 @@ export const metadata = {
 export default function PrivacyPolicyPage() {
   return (
     <PageWrapper title="Privacy Policy">
-      <div className="bg-white p-6 sm:p-8 rounded-xl border border-zinc-200/80 shadow-sm flex flex-col gap-6 font-sans text-xs sm:text-sm text-zinc-650 leading-relaxed max-w-4xl">
+      <div className="w-full bg-white p-6 sm:p-8 rounded-xl border border-zinc-200/80 shadow-sm flex flex-col gap-6 font-sans text-xs sm:text-sm text-zinc-650 leading-relaxed">
 
         {/* Intro */}
         <section className="border-b border-zinc-100 pb-4">
