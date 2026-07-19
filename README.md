@@ -89,3 +89,62 @@ That's it! The Docker instance will help you get up and running quickly while al
 ## Questions
 
 If you have any issues or questions, reach out to us on [Discord](https://discord.com/invite/payload) or start a [GitHub discussion](https://github.com/payloadcms/payload/discussions).
+
+## Deploy
+
+Ecco la guida dettagliata con l'elenco dei pacchetti, i file da trasferire e i comandi per completare il deploy sulla tua macchina virtuale Arch Linux, assicurando che i container rimangano attivi anche dopo che ti sarai disconnesso da SSH.
+
+1. Pacchetti da installare sulla VM Arch Linux
+Accedi alla tua VM Arch Linux e installa i pacchetti necessari utilizzando il gestore pacchetti pacman.
+
+Esegui il seguente comando come root (o tramite sudo):
+
+bash
+
+
+sudo pacman -Syu podman podman-compose
+podman: Il motore di containerizzazione (alternativa a Docker).
+podman-compose: Lo strumento per orchestrare i servizi definiti nel file YAML (alternativa a Docker Compose).
+2. File da inviare al server
+Sulla macchina server devi copiare esclusivamente questi due file all'interno di una cartella a tua scelta (ad esempio ~/cms-libreria/):
+
+podman-compose.yml: Il file con la definizione dei servizi (db e app).
+.env: Il file con le credenziali reali compilate. Per crearlo sul server:
+Copia il file .env.example locale sul server nominandolo .env.
+Modifica i valori inserendo le password reali e sicure.
+Esempio di trasferimento dei file tramite scp dal tuo PC locale al server:
+
+bash
+
+
+### Crea la cartella sul server
+ssh utente@ip-del-server "mkdir -p ~/cms-libreria"
+### Invia i file
+scp podman-compose.yml utente@ip-del-server:~/cms-libreria/
+scp .env.example utente@ip-del-server:~/cms-libreria/.env
+3. Comandi di Up e persistenza al Logout (Linger)
+Poiché Podman esegue i container in modalità rootless (senza privilegi di root, per maggiore sicurezza), per impostazione predefinita di systemd su Arch Linux, tutti i processi dell'utente (inclusi i container di Podman) vengono arrestati non appena la sessione SSH viene chiusa.
+
+Per evitare questo comportamento e lasciare i container attivi in background dopo il logout, segui questi passaggi sul server:
+
+A. Abilitare il "Linger" per l'utente (Fondamentale)
+Esegui questo comando sul server per indicare a systemd di mantenere attiva la sessione del tuo utente anche dopo la disconnessione:
+
+bash
+
+
+loginctl enable-linger $USER
+(Puoi verificare lo stato con loginctl user-status $USER)
+
+B. Avviare i container in background
+Entra nella cartella dove hai copiato i file e avvia i container in modalità "detached" (background) tramite il flag -d:
+
+bash
+
+
+cd ~/cms-libreria
+podman-compose up -d
+C. Comandi utili per la gestione
+Visualizzare i log: podman-compose logs -f
+Controllare lo stato dei container: podman ps -a
+Arrestare i container: podman-compose down
