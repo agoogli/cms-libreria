@@ -4,24 +4,32 @@ import { getPayload } from 'payload'
 import config from '@/payload.config'
 import { BookCard } from '@/components/BookCard'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata = {
   title: 'Ultime Novità - Libreria Nunnari & Sfameni',
   description: 'Le ultime novità e gli ultimi libri caricati alla Libreria Nunnari & Sfameni.',
 }
 
 export default async function LibriPage() {
-  const payload = await getPayload({ config })
+  let books: any[] = []
   
-  // Fetch all books sorted by newest first, max 100
-  const booksResponse = await payload.find({
-    collection: 'libri',
-    depth: 2,
-    limit: 100,
-    sort: '-createdAt',
-    overrideAccess: true,
-  })
-  
-  const books = booksResponse.docs || []
+  try {
+    const payload = await getPayload({ config })
+    
+    // Fetch all books sorted by newest first, max 100
+    const booksResponse = await payload.find({
+      collection: 'libri',
+      depth: 2,
+      limit: 100,
+      sort: '-createdAt',
+      overrideAccess: true,
+    })
+    
+    books = booksResponse.docs || []
+  } catch (error) {
+    console.error('Error fetching books in libri page:', error)
+  }
 
   return (
     <div className="w-full lg:w-[60%] mx-auto px-4 pt-3 pb-2 flex flex-col gap-3">

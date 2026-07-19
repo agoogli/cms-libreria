@@ -5,6 +5,8 @@ import config from '@/payload.config'
 import { BookCard } from '@/components/BookCard'
 import { PageWrapper } from '@/components/PageWrapper'
 
+export const dynamic = 'force-dynamic'
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const sectorName = slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
@@ -17,38 +19,42 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function SectorPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   
-  const payload = await getPayload({ config })
-  
-  // 1. Fetch sectors list to find the matching sector by slug
-  const sectorsResponse = await payload.find({
-    collection: 'settori',
-    limit: 100,
-    overrideAccess: true,
-  })
-  
-  const sector = sectorsResponse.docs.find(
-    (s: any) => s.nome.toLowerCase().replace(/\s+/g, '-') === slug
-  )
-  
   let books: any[] = []
   let sectorName = slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
   
-  if (sector) {
-    sectorName = sector.nome
-    // 2. Fetch all books in this sector
-    const booksResponse = await payload.find({
-      collection: 'libri',
-      depth: 2,
+  try {
+    const payload = await getPayload({ config })
+    
+    // 1. Fetch sectors list to find the matching sector by slug
+    const sectorsResponse = await payload.find({
+      collection: 'settori',
       limit: 100,
-      sort: '-createdAt',
-      where: {
-        settore: {
-          equals: sector.id,
-        },
-      },
       overrideAccess: true,
     })
-    books = booksResponse.docs || []
+    
+    const sector = sectorsResponse.docs.find(
+      (s: any) => s.nome.toLowerCase().replace(/\s+/g, '-') === slug
+    )
+    
+    if (sector) {
+      sectorName = sector.nome
+      // 2. Fetch all books in this sector
+      const booksResponse = await payload.find({
+        collection: 'libri',
+        depth: 2,
+        limit: 100,
+        sort: '-createdAt',
+        where: {
+          settore: {
+            equals: sector.id,
+          },
+        },
+        overrideAccess: true,
+      })
+      books = booksResponse.docs || []
+    }
+  } catch (error) {
+    console.error('Error fetching data in sector page:', error)
   }
 
   return (
