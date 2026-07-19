@@ -5,10 +5,8 @@ import { headers as getHeaders } from 'next/headers'
 import config from '@/payload.config'
 
 import { BookCarousel } from '@/components/BookCarousel'
-import { mockBooks } from '@/components/mockBooks'
 import { BachecaGrid } from '@/components/BachecaGrid'
 import { CATEGORIES } from '@/lib/categories'
-import { seedDatabase } from '@/lib/seed'
 import { DeliveryCard } from '@/components/DeliveryCard'
 
 export const metadata = {
@@ -62,9 +60,6 @@ export default async function HomePage() {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
 
-  // Seed mock database if empty
-  await seedDatabase(payload)
-
   // 1. Fetch general newest books (overall newest, limit to 100)
   let dbBooks: any[] = []
   try {
@@ -80,10 +75,7 @@ export default async function HomePage() {
     console.error('Error fetching books from Payload:', error)
   }
 
-  // Combine database books with mock books for general carousel fallback
-  const displayBooks = dbBooks.length > 0
-    ? [...dbBooks, ...mockBooks.filter(mb => !dbBooks.some(db => db.titolo === mb.titolo))]
-    : mockBooks
+  const displayBooks = dbBooks
 
   // 2. Fetch specific sector carousels (max 20 books, sorted newest first)
   const concorsiBooks = await getBooksBySector(payload, CATEGORIES.CONCORSI)

@@ -3,7 +3,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { getPayload } from 'payload'
 import config from '@/payload.config'
-import { mockBooks } from '@/components/mockBooks'
 
 interface PageProps {
   params: Promise<{
@@ -24,10 +23,7 @@ export async function generateMetadata({ params }: PageProps) {
       overrideAccess: true,
     })
   } catch (error) {
-    const numericId = parseInt(id, 10)
-    if (!isNaN(numericId)) {
-      book = mockBooks.find((mb) => mb.id === numericId)
-    }
+    console.error('Error fetching book metadata:', error)
   }
 
   return {
@@ -49,10 +45,7 @@ export default async function BookDetailPage({ params }: PageProps) {
       overrideAccess: true,
     })
   } catch (error) {
-    const numericId = parseInt(id, 10)
-    if (!isNaN(numericId)) {
-      book = mockBooks.find((mb) => mb.id === numericId)
-    }
+    console.error('Error fetching book details:', error)
   }
 
   if (!book) {
