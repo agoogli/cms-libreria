@@ -13,6 +13,7 @@ import { UtentiRegistrati } from './collections/UtentiRegistrati'
 import { OffertaSpeciale } from './globals/OffertaSpeciale'
 import { en } from '@payloadcms/translations/languages/en'
 import { it } from '@payloadcms/translations/languages/it'
+import { migrations } from './migrations'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -44,6 +45,12 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URL || '',
     },
+    push: false,
+    prodMigrations:
+      process.env.NODE_ENV === 'production' &&
+      process.env.NEXT_PHASE !== 'phase-production-build'
+        ? migrations
+        : undefined,
   }),
   sharp,
   plugins: [],
