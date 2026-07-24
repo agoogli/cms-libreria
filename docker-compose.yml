@@ -11,6 +11,7 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
   payloadcms:
     image: ghcr.io/agoogli/cms-libreria:latest
     container_name: cms-libreria-app
@@ -21,7 +22,11 @@ services:
       PORT: 3000
     ports:
       - "3000:3000"
+    volumes:
+      - payload_media:/app/media
     depends_on:
       - db
+
 volumes:
   postgres_data:
+  payload_media:
