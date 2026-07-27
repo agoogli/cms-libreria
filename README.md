@@ -148,3 +148,13 @@ C. Comandi utili per la gestione
 Visualizzare i log: podman-compose logs -f
 Controllare lo stato dei container: podman ps -a
 Arrestare i container: podman-compose down
+
+### Caricamento anagrafica editori in ambiente produzione
+
+```
+podman cp editori.csv cms-libreria-app:/app/editori.csv
+```
+
+```
+podman exec -it cms-libreria-app npx tsx src/scripts/import-editori.ts /app/editori.csv
+```
