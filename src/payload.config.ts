@@ -10,6 +10,7 @@ import { Media } from './collections/Media'
 import { Settori } from './collections/Settori'
 import { Libri } from './collections/Libri'
 import { UtentiRegistrati } from './collections/UtentiRegistrati'
+import { Editori } from './collections/Editori'
 import { OffertaSpeciale } from './globals/OffertaSpeciale'
 import { en } from '@payloadcms/translations/languages/en'
 import { it } from '@payloadcms/translations/languages/it'
@@ -34,7 +35,7 @@ export default buildConfig({
     supportedLanguages: { en, it },
     fallbackLanguage: 'it',
   },
-  collections: [Utenti, Media, Settori, Libri, UtentiRegistrati],
+  collections: [Utenti, Media, Settori, Libri, UtentiRegistrati, Editori],
   globals: [OffertaSpeciale],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
@@ -45,7 +46,7 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URL || '',
     },
-    push: false,
+    push: process.env.NODE_ENV !== 'production',
     prodMigrations:
       process.env.NODE_ENV === 'production' &&
       process.env.NEXT_PHASE !== 'phase-production-build'

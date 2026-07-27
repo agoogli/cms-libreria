@@ -72,6 +72,7 @@ export interface Config {
     settori: Settore;
     libri: Libro;
     'utenti-registrati': UtenteRegistrato;
+    editori: Editore;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -84,6 +85,7 @@ export interface Config {
     settori: SettoriSelect<false> | SettoriSelect<true>;
     libri: LibriSelect<false> | LibriSelect<true>;
     'utenti-registrati': UtentiRegistratiSelect<false> | UtentiRegistratiSelect<true>;
+    editori: EditoriSelect<false> | EditoriSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -191,12 +193,22 @@ export interface Libro {
   autore?: string | null;
   prezzo: number;
   prezzoScontato?: number | null;
-  editore: string;
+  editore?: (number | null) | Editore;
   ean?: string | null;
   settore?: (number | null) | Settore;
   annoPubblicazione?: number | null;
   imgCopertina?: (number | null) | Media;
   descrizione?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "editori".
+ */
+export interface Editore {
+  id: number;
+  nome: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -259,6 +271,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'utenti-registrati';
         value: number | UtenteRegistrato;
+      } | null)
+    | ({
+        relationTo: 'editori';
+        value: number | Editore;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -381,6 +397,15 @@ export interface UtentiRegistratiSelect<T extends boolean = true> {
   scuola?: T;
   classe?: T;
   sezione?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "editori_select".
+ */
+export interface EditoriSelect<T extends boolean = true> {
+  nome?: T;
   updatedAt?: T;
   createdAt?: T;
 }

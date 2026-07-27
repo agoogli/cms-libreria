@@ -90,6 +90,16 @@ export default async function BookDetailPage({ params }: PageProps) {
     ? (book.settore as any).nome
     : 'Novità'
 
+  // Editore name resolution (whether editore is a populated relationship object or a legacy string)
+  let editoreName: string | null = null
+  if (book.editore) {
+    if (typeof book.editore === 'object' && book.editore.nome) {
+      editoreName = book.editore.nome
+    } else if (typeof book.editore === 'string') {
+      editoreName = book.editore
+    }
+  }
+
   return (
     <div className="w-full lg:w-[60%] mx-auto px-4 pt-3 pb-2 flex flex-col gap-3">
       {/* Back button */}
@@ -147,9 +157,9 @@ export default async function BookDetailPage({ params }: PageProps) {
                 di <span className="text-zinc-900">{book.autore}</span>
               </p>
             )}
-            {book.editore && (
+            {editoreName && (
               <p className="text-xs font-sans text-zinc-500 mt-0.5">
-                Editore: <span className="font-semibold text-zinc-700">{book.editore}</span>
+                Editore: <span className="font-semibold text-zinc-700">{editoreName}</span>
               </p>
             )}
 

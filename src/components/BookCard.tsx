@@ -6,7 +6,7 @@ export interface BookCardProps {
     id: number | string
     titolo: string
     autore?: string | null
-    editore?: string | null
+    editore?: { nome?: string | null } | string | null
     prezzo: number
     prezzoScontato?: number | null
     imgCopertina?: {
@@ -17,6 +17,16 @@ export interface BookCardProps {
 }
 
 export function BookCard({ book }: BookCardProps) {
+  // Resolve editore name whether editore is a populated object or a raw string
+  let editoreNome: string | null = null
+  if (book.editore) {
+    if (typeof book.editore === 'object' && book.editore.nome) {
+      editoreNome = book.editore.nome
+    } else if (typeof book.editore === 'string') {
+      editoreNome = book.editore
+    }
+  }
+
   // Resolve image url and alt text from Payload Media object or mock object
   let imageUrl: string | null = null
   let imageAlt = book.titolo
@@ -89,7 +99,7 @@ export function BookCard({ book }: BookCardProps) {
         </h3>
         <p className="text-[11px] sm:text-xs text-zinc-500 mt-0.5 line-clamp-2 font-sans font-normal">
           {book.autore || 'Autori vari'}
-          {book.editore ? ` - ${book.editore}` : ''}
+          {editoreNome ? ` - ${editoreNome}` : ''}
         </p>
         <div className="mt-auto flex items-center justify-between border-t border-zinc-100/80 pt-1.5">
           {formattedDiscountPrice ? (

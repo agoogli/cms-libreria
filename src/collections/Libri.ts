@@ -45,8 +45,9 @@ export const Libri: CollectionConfig = {
     },
     {
       name: 'editore',
-      type: 'text',
-      required: true,
+      type: 'relationship',
+      relationTo: 'editori',
+      required: false,
     },
     {
       name: 'ean',
