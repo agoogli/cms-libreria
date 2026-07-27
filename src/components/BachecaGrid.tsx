@@ -469,14 +469,14 @@ export function BachecaGrid() {
                         {offerta.immagini.map((src, idx) => (
                           <div
                             key={idx}
-                            className="relative h-24 aspect-[3/4] rounded shadow-sm border border-zinc-200/60 overflow-hidden shrink-0 bg-white w-[72px]"
+                            className="relative h-24 aspect-[3/4] bg-transparent shrink-0 w-[72px] flex items-center justify-center filter drop-shadow-[0_3px_6px_rgba(0,0,0,0.14)]"
                           >
                             <Image
                               src={src}
                               alt={`Copertina ${idx + 1}`}
                               fill
                               sizes="72px"
-                              className="object-cover"
+                              className="object-contain object-center rounded-[2px]"
                             />
                           </div>
                         ))}

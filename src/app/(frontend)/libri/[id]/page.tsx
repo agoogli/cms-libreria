@@ -111,9 +111,9 @@ export default async function BookDetailPage({ params }: PageProps) {
       <div className="flex flex-col md:flex-row gap-8 bg-white border border-zinc-200/80 rounded-xl p-6 shadow-md mt-1">
         {/* Cover Column */}
         <div className="w-full md:w-1/3 flex flex-col items-center">
-          <div className="relative aspect-[3/4] w-full max-w-[200px] rounded-lg overflow-hidden bg-zinc-100 shadow-md border border-zinc-200/60 select-none">
+          <div className="relative aspect-[3/4] w-full max-w-[200px] bg-transparent select-none flex items-center justify-center filter drop-shadow-[0_6px_14px_rgba(0,0,0,0.16)]">
             {formattedDiscountPrice && (
-              <div className="absolute top-2 right-2 bg-orange-600 text-white text-[10px] font-bold w-6 h-6 rounded-full flex items-center justify-center z-20 font-sans shadow-sm animate-pulse">
+              <div className="absolute -top-1 -right-1 bg-orange-600 text-white text-[10px] font-bold w-6 h-6 rounded-full flex items-center justify-center z-20 font-sans shadow-sm animate-pulse">
                 %
               </div>
             )}
@@ -123,11 +123,11 @@ export default async function BookDetailPage({ params }: PageProps) {
                 alt={imageAlt}
                 fill
                 sizes="(max-width: 768px) 100vw, 200px"
-                className="object-cover"
+                className="object-contain object-center rounded-[2px]"
                 priority
               />
             ) : (
-              <div className="absolute inset-0 bg-gradient-to-br from-zinc-800 via-zinc-900 to-black flex flex-col justify-between p-4 text-center border-l-4 border-orange-500">
+              <div className="absolute inset-0 rounded-[2px] overflow-hidden bg-gradient-to-br from-zinc-800 via-zinc-900 to-black flex flex-col justify-between p-4 text-center border-l-4 border-orange-500 shadow-sm">
                 <span className="text-[10px] uppercase tracking-widest text-zinc-500 font-sans mt-1">
                   {book.autore || 'Autore Sconosciuto'}
                 </span>
@@ -139,7 +139,6 @@ export default async function BookDetailPage({ params }: PageProps) {
                 </span>
               </div>
             )}
-            <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-white/10 via-transparent to-black/10" />
           </div>
         </div>
 

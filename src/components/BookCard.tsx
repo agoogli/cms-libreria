@@ -54,11 +54,11 @@ export function BookCard({ book }: BookCardProps) {
       title={book.titolo}
       className="group cursor-pointer flex flex-col h-full select-none bg-white p-4 rounded-lg border border-zinc-200/80 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 ease-out font-sans"
     >
-      {/* Book Cover Container - padded wrapper to reduce cover proportions by 40% */}
+      {/* Book Cover Container - transparent wrapper with soft natural drop shadow */}
       <div className="px-5 py-2.5">
-        <div className="relative aspect-[3/4] w-full rounded-md overflow-hidden bg-zinc-100 shadow-sm border border-zinc-200/60">
+        <div className="relative aspect-[3/4] w-full bg-transparent flex items-center justify-center filter drop-shadow-[0_4px_6px_rgba(0,0,0,0.12)] group-hover:drop-shadow-[0_8px_12px_rgba(0,0,0,0.18)] transition-all duration-300">
           {formattedDiscountPrice && (
-            <div className="absolute top-2 right-2 bg-orange-600 text-white text-[10px] font-bold w-6 h-6 rounded-full flex items-center justify-center z-20 font-sans shadow-sm">
+            <div className="absolute -top-1 -right-1 bg-orange-600 text-white text-[10px] font-bold w-6 h-6 rounded-full flex items-center justify-center z-20 font-sans shadow-sm">
               %
             </div>
           )}
@@ -68,13 +68,13 @@ export function BookCard({ book }: BookCardProps) {
               alt={imageAlt}
               fill
               sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 10vw"
-              className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+              className="object-contain object-center group-hover:scale-105 transition-transform duration-500 ease-out rounded-[2px]"
               priority={false}
               draggable={false}
             />
           ) : (
             /* Fallback Cover: Elegant gradient with initials for books without images */
-            <div className="absolute inset-0 bg-gradient-to-br from-zinc-800 via-zinc-900 to-black flex flex-col justify-between p-2.5 text-center border-l-4 border-orange-500">
+            <div className="absolute inset-0 rounded-[2px] overflow-hidden bg-gradient-to-br from-zinc-800 via-zinc-900 to-black flex flex-col justify-between p-2.5 text-center border-l-4 border-orange-500 shadow-sm">
               <div className="text-[9px] uppercase tracking-widest text-zinc-500 font-sans mt-1">
                 {book.autore || 'Autore Sconosciuto'}
               </div>
@@ -86,9 +86,6 @@ export function BookCard({ book }: BookCardProps) {
               </div>
             </div>
           )}
-
-          {/* Decorative Overlay for realistic book spine reflection */}
-          <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-white/10 via-transparent to-black/10" />
         </div>
       </div>
 
