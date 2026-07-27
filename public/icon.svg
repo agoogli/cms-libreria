@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f97316"/>
+      <stop offset="100%" stop-color="#c2410c"/>
+    </linearGradient>
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+
+  <!-- High-contrast rounded square app icon background -->
+  <rect width="512" height="512" rx="112" fill="url(#orangeGrad)"/>
+
+  <!-- Main Open Book Symbol with Bookmark -->
+  <g filter="url(#dropShadow)" transform="translate(0, 4)">
+    <!-- Book Back shadow/glow -->
+    <path d="M256 384c-42-20-96-20-144 0V168c48-20 102-20 144 0 42-20 96-20 144 0v216c-48-20-102-20-144 0z" fill="#ffffff" opacity="0.2"/>
+    
+    <!-- Left Page -->
+    <path d="M246 370c-40-18-90-18-134 0V158c44-18 94-18 134 0v212z" fill="#ffffff"/>
+    
+    <!-- Right Page -->
+    <path d="M266 370c40-18 90-18 134 0V158c-44-18-94-18-134 0v212z" fill="#ffffff"/>
+
+    <!-- Central Fold shadow -->
+    <path d="M250 162c4 40 4 170 0 206h12c-4-36-4-166 0-206h-12z" fill="#ea580c" opacity="0.25"/>
+
+    <!-- Golden Bookmark Ribbon -->
+    <path d="M246 146h20v196l-10-10-10 10V146z" fill="#fef08a"/>
+  </g>
+</svg>

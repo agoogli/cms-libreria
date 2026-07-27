@@ -14,8 +14,14 @@ const inter = Inter({
 })
 
 export const metadata = {
-  description: 'Libreria Antigravità - Libri scolastici, universitari, concorsi e professionali a Messina',
-  title: 'Libreria Antigravità',
+  title: 'Libreria Nunnari & Sfameni - Messina dal 1932',
+  description: 'Libri scolastici nuovi e usati, universitari, concorsi e testi professionali a Messina.',
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    apple: '/icon.svg',
+  },
 }
 
 export default async function RootLayout(props: { children: React.ReactNode }) {

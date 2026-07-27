@@ -125,7 +125,7 @@ export default async function BookDetailPage({ params }: PageProps) {
                   {book.titolo}
                 </span>
                 <span className="text-[8px] uppercase tracking-widest text-orange-500/80 font-sans mb-1">
-                  Antigravità
+                  Libreria Nunnari
                 </span>
               </div>
             )}

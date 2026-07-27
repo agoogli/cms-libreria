@@ -43,7 +43,7 @@ export function Header({ settori = [] }: { settori?: Settore[] }) {
           <Link href="/" className="flex items-center select-none">
             <Image
               src="/assets/logo.png"
-              alt="Libreria Antigravità"
+              alt="Libreria Nunnari & Sfameni"
               width={180}
               height={50}
               className="h-8 w-auto object-contain"
@@ -144,7 +144,7 @@ export function Header({ settori = [] }: { settori?: Settore[] }) {
                         <span>{link.name}</span>
                         <ChevronDown className={`w-4 h-4 text-zinc-500 transition-transform duration-300 ${mobileDropdownOpen ? 'rotate-180 text-orange-600' : ''}`} />
                       </button>
-                      
+
                       {mobileDropdownOpen && (
                         <div className="flex flex-col pl-4 gap-1 py-1 animate-in fade-in slide-in-from-top-1 duration-200">
                           {settori.map((settore) => {

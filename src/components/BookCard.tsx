@@ -34,9 +34,9 @@ export function BookCard({ book }: BookCardProps) {
 
   const formattedDiscountPrice = book.prezzoScontato !== undefined && book.prezzoScontato !== null
     ? new Intl.NumberFormat('it-IT', {
-        style: 'currency',
-        currency: 'EUR',
-      }).format(book.prezzoScontato)
+      style: 'currency',
+      currency: 'EUR',
+    }).format(book.prezzoScontato)
     : null
 
   return (
@@ -72,11 +72,11 @@ export function BookCard({ book }: BookCardProps) {
                 {book.titolo}
               </div>
               <div className="text-[8px] uppercase tracking-widest text-orange-500/80 font-sans mb-1">
-                Antigravità
+                Nunnari
               </div>
             </div>
           )}
-          
+
           {/* Decorative Overlay for realistic book spine reflection */}
           <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-white/10 via-transparent to-black/10" />
         </div>

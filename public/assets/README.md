@@ -1,4 +1,4 @@
-# Cartella Asset Statici (Libreria Antigravità)
+# Cartella Asset Statici (Libreria Nunnari)
 
 Inserisci in questa directory tutti gli asset statici del sito, come il logo, icone o immagini locali.
 
