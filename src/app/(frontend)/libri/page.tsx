@@ -22,7 +22,7 @@ export default async function LibriPage() {
       collection: 'libri',
       depth: 2,
       limit: 100,
-      sort: '-createdAt',
+      sort: '-updatedAt',
       overrideAccess: true,
     })
     

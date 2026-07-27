@@ -22,6 +22,17 @@ export const Editori: CollectionConfig = {
       type: 'text',
       required: true,
       unique: true,
+      hooks: {
+        beforeChange: [
+          ({ value }) => {
+            if (typeof value === 'string' && value.trim().length > 0) {
+              const trimmed = value.trim()
+              return trimmed.charAt(0).toUpperCase() + trimmed.slice(1).toLowerCase()
+            }
+            return value
+          },
+        ],
+      },
     },
   ],
 }

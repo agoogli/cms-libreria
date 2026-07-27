@@ -43,7 +43,7 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
         collection: 'libri',
         depth: 2,
         limit: 100,
-        sort: '-createdAt',
+        sort: '-updatedAt',
         where: {
           settore: {
             equals: sector.id,

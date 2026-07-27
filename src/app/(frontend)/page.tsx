@@ -37,7 +37,7 @@ async function getBooksBySector(payload: any, sectorName: string) {
       collection: 'libri',
       depth: 2,
       limit: 20, // Max 20 books per carousel
-      sort: '-createdAt', // Sort from newest to oldest
+      sort: '-updatedAt', // Sort from newest to oldest
       where: {
         settore: {
           equals: sectorId,
@@ -67,7 +67,7 @@ export default async function HomePage() {
       collection: 'libri',
       depth: 2,
       limit: 100, // Limit general carousel to 100 books
-      sort: '-createdAt',
+      sort: '-updatedAt',
       overrideAccess: true,
     })
     dbBooks = response.docs || []

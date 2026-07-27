@@ -21,10 +21,36 @@ export const Libri: CollectionConfig = {
       name: 'titolo',
       type: 'text',
       required: true,
+      hooks: {
+        beforeChange: [
+          ({ value }) => {
+            if (typeof value === 'string' && value.trim().length > 0) {
+              const trimmed = value.trim()
+              return trimmed.charAt(0).toUpperCase() + trimmed.slice(1).toLowerCase()
+            }
+            return value
+          },
+        ],
+      },
     },
     {
       name: 'autore',
       type: 'text',
+      hooks: {
+        beforeChange: [
+          ({ value }) => {
+            if (typeof value === 'string' && value.trim().length > 0) {
+              return value
+                .trim()
+                .toLowerCase()
+                .split(/\s+/)
+                .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(' ')
+            }
+            return value
+          },
+        ],
+      },
     },
     {
       name: 'prezzo',
