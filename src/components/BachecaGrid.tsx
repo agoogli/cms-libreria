@@ -41,7 +41,6 @@ export function BachecaGrid() {
   })
 
   const [coverIndex, setCoverIndex] = useState(0)
-
   const [isLoading, setIsLoading] = useState(true)
 
   // Fetch offerta-speciale global client-side
@@ -118,7 +117,7 @@ export function BachecaGrid() {
     return () => clearInterval(interval)
   }, [])
 
-  // Timer for the Card 5 slideshow (transitions every 3 seconds)
+  // Timer for the Negozio slideshow (transitions every 3 seconds)
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slideshowImages.length)
@@ -185,49 +184,10 @@ export function BachecaGrid() {
         >
           <CarouselContent className="bacheca-grid-container -ml-2 sm:-ml-3 touch-pan-y select-none md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-3 md:ml-0 md:overflow-visible">
 
-            {/* Column 1: Row 1 Card 5 (Slideshow) & Row 2 Card 1 (Libri scolastici) */}
+            {/* Column 1: Row 1 = Card 1 (Scuola), Row 2 = Card 4 (LybroApp) */}
             <CarouselItem className="pl-2 sm:pl-3 basis-[80%] select-none flex flex-col gap-2 md:pl-0 md:basis-auto md:w-auto md:gap-3">
-              {/* Card 5: Slideshow (La Libreria) */}
-              <Link
-                href="/la-libreria"
-                className={`group relative flex flex-col justify-between h-52 bg-[#363537] rounded-xl overflow-hidden shadow-md border border-zinc-700/60 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:200ms] block cursor-pointer ${animatedCard === 4 ? 'animate-bacheca-card' : ''
-                  }`}
-              >
-                {/* Automatic slideshow images from assets with object-contain */}
-                {slideshowImages.map((src, index) => (
-                  <Image
-                    key={src}
-                    src={src}
-                    alt={`Libreria Slide ${index + 1}`}
-                    fill
-                    sizes="(max-width: 768px) 50vw, 30vw"
-                    className={`object-contain transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100 z-0' : 'opacity-0'
-                      }`}
-                  />
-                ))}
-                {/* Subtle bottom gradient overlay for readability of footer text without opacifying the image */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10" />
-
-                {/* Dots Indicator */}
-                <div className="absolute top-4 right-4 z-20 flex gap-1">
-                  {slideshowImages.map((_, index) => (
-                    <div
-                      key={index}
-                      className={`w-1.5 h-1.5 rounded-full transition-colors duration-300 ${index === currentSlide ? 'bg-orange-500' : 'bg-white/40'
-                        }`}
-                    />
-                  ))}
-                </div>
-
-                {/* Only footer text remaining */}
-                <div className="relative z-20 p-5 h-full flex flex-col justify-end text-white">
-                  <span className="text-xs uppercase tracking-widest text-center text-zinc-100 drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)] font-sans">
-                    a Messina dal 1932
-                  </span>
-                </div>
-              </Link>
-
-              {/* Card 1: Libri scolastici nuovi e usati (Orange Gradient) */}
+              
+              {/* Row 1, Col 1 (Card 1): "Scuola" (Libri scolastici nuovi e usati - Orange Gradient) */}
               <div
                 className={`group relative flex flex-col justify-between h-52 bg-gradient-to-br from-orange-500 to-amber-500 text-white rounded-xl p-6 shadow-md border border-orange-400/20 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 ${animatedCard === 0 ? 'animate-bacheca-card' : ''
                   }`}
@@ -261,13 +221,9 @@ export function BachecaGrid() {
                 </div>
               </div>
 
-            </CarouselItem>
-
-            {/* Column 2: Row 1 Card 2 (LybroApp) & Row 2 Card 3 (Carta Cultura) */}
-            <CarouselItem className="pl-2 sm:pl-3 basis-[80%] select-none flex flex-col gap-2 md:pl-0 md:basis-auto md:w-auto md:gap-3">
-              {/* Card 2: LybroApp (Cream background matching Kit card, top-right logo, description in body, link in footer) */}
+              {/* Row 2, Col 1 (Card 4): "LybroApp" (Scaricala subito - Cream/Amber) */}
               <div
-                className={`group relative flex flex-col justify-between h-52 bg-amber-50/80 text-zinc-800 rounded-xl p-6 shadow-md border border-amber-200/60 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:50ms] ${animatedCard === 1 ? 'animate-bacheca-card' : ''
+                className={`group relative flex flex-col justify-between h-52 bg-amber-50/80 text-zinc-800 rounded-xl p-6 shadow-md border border-amber-200/60 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:150ms] ${animatedCard === 3 ? 'animate-bacheca-card' : ''
                   }`}
               >
                 <div className="absolute -top-12 -right-12 w-24 h-24 bg-orange-500/5 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500" />
@@ -293,7 +249,7 @@ export function BachecaGrid() {
                   </div>
                 </div>
 
-                {/* Description in the center (text-xs size) */}
+                {/* Description & Link */}
                 <div className="flex-grow flex items-center my-2">
                   <p className="text-xs text-zinc-600 leading-normal font-sans">
                     Da oggi puoi seguire lo stato dei tuoi ordini con la nostra applicazione per Android e Apple con LybroApp.{' '}
@@ -307,7 +263,125 @@ export function BachecaGrid() {
                 </div>
               </div>
 
-              {/* Card 3: Carta Cultura 2026 (Azure Background, White Title) */}
+            </CarouselItem>
+
+            {/* Column 2: Row 1 = Card 2 (Slideshow Negozio), Row 2 = Card 5 (Offerta Speciale) */}
+            <CarouselItem className="pl-2 sm:pl-3 basis-[80%] select-none flex flex-col gap-2 md:pl-0 md:basis-auto md:w-auto md:gap-3">
+              
+              {/* Row 1, Col 2 (Card 2): Carosello immagini negozio ("A Messina dal 1932") */}
+              <Link
+                href="/la-libreria"
+                className={`group relative flex flex-col justify-between h-52 bg-[#363537] rounded-xl overflow-hidden shadow-md border border-zinc-700/60 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:50ms] block cursor-pointer ${animatedCard === 1 ? 'animate-bacheca-card' : ''
+                  }`}
+              >
+                {/* Automatic slideshow images from assets */}
+                {slideshowImages.map((src, index) => (
+                  <Image
+                    key={src}
+                    src={src}
+                    alt={`Libreria Slide ${index + 1}`}
+                    fill
+                    sizes="(max-width: 768px) 50vw, 30vw"
+                    className={`object-contain transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100 z-0' : 'opacity-0'
+                      }`}
+                  />
+                ))}
+                {/* Bottom gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10" />
+
+                {/* Dots Indicator */}
+                <div className="absolute top-4 right-4 z-20 flex gap-1">
+                  {slideshowImages.map((_, index) => (
+                    <div
+                      key={index}
+                      className={`w-1.5 h-1.5 rounded-full transition-colors duration-300 ${index === currentSlide ? 'bg-orange-500' : 'bg-white/40'
+                        }`}
+                    />
+                  ))}
+                </div>
+
+                {/* Footer text */}
+                <div className="relative z-20 p-5 h-full flex flex-col justify-end text-white">
+                  <span className="text-xs uppercase tracking-widest text-center text-zinc-100 drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)] font-sans">
+                    a Messina dal 1932
+                  </span>
+                </div>
+              </Link>
+
+              {/* Row 2, Col 2 (Card 5): Card Custom Offerta Speciale (Link to /offerta-speciale) */}
+              <Link
+                href="/offerta-speciale"
+                className={`group relative flex flex-col justify-between h-52 bg-amber-50/80 text-zinc-800 rounded-xl p-6 shadow-md border border-amber-200/60 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:200ms] block cursor-pointer ${animatedCard === 4 ? 'animate-bacheca-card' : ''
+                  }`}
+              >
+                <div className="absolute -top-12 -right-12 w-24 h-24 bg-orange-500/5 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500" />
+
+                {isLoading ? (
+                  <div className="flex-grow flex items-center justify-center h-full w-full">
+                    <div className="animate-spin rounded-full h-8 w-8 border-2 border-orange-500 border-t-transparent" />
+                  </div>
+                ) : (
+                  <div className="relative z-10 min-w-0 flex flex-col h-full justify-between">
+                    <div className="flex justify-between items-start w-full">
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center justify-between pr-2">
+                          <span className="text-xs uppercase tracking-widest text-orange-500 font-sans font-semibold">
+                            {offerta.titolo}
+                          </span>
+                          <span className="text-xs font-bold text-orange-600 hover:text-orange-700 transition-colors font-sans">
+                            Scopri &gt;
+                          </span>
+                        </div>
+                        <h3 className="font-sans text-sm sm:text-base font-bold leading-snug text-orange-500 mt-1 pr-4" title={offerta.sottotitolo}>
+                          {offerta.sottotitolo}
+                        </h3>
+                      </div>
+                      <div className="w-8 h-8 select-none shrink-0 ml-2">
+                        <img
+                          src="/assets/offerta.png"
+                          alt="Icona Offerta"
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Horizontal scrolling cover carousel */}
+                    <div className="relative w-full overflow-hidden mt-auto py-1">
+                      <div
+                        className="flex gap-2.5 transition-transform duration-500 ease-in-out offerta-carousel-track"
+                        style={
+                          {
+                            '--mobile-translate': `-${coverIndex * (72 + 10)}px`,
+                            '--desktop-translate': `-${coverIndex * (72 + 10)}px`,
+                          } as React.CSSProperties
+                        }
+                      >
+                        {offerta.immagini.map((src, idx) => (
+                          <div
+                            key={idx}
+                            className="relative h-24 aspect-[3/4] bg-transparent shrink-0 w-[72px] flex items-center justify-center filter drop-shadow-[0_3px_6px_rgba(0,0,0,0.14)]"
+                          >
+                            <Image
+                              src={src}
+                              alt={`Copertina ${idx + 1}`}
+                              fill
+                              sizes="72px"
+                              className="object-contain object-center rounded-[2px]"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </Link>
+
+            </CarouselItem>
+
+            {/* Column 3: Row 1 = Card 3 (Bonus), Row 2 = Card 6 (Community) */}
+            <CarouselItem className="pl-2 sm:pl-3 basis-[80%] select-none flex flex-col gap-2 md:pl-0 md:basis-auto md:w-auto md:gap-3">
+              
+              {/* Row 1, Col 3 (Card 3): "Bonus" (Carte cultura 2026 e carta docente - Azure) */}
               <div
                 className={`group relative flex flex-col justify-between h-52 bg-[#007fff] text-white rounded-xl p-6 shadow-md border border-blue-400/20 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:100ms] ${animatedCard === 2 ? 'animate-bacheca-card' : ''
                   }`}
@@ -326,14 +400,14 @@ export function BachecaGrid() {
                       <div className="text-xs uppercase tracking-widest text-blue-100 font-sans font-semibold">
                         Bonus
                       </div>
-                      <h3 className="font-sans text-sm sm:text-base font-bold leading-snug text-white mt-1 pr-4" title="Carta Cultura 2026">
+                      <h3 className="font-sans text-sm sm:text-base font-bold leading-snug text-white mt-1 pr-4" title="Carte cultura 2026 e carta docente">
                         Carte cultura 2026 e carta docente
                       </h3>
                     </div>
                     <div className="relative w-8 h-8 select-none shrink-0 ml-2">
                       <Image
                         src="/assets/smartphone.png"
-                        alt="Icona Scuola"
+                        alt="Icona Bonus"
                         fill
                         sizes="32px"
                         className="object-contain"
@@ -354,13 +428,10 @@ export function BachecaGrid() {
                   </div>
                 </div>
               </div>
-            </CarouselItem>
 
-            {/* Column 3: Row 1 Card 4 (Social Connect) & Row 2 Card 6 (Offerta Kit) */}
-            <CarouselItem className="pl-2 sm:pl-3 basis-[80%] select-none flex flex-col gap-2 md:pl-0 md:basis-auto md:w-auto md:gap-3">
-              {/* Card 4: Social Connect (Facebook & Instagram in Azure style) */}
+              {/* Row 2, Col 3 (Card 6): "Community" (Seguici sui Social - Facebook & Instagram) */}
               <div
-                className={`group relative flex flex-col justify-between h-52 bg-[#007fff] text-white rounded-xl p-6 shadow-md border border-blue-400/20 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:150ms] ${animatedCard === 3 ? 'animate-bacheca-card' : ''
+                className={`group relative flex flex-col justify-between h-52 bg-[#007fff] text-white rounded-xl p-6 shadow-md border border-blue-400/20 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:250ms] ${animatedCard === 5 ? 'animate-bacheca-card' : ''
                   }`}
               >
                 <div className="absolute -top-12 -right-12 w-24 h-24 bg-white/10 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500" />
@@ -425,66 +496,6 @@ export function BachecaGrid() {
                 </div>
               </div>
 
-              {/* Card 6: Offerta Kit (Warm Cream / Promotion) */}
-              <div
-                className={`group relative flex flex-col justify-between h-52 bg-amber-50/80 text-zinc-800 rounded-xl p-6 shadow-md border border-amber-200/60 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:250ms] ${animatedCard === 5 ? 'animate-bacheca-card' : ''
-                  }`}
-              >
-                <div className="absolute -top-12 -right-12 w-24 h-24 bg-orange-500/5 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500" />
-
-                {isLoading ? (
-                  <div className="flex-grow flex items-center justify-center h-full w-full">
-                    <div className="animate-spin rounded-full h-8 w-8 border-2 border-orange-500 border-t-transparent" />
-                  </div>
-                ) : (
-                  <div className="relative z-10 min-w-0 flex flex-col h-full justify-between">
-                    <div className="flex justify-between items-start w-full">
-                      <div className="min-w-0 flex-1">
-                        <div className="text-xs uppercase tracking-widest text-orange-500 font-sans font-semibold">
-                          {offerta.titolo}
-                        </div>
-                        <h3 className="font-sans text-sm sm:text-base font-bold leading-snug text-orange-500 mt-2 pr-4" title={offerta.sottotitolo}>
-                          {offerta.sottotitolo}
-                        </h3>
-                      </div>
-                      <div className="w-8 h-8 select-none shrink-0 ml-2">
-                        <img
-                          src="/assets/offerta.png"
-                          alt="Icona Offerta"
-                          className="w-full h-full object-contain"
-                        />
-                      </div>
-                    </div>
-                    {/* Horizontal scrolling cover carousel - responsive track */}
-                    <div className="relative w-full overflow-hidden mt-auto py-1">
-                      <div
-                        className="flex gap-2.5 transition-transform duration-500 ease-in-out offerta-carousel-track"
-                        style={
-                          {
-                            '--mobile-translate': `-${coverIndex * (72 + 10)}px`,
-                            '--desktop-translate': `-${coverIndex * (72 + 10)}px`,
-                          } as React.CSSProperties
-                        }
-                      >
-                        {offerta.immagini.map((src, idx) => (
-                          <div
-                            key={idx}
-                            className="relative h-24 aspect-[3/4] bg-transparent shrink-0 w-[72px] flex items-center justify-center filter drop-shadow-[0_3px_6px_rgba(0,0,0,0.14)]"
-                          >
-                            <Image
-                              src={src}
-                              alt={`Copertina ${idx + 1}`}
-                              fill
-                              sizes="72px"
-                              className="object-contain object-center rounded-[2px]"
-                            />
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
             </CarouselItem>
 
           </CarouselContent>
