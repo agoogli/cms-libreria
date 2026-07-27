@@ -110,8 +110,8 @@ export default async function BookDetailPage({ params }: PageProps) {
       {/* Book details card */}
       <div className="flex flex-col md:flex-row gap-8 bg-white border border-zinc-200/80 rounded-xl p-6 shadow-md mt-1">
         {/* Cover Column */}
-        <div className="w-full md:w-1/3 flex flex-col items-center">
-          <div className="relative aspect-[3/4] w-full max-w-[200px] bg-transparent select-none flex items-center justify-center filter drop-shadow-[0_6px_14px_rgba(0,0,0,0.16)]">
+        <div className="w-full md:w-1/3 flex flex-col items-center justify-center">
+          <div className="relative aspect-[3/4] w-full max-w-[200px] md:max-w-[270px] bg-transparent select-none flex items-center justify-center filter drop-shadow-[0_8px_18px_rgba(0,0,0,0.16)]">
             {formattedDiscountPrice && (
               <div className="absolute -top-1 -right-1 bg-orange-600 text-white text-[10px] font-bold w-6 h-6 rounded-full flex items-center justify-center z-20 font-sans shadow-sm animate-pulse">
                 %
@@ -122,7 +122,7 @@ export default async function BookDetailPage({ params }: PageProps) {
                 src={imageUrl}
                 alt={imageAlt}
                 fill
-                sizes="(max-width: 768px) 100vw, 200px"
+                sizes="(max-width: 768px) 200px, 300px"
                 className="object-contain object-center rounded-[2px]"
                 priority
               />
