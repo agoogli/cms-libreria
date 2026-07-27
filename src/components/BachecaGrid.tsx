@@ -29,8 +29,8 @@ export function BachecaGrid() {
     sottotitolo: string
     immagini: string[]
   }>({
-    titolo: 'Offerta Speciale',
-    sottotitolo: 'Kit Lettura Estiva',
+    titolo: 'Novità',
+    sottotitolo: 'Kit Lettura',
     immagini: [
       '/assets/libro.png',
       '/assets/foto-libreria/1.jpg',
@@ -43,14 +43,14 @@ export function BachecaGrid() {
   const [coverIndex, setCoverIndex] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
 
-  // Fetch offerta-speciale global client-side
+  // Fetch novita-in-risalto global client-side
   useEffect(() => {
-    fetch('/api/globals/offerta-speciale')
+    fetch('/api/globals/novita-in-risalto')
       .then((res) => res.json())
       .then((data) => {
         if (data && (data.titolo || data.sottotitolo || (data.immagini && data.immagini.length > 0))) {
-          const titolo = data.titolo || 'Offerta Speciale'
-          const sottotitolo = data.sottotitolo || 'Kit Lettura Estiva'
+          const titolo = data.titolo || 'Novità'
+          const sottotitolo = data.sottotitolo || 'Kit Lettura'
           const immagini =
             data.immagini && data.immagini.length > 0
               ? data.immagini.map((item: any) => item.immagine?.url).filter(Boolean)
@@ -310,7 +310,7 @@ export function BachecaGrid() {
 
               {/* Row 2, Col 2 (Card 5): Card Custom Offerta Speciale (Link to /offerta-speciale) */}
               <Link
-                href="/offerta-speciale"
+                href="/novita-risalto"
                 className={`group relative flex flex-col justify-between h-52 bg-amber-50/80 text-zinc-800 rounded-xl p-6 shadow-md border border-amber-200/60 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:-translate-y-1 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500 [animation-delay:200ms] block cursor-pointer ${animatedCard === 4 ? 'animate-bacheca-card' : ''
                   }`}
               >

@@ -96,10 +96,10 @@ export interface Config {
   };
   fallbackLocale: null;
   globals: {
-    'offerta-speciale': OffertaSpeciale;
+    'novita-in-risalto': NovitaInRisalto;
   };
   globalsSelect: {
-    'offerta-speciale': OffertaSpecialeSelect<false> | OffertaSpecialeSelect<true>;
+    'novita-in-risalto': NovitaInRisaltoSelect<false> | NovitaInRisaltoSelect<true>;
   };
   locale: null;
   widgets: {
@@ -451,11 +451,17 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "offerta-speciale".
+ * via the `definition` "novita-in-risalto".
  */
-export interface OffertaSpeciale {
+export interface NovitaInRisalto {
   id: number;
+  /**
+   * Titolo della card
+   */
   titolo: string;
+  /**
+   * Massimo 18 caratteri
+   */
   sottotitolo: string;
   immagini?:
     | {
@@ -468,9 +474,9 @@ export interface OffertaSpeciale {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "offerta-speciale_select".
+ * via the `definition` "novita-in-risalto_select".
  */
-export interface OffertaSpecialeSelect<T extends boolean = true> {
+export interface NovitaInRisaltoSelect<T extends boolean = true> {
   titolo?: T;
   sottotitolo?: T;
   immagini?:

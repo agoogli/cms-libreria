@@ -36,3 +36,32 @@ label.field-label,
   object-fit: contain !important;
   background-color: transparent !important;
 }
+
+/* Uniform typography & sizing for all sidebar navigation group titles (Registrazioni, Pagine Speciali, Collections, etc.) */
+.nav-group__label,
+.nav-group__toggle,
+[class*="nav-group__label"],
+[class*="navGroup__label"],
+[class*="nav-group__toggle"],
+[class*="navGroup__toggle"] {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  opacity: 0.9 !important;
+}
+
+/* Uniform typography & sizing for all nav links (collections, globals, custom items) */
+.nav-link,
+.nav__link,
+[class*="nav-link"],
+[class*="navLink"],
+[class*="nav__link"],
+aside.nav a {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+}
+

@@ -3,7 +3,7 @@ import React from 'react'
 export default function BeforeNavCustomLink() {
   return (
     <div className="nav-group" style={{ marginBottom: '1.5rem', paddingBottom: '1rem', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-      <div className="nav-group__label" style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '1px', opacity: 0.5, marginBottom: '0.5rem', padding: '0 10px' }}>
+      <div className="nav-group__label" style={{ fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', opacity: 0.9, marginBottom: '0.5rem', padding: '0 10px' }}>
         Registrazioni
       </div>
       <a
@@ -15,8 +15,8 @@ export default function BeforeNavCustomLink() {
           gap: '10px',
           padding: '8px 10px',
           borderRadius: '4px',
-          fontSize: '0.85rem',
-          fontWeight: 600,
+          fontSize: '0.875rem',
+          fontWeight: 500,
           color: 'inherit',
           textDecoration: 'none',
           backgroundColor: 'transparent',
@@ -42,11 +42,11 @@ export default function BeforeNavCustomLink() {
         <span>Utente Registrato</span>
       </a>
 
-      <div className="nav-group__label" style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '1px', opacity: 0.5, marginTop: '1rem', marginBottom: '0.5rem', padding: '0 10px' }}>
+      <div className="nav-group__label" style={{ fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', opacity: 0.9, marginTop: '1.25rem', marginBottom: '0.5rem', padding: '0 10px' }}>
         Pagine Speciali
       </div>
       <a
-        href="/admin/globals/offerta-speciale"
+        href="/admin/globals/novita-in-risalto"
         className="nav-link"
         style={{
           display: 'flex',
@@ -54,8 +54,8 @@ export default function BeforeNavCustomLink() {
           gap: '10px',
           padding: '8px 10px',
           borderRadius: '4px',
-          fontSize: '0.85rem',
-          fontWeight: 600,
+          fontSize: '0.875rem',
+          fontWeight: 500,
           color: 'inherit',
           textDecoration: 'none',
           backgroundColor: 'transparent',
@@ -77,7 +77,7 @@ export default function BeforeNavCustomLink() {
           <line x1="3" y1="9" x2="21" y2="9" />
           <line x1="9" y1="21" x2="9" y2="9" />
         </svg>
-        <span>Offerta Speciale</span>
+        <span>Novità in risalto</span>
       </a>
     </div>
   )

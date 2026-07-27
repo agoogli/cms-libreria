@@ -158,3 +158,15 @@ podman cp editori.csv cms-libreria-app:/app/editori.csv
 ```
 podman exec -it cms-libreria-app npx tsx src/scripts/import-editori.ts /app/editori.csv
 ```
+
+### Backup dump database
+
+```
+podman exec -t cms-libreria-db pg_dump -U cms -d cms_db | gzip > backup_cms_db_$(date +%Y%m%d_%H%M%S).sql.gz
+```
+
+### Ripristino database (emergenza)
+
+```
+gunzip -c backup_cms_db_YYYYMMDD_HHMMSS.sql.gz | podman exec -i cms-libreria-db psql -U cms -d cms_db
+```
