@@ -69,8 +69,8 @@ export function Header({ settori = [] }: { settori?: Settore[] }) {
                   {/* Megamenu Full Width Dropdown */}
                   <div className="absolute top-full left-0 right-0 w-full bg-white border-y border-zinc-200 shadow-xl opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-300 z-50 py-8 px-6">
                     <div className="w-full lg:w-[60%] mx-auto grid grid-cols-4 gap-6 px-4">
-                      {settori.map((settore) => {
-                        const slug = settore.nome.toLowerCase().replace(/\s+/g, '-')
+                      {settori.map((settore: any) => {
+                        const slug = settore.slug || (settore.nome ? settore.nome.toLowerCase().replace(/\s+/g, '-') : '')
                         return (
                           <Link
                             key={settore.id}
@@ -147,8 +147,8 @@ export function Header({ settori = [] }: { settori?: Settore[] }) {
 
                       {mobileDropdownOpen && (
                         <div className="flex flex-col pl-4 gap-1 py-1 animate-in fade-in slide-in-from-top-1 duration-200">
-                          {settori.map((settore) => {
-                            const slug = settore.nome.toLowerCase().replace(/\s+/g, '-')
+                          {settori.map((settore: any) => {
+                            const slug = settore.slug || (settore.nome ? settore.nome.toLowerCase().replace(/\s+/g, '-') : '')
                             return (
                               <Link
                                 key={settore.id}

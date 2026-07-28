@@ -37,7 +37,7 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
     )
     
     if (sector) {
-      sectorName = sector.nome
+      sectorName = sector.nomeVisualizzato || sector.nome
       // 2. Fetch all books in this sector
       const booksResponse = await payload.find({
         collection: 'libri',

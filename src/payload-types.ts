@@ -180,6 +180,14 @@ export interface Media {
 export interface Settore {
   id: number;
   nome: string;
+  /**
+   * Massimo 25 caratteri
+   */
+  nomeVisualizzato: string;
+  /**
+   * Numero intero > 0. Determina l'ordine di apparizione del carosello in homepage. Se non valorizzato, il carosello non apparirà.
+   */
+  ordineVisuale?: number | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -380,6 +388,8 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface SettoriSelect<T extends boolean = true> {
   nome?: T;
+  nomeVisualizzato?: T;
+  ordineVisuale?: T;
   updatedAt?: T;
   createdAt?: T;
 }

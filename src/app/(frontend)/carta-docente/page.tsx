@@ -9,6 +9,19 @@ export const metadata = {
 export default function CartaDocentePage() {
   return (
     <PageWrapper title="Carta del Docente">
+
+      {/* Anticipazione */}
+      <section className="bg-white p-5 rounded-xl border border-zinc-200/80 shadow-sm">
+        <h3 className="text-zinc-800 font-bold text-xs mb-2 uppercase tracking-wider text-orange-500/95">
+          Spendi da noi il bonus Carta del Docente 2026
+        </h3>
+        <p className="text-xs text-zinc-600 leading-relaxed font-sans">
+          Ricorda: affrettati a utilizzare <b>entro il 31 agosto 2026</b> le somme residue relative all’anno scolastico 2024/2025 rimaste nel tuo portafoglio elettronico.
+          Ti ricordiamo che oltre a generare il buono relativo alla somma residua, dovrai portarlo in libreria prima della scadenza del 31 agosto, altrimenti andrà perso.
+          Ti consigliamo di verificare il tuo portafoglio elettronico: <b>le somme riferite all’anno scolastico 2024/2025 non saranno più recuperabili dopo tale data.</b>
+        </p>
+      </section>
+
       {/* Section 1 */}
       <section className="bg-white p-5 rounded-xl border border-zinc-200/80 shadow-sm">
         <h3 className="text-zinc-800 font-bold text-xs mb-2 uppercase tracking-wider text-orange-500/95">

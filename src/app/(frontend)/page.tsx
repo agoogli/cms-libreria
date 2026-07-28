@@ -6,7 +6,6 @@ import config from '@/payload.config'
 
 import { BookCarousel } from '@/components/BookCarousel'
 import { BachecaGrid } from '@/components/BachecaGrid'
-import { CATEGORIES } from '@/lib/categories'
 import { DeliveryCard } from '@/components/DeliveryCard'
 
 export const metadata = {
@@ -14,49 +13,10 @@ export const metadata = {
   description: 'Libreria Nunnari & Sfameni. A Messina dal 1932. Testi universitari scolastici professionali e concorsi',
 }
 
-// Helper function to query books by sector name using Payload Local API
-async function getBooksBySector(payload: any, sectorName: string) {
-  try {
-    const sectorResponse = await payload.find({
-      collection: 'settori',
-      where: {
-        nome: {
-          equals: sectorName,
-        },
-      },
-      limit: 1,
-    })
-
-    const sectorId = sectorResponse.docs[0]?.id
-
-    if (!sectorId) {
-      return []
-    }
-
-    const booksResponse = await payload.find({
-      collection: 'libri',
-      depth: 2,
-      limit: 20, // Max 20 books per carousel
-      sort: '-updatedAt', // Sort from newest to oldest
-      where: {
-        settore: {
-          equals: sectorId,
-        },
-      },
-      overrideAccess: true,
-    })
-
-    return booksResponse.docs || []
-  } catch (error) {
-    console.error(`Error fetching books for sector ${sectorName}:`, error)
-    return []
-  }
-}
-
 export default async function HomePage() {
   const headers = await getHeaders()
 
-  // Initialize Payload Local API for ultra-efficient server-side direct database queries (no HTTP requests)
+  // Initialize Payload Local API for direct server-side queries
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
 
@@ -75,34 +35,81 @@ export default async function HomePage() {
     console.error('Error fetching books from Payload:', error)
   }
 
-  const displayBooks = dbBooks
+  // 2. Fetch dynamic sector carousels ordered by ordineVisuale (ascending 1..n)
+  let dynamicSectorCarousels: Array<{
+    sectorId: string | number
+    title: string
+    href: string
+    books: any[]
+  }> = []
 
-  // 2. Fetch specific sector carousels (max 20 books, sorted newest first)
-  const concorsiBooks = await getBooksBySector(payload, CATEGORIES.CONCORSI)
-  const giuridicaBooks = await getBooksBySector(payload, CATEGORIES.GIURIDICA)
-  const umanisticaBooks = await getBooksBySector(payload, CATEGORIES.UMANISTICA)
+  try {
+    const sectorsResponse = await payload.find({
+      collection: 'settori',
+      sort: 'ordineVisuale',
+      where: {
+        ordineVisuale: {
+          greater_than: 0,
+        },
+      },
+      limit: 100,
+      overrideAccess: true,
+    })
+
+    const activeSectors = (sectorsResponse.docs || []).filter(
+      (s: any) => typeof s.ordineVisuale === 'number' && s.ordineVisuale > 0
+    )
+
+    // For each active sector, fetch up to 20 books sorted newest first
+    for (const sector of activeSectors) {
+      const sectorBooksResponse = await payload.find({
+        collection: 'libri',
+        depth: 2,
+        limit: 20,
+        sort: '-updatedAt',
+        where: {
+          settore: {
+            equals: sector.id,
+          },
+        },
+        overrideAccess: true,
+      })
+
+      const books = sectorBooksResponse.docs || []
+      const title = sector.nomeVisualizzato || sector.nome
+      const slug = sector.nome ? sector.nome.toLowerCase().replace(/\s+/g, '-') : ''
+
+      dynamicSectorCarousels.push({
+        sectorId: sector.id,
+        title,
+        href: `/settori/${slug}`,
+        books,
+      })
+    }
+  } catch (error) {
+    console.error('Error fetching dynamic sector carousels:', error)
+  }
 
   return (
     <>
       <section className="w-full bg-transparent pt-3 pb-0">
-        {/* 60% width container on desktop, aligned left on mobile (pl-4 pr-0), normal on desktop (lg:px-4) */}
+        {/* 60% width container on desktop */}
         <div className="w-full lg:w-[60%] mx-auto pl-4 pr-0 lg:px-4">
-          {/* Section Header centered horizontally */}
+          {/* Section Header */}
           <div className="mb-3 text-center w-full">
             <span className="text-xs uppercase tracking-widest text-orange-600 font-sans font-bold">
               Testi universitari, scolastici, professionali e concorsi
             </span>
           </div>
 
-          {/* 6 Tiles Grid wrapped in Carousel on mobile */}
+          {/* 6 Tiles Grid */}
           <BachecaGrid />
         </div>
       </section>
 
-      {/* 5. Sector Carousels */}
-      {/* Carousel 1: Novità in Vetrina (All categories, limit 100) */}
+      {/* General Novità in Vetrina Carousel */}
       <BookCarousel
-        books={displayBooks}
+        books={dbBooks}
         title="Novità in Vetrina"
         viewAllHref="/libri"
       />
@@ -114,26 +121,15 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Carousel 2: Concorsi (Filtered by Concorsi sector, ordered newest to oldest, max 20) */}
-      <BookCarousel
-        books={concorsiBooks}
-        title="Concorsi"
-        viewAllHref="/settori/concorsi"
-      />
-
-      {/* Carousel 3: Giuridica (Filtered by Giuridica sector, ordered newest to oldest, max 20) */}
-      <BookCarousel
-        books={giuridicaBooks}
-        title="Diritto e Codici"
-        viewAllHref="/settori/giuridica"
-      />
-
-      {/* Carousel 4: Umanistica (Filtered by Umanistica sector, ordered newest to oldest, max 20) */}
-      <BookCarousel
-        books={umanisticaBooks}
-        title="Umanistica"
-        viewAllHref="/settori/umanistica"
-      />
+      {/* Dynamic Sector Carousels ordered by ordineVisuale (1 to n) */}
+      {dynamicSectorCarousels.map((carousel) => (
+        <BookCarousel
+          key={carousel.sectorId}
+          books={carousel.books}
+          title={carousel.title}
+          viewAllHref={carousel.href}
+        />
+      ))}
     </>
   )
 }

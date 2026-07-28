@@ -44,7 +44,8 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 
   const mappedSettori = settori.map((s) => ({
     id: s.id,
-    nome: s.nome,
+    nome: s.nomeVisualizzato || s.nome,
+    slug: s.nome ? s.nome.toLowerCase().replace(/\s+/g, '-') : '',
   }))
 
   return (
