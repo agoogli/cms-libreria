@@ -39,11 +39,7 @@ export default function CarteCulturaPage() {
           <li>Libri di ogni genere, narrativa, saggistica e novità editoriali.</li>
           <li>Testi scolastici per scuole medie e superiori.</li>
           <li>Manuali universitari e testi professionali.</li>
-          <li>E-book, audiolibri, CD musicali e dischi in vinile.</li>
         </ul>
-        <p className="mt-2.5 text-xs text-zinc-600 leading-relaxed font-sans">
-          I buoni sono strettamente personali, non sono trasferibili a terzi e possono essere utilizzati solo per l'acquisto delle categorie di beni consentite dalla normativa vigente.
-        </p>
       </section>
 
       {/* Section 3 */}
