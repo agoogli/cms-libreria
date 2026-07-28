@@ -324,13 +324,8 @@ export function BachecaGrid() {
                   <div className="relative z-10 min-w-0 flex flex-col h-full justify-between">
                     <div className="flex justify-between items-start w-full">
                       <div className="min-w-0 flex-1">
-                        <div className="flex items-center justify-between pr-2">
-                          <span className="text-xs uppercase tracking-widest text-orange-500 font-sans font-semibold">
-                            {offerta.titolo}
-                          </span>
-                          <span className="text-xs font-bold text-orange-600 hover:text-orange-700 transition-colors font-sans">
-                            Scopri &gt;
-                          </span>
+                        <div className="text-xs uppercase tracking-widest text-orange-500 font-sans font-semibold">
+                          {offerta.titolo} &gt;
                         </div>
                         <h3 className="font-sans text-sm sm:text-base font-bold leading-snug text-orange-500 mt-1 pr-4" title={offerta.sottotitolo}>
                           {offerta.sottotitolo}

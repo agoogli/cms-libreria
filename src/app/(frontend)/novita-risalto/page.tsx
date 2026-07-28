@@ -1,44 +1,51 @@
 import React from 'react'
 import { getPayload } from 'payload'
 import config from '@/payload.config'
-import { BookCarousel } from '@/components/BookCarousel'
+import { PageWrapper } from '@/components/PageWrapper'
+import { NovitaRisaltoCarousel } from '@/components/NovitaRisaltoCarousel'
 
 export const dynamic = 'force-dynamic'
 
 export const metadata = {
   title: 'Novità in Risalto - Libreria Nunnari & Sfameni',
-  description: 'Scopri i volumi in risalto e le ultime novità alla Libreria Nunnari & Sfameni.',
+  description: 'Scopri i volumi in risalto e le novità selezionate alla Libreria Nunnari & Sfameni.',
 }
 
 export default async function NovitaRisaltoPage() {
-  let books: any[] = []
+  let globalData: any = null
 
   try {
     const payloadConfig = await config
     const payload = await getPayload({ config: payloadConfig })
 
-    // Fetch books from backend sorted by newest first
-    const response = await payload.find({
-      collection: 'libri',
+    globalData = await payload.findGlobal({
+      slug: 'novita-in-risalto',
       depth: 2,
-      limit: 100,
-      sort: '-updatedAt',
-      overrideAccess: true,
     })
-
-    books = response.docs || []
   } catch (error) {
-    console.error('Error fetching books in Novità in Risalto page:', error)
+    console.error('Error fetching novita-in-risalto global:', error)
   }
 
+  const titolo = globalData?.titolo || 'Novità in risalto'
+  const sottotitolo = globalData?.sottotitolo || 'Kit Lettura Estiva'
+  const immagini = (globalData?.immagini || [])
+    .map((item: any) => item?.immagine)
+    .filter(Boolean)
+
   return (
-    <div className="w-full py-4 flex flex-col gap-6">
-      {/* Novità in Risalto Carousel with exact same size & styling as homepage carousels */}
-      <BookCarousel
-        books={books}
-        title="Novità in Risalto"
-        viewAllHref="/libri"
-      />
-    </div>
+    <PageWrapper title={titolo}>
+      <div className="w-full bg-white rounded-xl border border-zinc-200/80 p-6 shadow-md flex flex-col items-center gap-4">
+        {sottotitolo && (
+          <div className="text-center">
+            <span className="text-xs uppercase tracking-widest font-sans font-bold text-orange-600">
+              {sottotitolo}
+            </span>
+          </div>
+        )}
+
+        {/* Dedicated carousel showcasing max 5 images uploaded in Payload CMS backoffice */}
+        <NovitaRisaltoCarousel images={immagini} />
+      </div>
+    </PageWrapper>
   )
 }
