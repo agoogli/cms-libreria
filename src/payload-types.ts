@@ -196,6 +196,22 @@ export interface Libro {
   editore?: (number | null) | Editore;
   ean?: string | null;
   settore?: (number | null) | Settore;
+  mesePubblicazione?:
+    | (
+        | 'gennaio'
+        | 'febbraio'
+        | 'marzo'
+        | 'aprile'
+        | 'maggio'
+        | 'giugno'
+        | 'luglio'
+        | 'agosto'
+        | 'settembre'
+        | 'ottobre'
+        | 'novembre'
+        | 'dicembre'
+      )
+    | null;
   annoPubblicazione?: number | null;
   imgCopertina?: (number | null) | Media;
   descrizione?: string | null;
@@ -379,6 +395,7 @@ export interface LibriSelect<T extends boolean = true> {
   editore?: T;
   ean?: T;
   settore?: T;
+  mesePubblicazione?: T;
   annoPubblicazione?: T;
   imgCopertina?: T;
   descrizione?: T;

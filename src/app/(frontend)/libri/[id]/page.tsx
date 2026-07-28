@@ -183,10 +183,12 @@ export default async function BookDetailPage({ params }: PageProps) {
                   <span className="text-zinc-700 font-bold font-mono">{book.ean}</span>
                 </div>
               )}
-              {book.annoPubblicazione && (
+              {(book.annoPubblicazione || book.mesePubblicazione) && (
                 <div>
-                  <span className="text-zinc-400 block font-sans">Anno Edizione:</span>
-                  <span className="text-zinc-700 font-semibold">{book.annoPubblicazione}</span>
+                  <span className="text-zinc-400 block font-sans">Anno edizione:</span>
+                  <span className="text-zinc-700 font-semibold">
+                    {book.mesePubblicazione ? `${book.mesePubblicazione} ` : ''}{book.annoPubblicazione || ''}
+                  </span>
                 </div>
               )}
             </div>
