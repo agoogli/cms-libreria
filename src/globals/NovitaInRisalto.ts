@@ -14,8 +14,15 @@ export const NovitaInRisalto: GlobalConfig = {
       required: true,
       defaultValue: 'Novità',
       label: 'Titolo Card',
+      maxLength: 15,
       admin: {        
-        description: 'Titolo della card',
+        description: 'Massimo 15 caratteri',
+      },
+      validate: (value?: string | null) => {
+        if (value && typeof value === 'string' && value.length > 15) {
+          return 'Il titolo non può superare 15 caratteri'
+        }
+        return true
       },
     },
     {

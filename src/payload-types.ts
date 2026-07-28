@@ -456,7 +456,7 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface NovitaInRisalto {
   id: number;
   /**
-   * Titolo della card
+   * Massimo 15 caratteri
    */
   titolo: string;
   /**

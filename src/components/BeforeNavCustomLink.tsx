@@ -3,7 +3,7 @@ import React from 'react'
 export default function BeforeNavCustomLink() {
   return (
     <div className="nav-group" style={{ marginBottom: '1.5rem', paddingBottom: '1rem', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-      <div className="nav-group__label" style={{ fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', opacity: 0.9, marginBottom: '0.5rem', padding: '0 10px' }}>
+      <div className="nav-group__label" style={{ fontSize: '0.95rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', opacity: 1, marginBottom: '0.5rem', padding: '0 10px' }}>
         Registrazioni
       </div>
       <a
@@ -15,7 +15,7 @@ export default function BeforeNavCustomLink() {
           gap: '10px',
           padding: '8px 10px',
           borderRadius: '4px',
-          fontSize: '0.875rem',
+          fontSize: '0.975rem',
           fontWeight: 500,
           color: 'inherit',
           textDecoration: 'none',
@@ -39,10 +39,10 @@ export default function BeforeNavCustomLink() {
           <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
           <path d="M16 3.13a4 4 0 0 1 0 7.75" />
         </svg>
-        <span>Utente Registrato</span>
+        <span>Utenti registrati</span>
       </a>
 
-      <div className="nav-group__label" style={{ fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', opacity: 0.9, marginTop: '1.25rem', marginBottom: '0.5rem', padding: '0 10px' }}>
+      <div className="nav-group__label" style={{ fontSize: '0.95rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', opacity: 1, marginTop: '1.25rem', marginBottom: '0.5rem', padding: '0 10px' }}>
         Pagine Speciali
       </div>
       <a
@@ -54,7 +54,7 @@ export default function BeforeNavCustomLink() {
           gap: '10px',
           padding: '8px 10px',
           borderRadius: '4px',
-          fontSize: '0.875rem',
+          fontSize: '0.975rem',
           fontWeight: 500,
           color: 'inherit',
           textDecoration: 'none',

@@ -6,8 +6,8 @@ export const UtentiRegistrati: CollectionConfig = {
     interface: 'UtenteRegistrato',
   },
   labels: {
-    singular: 'Utente Registrato',
-    plural: 'Utenti Registrati',
+    singular: 'Utente registrato',
+    plural: 'Utenti registrati',
   },
   admin: {
     useAsTitle: 'cognome',

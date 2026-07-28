@@ -144,26 +144,26 @@ export default async function BookDetailPage({ params }: PageProps) {
 
         {/* Info Column */}
         <div className="w-full md:w-2/3 flex flex-col justify-between">
-          <div>
+          <div className="flex flex-col gap-2.5 sm:gap-2">
             <div className="text-xs uppercase tracking-widest text-orange-500 font-sans font-semibold">
               {sectorName}
             </div>
-            <h2 className="font-serif text-xl sm:text-2xl font-bold text-zinc-900 mt-1 leading-snug">
+            <h2 className="font-serif text-xl sm:text-2xl font-bold text-zinc-900 leading-snug !m-0">
               {book.titolo}
             </h2>
             {book.autore && (
-              <p className="text-sm font-sans text-zinc-700 mt-1.5 font-medium">
+              <p className="text-xs font-sans text-zinc-700 font-medium !m-0">
                 di <span className="text-zinc-900">{book.autore}</span>
               </p>
             )}
             {editoreName && (
-              <p className="text-xs font-sans text-zinc-500 mt-0.5">
+              <p className="text-xs font-sans text-zinc-500 !m-0">
                 Editore: <span className="font-semibold text-zinc-700">{editoreName}</span>
               </p>
             )}
 
             {/* Pricing */}
-            <div className="flex items-baseline gap-2.5 mt-4">
+            <div className="flex items-baseline gap-2.5 mt-2">
               {formattedDiscountPrice ? (
                 <>
                   <span className="text-lg font-bold text-orange-600">{formattedDiscountPrice}</span>
@@ -173,6 +173,7 @@ export default async function BookDetailPage({ params }: PageProps) {
                 <span className="text-lg font-bold text-orange-600">{formattedPrice}</span>
               )}
             </div>
+          </div>
 
             {/* Additional details */}
             <div className="mt-5 pt-4 border-t border-zinc-100 grid grid-cols-2 gap-4 text-xs">
@@ -197,7 +198,6 @@ export default async function BookDetailPage({ params }: PageProps) {
                 {book.descrizione || "Nessuna descrizione dettagliata disponibile per questo testo al momento. Per informazioni sulla disponibilità o per riservare una copia, puoi contattarci direttamente cliccando sui pulsanti sottostanti."}
               </p>
             </div>
-          </div>
 
           {/* Call to Actions */}
           <div className="mt-6 flex flex-wrap gap-2.5">
