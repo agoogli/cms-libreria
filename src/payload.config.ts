@@ -34,8 +34,14 @@ export default buildConfig({
     supportedLanguages: { en, it },
     fallbackLanguage: 'it',
   },
-  collections: [Utenti, Media, Settori, Libri, UtentiRegistrati, Editori],
-  globals: [NovitaInRisalto],
+  collections: [Utenti, Media, Settori, Libri, UtentiRegistrati, Editori].map((col) => ({
+    ...col,
+    lockDocuments: false,
+  })),
+  globals: [NovitaInRisalto].map((g) => ({
+    ...g,
+    lockDocuments: false,
+  })),
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
