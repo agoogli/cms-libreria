@@ -7,6 +7,7 @@ import config from '@/payload.config'
 import { BookCarousel } from '@/components/BookCarousel'
 import { BachecaGrid } from '@/components/BachecaGrid'
 import { DeliveryCard } from '@/components/DeliveryCard'
+import { CartaDocenteCard } from '@/components/CartaDocenteCard'
 
 export const metadata = {
   title: 'Libreria Nunnari & Sfameni',
@@ -121,8 +122,21 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Dynamic Sector Carousels ordered by ordineVisuale (1 to n) */}
-      {dynamicSectorCarousels.map((carousel) => (
+      {/* First 2 dynamic sector carousels */}
+      {dynamicSectorCarousels.slice(0, 2).map((carousel) => (
+        <BookCarousel
+          key={carousel.sectorId}
+          books={carousel.books}
+          title={carousel.title}
+          viewAllHref={carousel.href}
+        />
+      ))}
+
+      {/* Info Card per Carta del Docente (inserita esattamente dopo il 2° carosello dinamico) */}
+      <CartaDocenteCard />
+
+      {/* Remaining dynamic sector carousels (from 3rd onwards) */}
+      {dynamicSectorCarousels.slice(2).map((carousel) => (
         <BookCarousel
           key={carousel.sectorId}
           books={carousel.books}
