@@ -33,4 +33,6 @@ jobs:
           context: .
           file: Dockerfile
           push: true
+          build-args: |
+            NEXT_PUBLIC_TURNSTILE_SITE_KEY=${{ secrets.NEXT_PUBLIC_TURNSTILE_SITE_KEY }}
           tags: ghcr.io/${{ steps.lowercase_repo.outputs.repo }}:latest
