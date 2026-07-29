@@ -26,8 +26,8 @@ export function Header({ settori = [] }: { settori?: Settore[] }) {
 
   return (
     <header className="w-full bg-transparent text-zinc-900 relative">
-      {/* 60% width container on desktop */}
-      <div className="w-full lg:w-[60%] mx-auto px-4 py-3 flex items-center justify-between">
+      {/* Fixed max-width container for desktop */}
+      <div className="w-full max-w-[1152px] mx-auto px-4 py-3 flex items-center justify-between">
         {/* Mobile menu button (left aligned, normal flow, z-index to stay above content) */}
         <button
           type="button"
@@ -39,21 +39,21 @@ export function Header({ settori = [] }: { settori?: Settore[] }) {
         </button>
 
         {/* Logo (Centered on mobile, left-aligned on desktop) */}
-        <div className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 flex md:block justify-center z-20">
-          <Link href="/" className="flex items-center select-none">
+        <div className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 flex md:block justify-center z-20 shrink-0">
+          <Link href="/" className="flex items-center select-none shrink-0">
             <Image
               src="/assets/logo.png"
               alt="Libreria Nunnari & Sfameni"
               width={180}
               height={50}
-              className="h-8 w-auto object-contain"
+              className="h-8 sm:h-9 w-auto object-contain shrink-0"
               priority
             />
           </Link>
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+        <nav className="hidden md:flex items-center gap-4 lg:gap-7 shrink-0">
           {links.map((link) => {
             if (link.isDropdown) {
               return (
@@ -68,7 +68,7 @@ export function Header({ settori = [] }: { settori?: Settore[] }) {
 
                   {/* Megamenu Full Width Dropdown */}
                   <div className="absolute top-full left-0 right-0 w-full bg-white border-y border-zinc-200 shadow-xl opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-300 z-50 py-8 px-6">
-                    <div className="w-full lg:w-[60%] mx-auto grid grid-cols-4 gap-6 px-4">
+                    <div className="w-full max-w-[1152px] mx-auto grid grid-cols-4 gap-6 px-4">
                       {settori.map((settore: any) => {
                         const slug = settore.slug || (settore.nome ? settore.nome.toLowerCase().replace(/\s+/g, '-') : '')
                         return (

@@ -94,8 +94,8 @@ export default async function HomePage() {
   return (
     <>
       <section className="w-full bg-transparent pt-3 pb-0">
-        {/* 60% width container on desktop */}
-        <div className="w-full lg:w-[60%] mx-auto pl-4 pr-0 lg:px-4">
+        {/* Fixed max-width container for desktop */}
+        <div className="w-full max-w-[1152px] mx-auto px-4">
           {/* Section Header */}
           <div className="mb-3 text-center w-full">
             <span className="text-xs uppercase tracking-widest text-orange-600 font-sans font-bold">
@@ -117,7 +117,7 @@ export default async function HomePage() {
 
       {/* Indicazioni sulle Consegne */}
       <section className="w-full bg-transparent py-4 text-zinc-800">
-        <div className="w-full lg:w-[60%] mx-auto px-4 lg:px-4">
+        <div className="w-full max-w-[1152px] mx-auto px-4">
           <DeliveryCard isLink={true} showDiscoverMore={true} />
         </div>
       </section>

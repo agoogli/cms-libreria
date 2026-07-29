@@ -4,7 +4,7 @@ import { Phone, Mail, MessagesSquare } from 'lucide-react'
 export function TopBar() {
   return (
     <div className="w-full bg-[#363537] text-zinc-300 py-1.5 px-4 border-b border-zinc-700 text-[9px] sm:text-xs font-sans font-normal tracking-wide">
-      <div className="max-w-7xl mx-auto flex flex-row justify-center items-center gap-3 sm:gap-8">
+      <div className="w-full max-w-[1152px] mx-auto flex flex-row justify-center items-center gap-3 sm:gap-8">
         <a
           href="tel:+39090710469"
           className="flex items-center gap-1.5 hover:text-orange-400 transition-colors duration-200"

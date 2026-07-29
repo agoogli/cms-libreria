@@ -101,7 +101,7 @@ export default async function BookDetailPage({ params }: PageProps) {
   }
 
   return (
-    <div className="w-full lg:w-[60%] mx-auto px-4 pt-3 pb-2 flex flex-col gap-3">
+    <div className="w-full max-w-[1152px] mx-auto px-4 pt-3 pb-2 flex flex-col gap-3">
       {/* Back button */}
       <Link href="/" className="inline-flex items-center gap-1.5 text-xs text-orange-600 hover:text-orange-700 font-bold uppercase tracking-wider font-sans transition-colors self-start mb-2">
         &larr; Torna alla Home

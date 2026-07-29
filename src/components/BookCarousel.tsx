@@ -34,7 +34,7 @@ export function BookCarousel({ books, title, viewAllHref = '#' }: BookCarouselPr
   // If there are no books, we show a message
   if (!books || books.length === 0) {
     return (
-      <div className="w-full lg:w-[60%] mx-auto px-4 py-16 text-center text-zinc-500">
+      <div className="w-full max-w-[1152px] mx-auto px-4 py-16 text-center text-zinc-500">
         Nessun libro disponibile nel settore {title} al momento.
       </div>
     )
@@ -42,10 +42,10 @@ export function BookCarousel({ books, title, viewAllHref = '#' }: BookCarouselPr
 
   return (
     <section className="w-full bg-transparent pt-3 pb-0 text-zinc-900">
-      {/* 60% width container on desktop, aligned left on mobile (pl-4 pr-0), normal on desktop (lg:px-4) */}
-      <div className="w-full lg:w-[60%] mx-auto pl-4 pr-0 lg:px-4">
-        {/* Section Header (needs standard right margin on mobile, so we add pr-4) */}
-        <div className="flex justify-between items-center mb-3 pr-4 lg:pr-0">
+      {/* Fixed max-width container for desktop */}
+      <div className="w-full max-w-[1152px] mx-auto px-4">
+        {/* Section Header */}
+        <div className="flex justify-between items-center mb-3">
           <div>
             <span className="text-xs uppercase tracking-widest text-[#363537] font-sans font-bold">
               {title}

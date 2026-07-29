@@ -68,7 +68,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 
           {/* 5. Footer */}
           <footer className="w-full bg-[#363537] border-t border-zinc-800 py-8 text-zinc-400 text-xs">
-            <div className="w-full lg:w-[60%] mx-auto px-4 flex flex-col md:flex-row justify-between items-center md:items-start gap-6">
+            <div className="w-full max-w-[1152px] mx-auto px-4 flex flex-col md:flex-row justify-between items-center md:items-start gap-6">
               <div className="flex flex-col gap-2 text-center md:text-left">
                 <p>© {new Date().getFullYear()} Libreria Nunnari & Sfameni s.a.s. - Tutti i diritti riservati.</p>
                 <p>Partita IVA: 03027400831 - Via T.Cannizzaro 112 98122 Messina (ME) - PEC: librerianunnari@pec.it </p>

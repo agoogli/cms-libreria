@@ -4,7 +4,7 @@ import Link from 'next/link'
 export function CartaDocenteCard() {
   return (
     <section className="w-full bg-transparent py-4 text-zinc-800">
-      <div className="w-full lg:w-[60%] mx-auto px-4 lg:px-4">
+      <div className="w-full max-w-[1152px] mx-auto px-4">
         <div className="bg-white rounded-xl border border-zinc-200/80 shadow-sm overflow-hidden flex flex-col">
           <div className="p-5 md:p-6 flex flex-col md:flex-row md:items-stretch gap-0 divide-y md:divide-y-0 md:divide-x divide-zinc-200">
             {/* Box 1: Carta del Docente -> links to /carta-docente */}
