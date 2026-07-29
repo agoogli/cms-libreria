@@ -13,6 +13,7 @@ interface Settore {
 export function Header({ settori = [] }: { settori?: Settore[] }) {
   const [isOpen, setIsOpen] = useState(false)
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false)
+  const [isDesktopDropdownOpen, setIsDesktopDropdownOpen] = useState(false)
 
   const links = [
     { name: 'Accedi', href: '/accedi' },
@@ -57,37 +58,24 @@ export function Header({ settori = [] }: { settori?: Settore[] }) {
           {links.map((link) => {
             if (link.isDropdown) {
               return (
-                <div key={link.name} className="group/dropdown py-2">
+                <div
+                  key={link.name}
+                  className="relative group py-2"
+                  onMouseEnter={() => setIsDesktopDropdownOpen(true)}
+                  onMouseLeave={() => setIsDesktopDropdownOpen(false)}
+                >
                   <button
                     type="button"
-                    className="text-sm font-medium tracking-wide text-zinc-700 hover:text-orange-600 transition-colors duration-200 cursor-pointer flex items-center gap-1 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-orange-600 group-hover/dropdown:after:w-full after:transition-all after:duration-300"
+                    onClick={() => setIsDesktopDropdownOpen(!isDesktopDropdownOpen)}
+                    className="text-sm font-medium tracking-wide text-zinc-700 hover:text-orange-600 transition-colors duration-200 cursor-pointer flex items-center gap-1 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-orange-600 group-hover:after:w-full after:transition-all after:duration-300"
                   >
                     {link.name}
-                    <ChevronDown className="w-3 h-3 text-zinc-500 group-hover/dropdown:text-orange-600 group-hover/dropdown:rotate-180 transition-transform duration-300" />
+                    <ChevronDown
+                      className={`w-3.5 h-3.5 text-zinc-500 group-hover:text-orange-600 transition-transform duration-300 ${
+                        isDesktopDropdownOpen ? 'rotate-180 text-orange-600' : ''
+                      }`}
+                    />
                   </button>
-
-                  {/* Megamenu Full Width Dropdown */}
-                  <div className="absolute top-full left-0 right-0 w-full bg-white border-y border-zinc-200 shadow-xl opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-300 z-50 py-8 px-6">
-                    <div className="w-full max-w-[1152px] mx-auto grid grid-cols-4 gap-6 px-4">
-                      {settori.map((settore: any) => {
-                        const slug = settore.slug || (settore.nome ? settore.nome.toLowerCase().replace(/\s+/g, '-') : '')
-                        return (
-                          <Link
-                            key={settore.id}
-                            href={`/settori/${slug}`}
-                            className="text-sm font-semibold text-zinc-700 hover:text-orange-600 transition-colors py-1.5 px-2.5 rounded-lg hover:bg-orange-50 font-sans"
-                          >
-                            {settore.nome}
-                          </Link>
-                        )
-                      })}
-                      {settori.length === 0 && (
-                        <div className="col-span-4 text-center text-xs text-zinc-400 font-sans py-4">
-                          Nessun settore disponibile.
-                        </div>
-                      )}
-                    </div>
-                  </div>
                 </div>
               )
             }
@@ -103,6 +91,39 @@ export function Header({ settori = [] }: { settori?: Settore[] }) {
             )
           })}
         </nav>
+      </div>
+
+      {/* Megamenu Full Width Dropdown (Positioned relative to full header width) */}
+      <div
+        onMouseEnter={() => setIsDesktopDropdownOpen(true)}
+        onMouseLeave={() => setIsDesktopDropdownOpen(false)}
+        className={`absolute top-full left-0 right-0 w-full bg-white border-y border-zinc-200 shadow-xl transition-all duration-300 z-50 py-8 px-6 before:absolute before:-top-4 before:left-0 before:right-0 before:h-4 before:content-[''] ${
+          isDesktopDropdownOpen
+            ? 'opacity-100 visible pointer-events-auto translate-y-0'
+            : 'opacity-0 invisible pointer-events-none -translate-y-1'
+        }`}
+      >
+        <div className="w-full max-w-[1152px] mx-auto grid grid-cols-4 gap-6 px-4">
+          {settori.map((settore: any) => {
+            const slug = settore.slug || (settore.nome ? settore.nome.toLowerCase().replace(/\s+/g, '-') : '')
+            const displayName = settore.nomeVisualizzato || settore.nome
+            return (
+              <Link
+                key={settore.id}
+                href={`/settori/${slug}`}
+                className="text-sm font-semibold text-zinc-700 hover:text-orange-600 transition-colors py-1.5 px-2.5 rounded-lg hover:bg-orange-50 font-sans"
+                onClick={() => setIsDesktopDropdownOpen(false)}
+              >
+                {displayName}
+              </Link>
+            )
+          })}
+          {settori.length === 0 && (
+            <div className="col-span-4 text-center text-xs text-zinc-400 font-sans py-4">
+              Nessun settore disponibile.
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Mobile Drawer (Slides in from the left to the right) */}
