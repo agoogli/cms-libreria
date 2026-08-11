@@ -8,6 +8,7 @@ import { BookCarousel } from '@/components/BookCarousel'
 import { BachecaGrid } from '@/components/BachecaGrid'
 import { DeliveryCard } from '@/components/DeliveryCard'
 import { CartaDocenteCard } from '@/components/CartaDocenteCard'
+import { FerieEstiveCard } from '@/components/FerieEstiveCard'
 
 export const metadata = {
   title: 'Libreria Nunnari & Sfameni',
@@ -107,6 +108,9 @@ export default async function HomePage() {
           <BachecaGrid />
         </div>
       </section>
+
+      {/* Pannello Avviso Ferie Estive (inserito sotto le card centrali della bacheca) */}
+      <FerieEstiveCard />
 
       {/* General Novità in Vetrina Carousel */}
       <BookCarousel
