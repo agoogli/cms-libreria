@@ -55,7 +55,7 @@ export function BookCard({ book }: BookCardProps) {
       className="group cursor-pointer flex flex-col h-full select-none bg-white p-4 rounded-lg border border-zinc-200/80 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 ease-out font-sans"
     >
       {/* Book Cover Container - transparent wrapper with soft natural drop shadow */}
-      <div className="px-5 py-2.5">
+      <div className="px-2.5 sm:px-2 md:px-1.5 py-1.5 sm:py-1">
         <div className="relative aspect-[3/4] w-full bg-transparent flex items-center justify-center filter drop-shadow-[0_4px_6px_rgba(0,0,0,0.12)] group-hover:drop-shadow-[0_8px_12px_rgba(0,0,0,0.18)] transition-all duration-300">
           {formattedDiscountPrice && (
             <div className="absolute -top-1 -right-1 bg-orange-600 text-white text-[10px] font-bold w-6 h-6 rounded-full flex items-center justify-center z-20 font-sans shadow-sm">
@@ -78,7 +78,7 @@ export function BookCard({ book }: BookCardProps) {
               <div className="text-[9px] uppercase tracking-widest text-zinc-500 font-sans mt-1">
                 {book.autore || 'Autore Sconosciuto'}
               </div>
-              <div className="font-sans text-xs sm:text-sm text-zinc-200 font-semibold line-clamp-3 my-auto px-1">
+              <div className="font-sans text-xs sm:text-[0.8125rem] text-zinc-200 font-semibold line-clamp-3 my-auto px-1">
                 {book.titolo}
               </div>
               <div className="text-[8px] uppercase tracking-widest text-orange-500/80 font-sans mb-1">
@@ -89,27 +89,27 @@ export function BookCard({ book }: BookCardProps) {
         </div>
       </div>
 
-      {/* Book Details (Inter font, increased horizontal padding, compacted vertical spacing) */}
+      {/* Book Details (Inter font, responsive sizing for desktop) */}
       <div className="mt-2.5 flex flex-col flex-grow px-1">
-        <h3 className="font-sans text-xs sm:text-sm font-bold text-zinc-900 line-clamp-3 group-hover:text-orange-600 transition-colors duration-200 leading-tight">
+        <h3 className="font-sans text-xs sm:text-xs md:text-[0.8125rem] font-bold text-zinc-900 line-clamp-2 group-hover:text-orange-600 transition-colors duration-200 leading-snug">
           {book.titolo}
         </h3>
-        <p className="text-[11px] sm:text-xs text-zinc-500 mt-0.5 line-clamp-2 font-sans font-normal">
-          {book.autore || 'Autori vari'}
+        <p className="text-[11px] sm:text-[11px] md:text-xs text-zinc-500 mt-1 line-clamp-2 font-sans font-normal">
+          {book.autore ? `di ${book.autore}` : 'Autori vari'}
           {editoreNome ? ` - ${editoreNome}` : ''}
         </p>
-        <div className="mt-auto flex items-center justify-between border-t border-zinc-100/80 pt-1.5">
+        <div className="mt-auto flex items-center justify-between border-t border-zinc-100/80 pt-2">
           {formattedDiscountPrice ? (
             <div className="flex items-center justify-between w-full">
-              <span className="text-xs sm:text-sm font-bold text-orange-600 font-sans">
+              <span className="text-xs sm:text-xs md:text-[0.875rem] font-bold text-orange-600 font-sans">
                 {formattedDiscountPrice}
               </span>
-              <span className="text-xs sm:text-sm text-zinc-400 line-through font-sans">
+              <span className="text-[11px] sm:text-[11px] md:text-xs text-zinc-400 line-through font-sans">
                 {formattedPrice}
               </span>
             </div>
           ) : (
-            <span className="text-xs sm:text-sm font-bold text-orange-600 font-sans">
+            <span className="text-xs sm:text-xs md:text-[0.875rem] font-bold text-orange-600 font-sans">
               {formattedPrice}
             </span>
           )}
