@@ -1,4 +1,3 @@
-import 'dotenv/config'
 import { getPayload } from 'payload'
 import configPromise from '../payload.config'
 import fs from 'fs'
@@ -12,6 +11,12 @@ import path from 'path'
  */
 
 async function importEditori() {
+  try {
+    await import('dotenv/config')
+  } catch {
+    // In produzione dentro il container le variabili d'ambiente (DATABASE_URL, ecc.)
+    // sono già fornite direttamente da Podman/Docker nel process.env
+  }
   const filePath = process.argv[2] || 'editori.csv'
   const absolutePath = path.resolve(process.cwd(), filePath)
 
