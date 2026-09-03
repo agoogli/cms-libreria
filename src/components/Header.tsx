@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Menu, X, ChevronDown } from 'lucide-react'
@@ -14,6 +14,32 @@ export function Header({ settori = [] }: { settori?: Settore[] }) {
   const [isOpen, setIsOpen] = useState(false)
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false)
   const [isDesktopDropdownOpen, setIsDesktopDropdownOpen] = useState(false)
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+  const handleDropdownEnter = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+      timeoutRef.current = null
+    }
+    setIsDesktopDropdownOpen(true)
+  }
+
+  const handleDropdownLeave = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+    }
+    timeoutRef.current = setTimeout(() => {
+      setIsDesktopDropdownOpen(false)
+    }, 200)
+  }
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+    }
+  }, [])
 
   const links = [
     { name: 'Accedi', href: '/accedi' },
@@ -61,12 +87,15 @@ export function Header({ settori = [] }: { settori?: Settore[] }) {
                 <div
                   key={link.name}
                   className="relative group py-2"
-                  onMouseEnter={() => setIsDesktopDropdownOpen(true)}
-                  onMouseLeave={() => setIsDesktopDropdownOpen(false)}
+                  onMouseEnter={handleDropdownEnter}
+                  onMouseLeave={handleDropdownLeave}
                 >
                   <button
                     type="button"
-                    onClick={() => setIsDesktopDropdownOpen(!isDesktopDropdownOpen)}
+                    onClick={() => {
+                      if (timeoutRef.current) clearTimeout(timeoutRef.current)
+                      setIsDesktopDropdownOpen((prev) => !prev)
+                    }}
                     className="text-sm font-medium tracking-wide text-zinc-700 hover:text-orange-600 transition-colors duration-200 cursor-pointer flex items-center gap-1 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-orange-600 group-hover:after:w-full after:transition-all after:duration-300"
                   >
                     {link.name}
@@ -95,9 +124,9 @@ export function Header({ settori = [] }: { settori?: Settore[] }) {
 
       {/* Megamenu Full Width Dropdown (Positioned relative to full header width) */}
       <div
-        onMouseEnter={() => setIsDesktopDropdownOpen(true)}
-        onMouseLeave={() => setIsDesktopDropdownOpen(false)}
-        className={`absolute top-full left-0 right-0 w-full bg-white border-y border-zinc-200 shadow-xl transition-all duration-300 z-50 py-8 px-6 before:absolute before:-top-4 before:left-0 before:right-0 before:h-4 before:content-[''] ${
+        onMouseEnter={handleDropdownEnter}
+        onMouseLeave={handleDropdownLeave}
+        className={`absolute top-full left-0 right-0 w-full bg-white border-y border-zinc-200 shadow-xl transition-all duration-300 z-50 py-8 px-6 before:absolute before:-top-6 before:left-0 before:right-0 before:h-6 before:content-[''] ${
           isDesktopDropdownOpen
             ? 'opacity-100 visible pointer-events-auto translate-y-0'
             : 'opacity-0 invisible pointer-events-none -translate-y-1'
@@ -112,7 +141,10 @@ export function Header({ settori = [] }: { settori?: Settore[] }) {
                 key={settore.id}
                 href={`/settori/${slug}`}
                 className="text-sm font-semibold text-zinc-700 hover:text-orange-600 transition-colors py-1.5 px-2.5 rounded-lg hover:bg-orange-50 font-sans"
-                onClick={() => setIsDesktopDropdownOpen(false)}
+                onClick={() => {
+                  if (timeoutRef.current) clearTimeout(timeoutRef.current)
+                  setIsDesktopDropdownOpen(false)
+                }}
               >
                 {displayName}
               </Link>
