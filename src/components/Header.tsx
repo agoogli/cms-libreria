@@ -126,7 +126,7 @@ export function Header({ settori = [] }: { settori?: Settore[] }) {
       <div
         onMouseEnter={handleDropdownEnter}
         onMouseLeave={handleDropdownLeave}
-        className={`absolute top-full left-0 right-0 w-full bg-white border-y border-zinc-200 shadow-xl transition-all duration-300 z-50 py-8 px-6 before:absolute before:-top-6 before:left-0 before:right-0 before:h-6 before:content-[''] ${
+        className={`absolute top-full left-0 right-0 w-full bg-[#f2f2f2] border-y border-zinc-200/80 shadow-xl transition-all duration-300 z-50 py-8 px-6 before:absolute before:-top-6 before:left-0 before:right-0 before:h-6 before:content-[''] ${
           isDesktopDropdownOpen
             ? 'opacity-100 visible pointer-events-auto translate-y-0'
             : 'opacity-0 invisible pointer-events-none -translate-y-1'
@@ -140,7 +140,7 @@ export function Header({ settori = [] }: { settori?: Settore[] }) {
               <Link
                 key={settore.id}
                 href={`/settori/${slug}`}
-                className="text-sm font-semibold text-zinc-700 hover:text-orange-600 transition-colors py-1.5 px-2.5 rounded-lg hover:bg-orange-50 font-sans"
+                className="text-sm font-semibold text-zinc-700 hover:text-orange-600 transition-colors py-1.5 px-2.5 rounded-lg hover:bg-white/80 font-sans"
                 onClick={() => {
                   if (timeoutRef.current) clearTimeout(timeoutRef.current)
                   setIsDesktopDropdownOpen(false)
@@ -168,7 +168,7 @@ export function Header({ settori = [] }: { settori?: Settore[] }) {
           />
 
           {/* Drawer Menu Panel sliding in from left to right */}
-          <div className="relative w-72 max-w-[80vw] bg-white h-full shadow-2xl flex flex-col p-6 z-50 border-r border-zinc-200 animate-in slide-in-from-left duration-300 ease-in-out">
+          <div className="relative w-72 max-w-[80vw] bg-[#f2f2f2] h-full shadow-2xl flex flex-col p-6 z-50 border-r border-zinc-200/80 animate-in slide-in-from-left duration-300 ease-in-out">
             {/* Header of Drawer */}
             <div className="flex justify-between items-center mb-6">
               <span className="font-sans font-bold text-xs tracking-widest uppercase text-orange-600">
@@ -176,7 +176,7 @@ export function Header({ settori = [] }: { settori?: Settore[] }) {
               </span>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1.5 rounded-lg hover:bg-zinc-100 text-zinc-500 transition-colors"
+                className="p-1.5 rounded-lg hover:bg-zinc-200/60 text-zinc-500 transition-colors"
                 aria-label="Chiudi menu"
               >
                 <X className="w-5 h-5" />
@@ -188,7 +188,7 @@ export function Header({ settori = [] }: { settori?: Settore[] }) {
               {links.map((link) => {
                 if (link.isDropdown) {
                   return (
-                    <div key={link.name} className="flex flex-col border-b border-zinc-100 py-1.5">
+                    <div key={link.name} className="flex flex-col border-b border-zinc-200/60 py-1.5">
                       <button
                         type="button"
                         onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
@@ -227,7 +227,7 @@ export function Header({ settori = [] }: { settori?: Settore[] }) {
                     key={link.name}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="text-base font-semibold text-zinc-800 hover:text-orange-600 transition-colors py-3 border-b border-zinc-100 last:border-0 font-sans"
+                    className="text-base font-semibold text-zinc-800 hover:text-orange-600 transition-colors py-3 border-b border-zinc-200/60 last:border-0 font-sans"
                   >
                     {link.name}
                   </Link>
