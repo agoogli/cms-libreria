@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import Link from 'next/link'
 import { PageWrapper } from '@/components/PageWrapper'
 
 declare global {
@@ -145,11 +146,19 @@ export function AccediForm() {
                 <polyline points="20 6 9 17 4 12" />
               </svg>
             </div>
-            <span className="font-bold text-sm text-zinc-800">Registrazione Completata</span>
+            <span className="font-bold text-sm text-zinc-800">Registrazione avvenuta con successo</span>
           </div>
-          <p className="font-medium text-zinc-650">
-            Grazie per esserti registrato, verrai ricontattato su whatsapp per confermare l'apertura del tuo profilo utente.
+          <p className="font-medium text-zinc-700 text-sm leading-relaxed mb-4">
+            Grazie per esserti registrato, verrai ricontattato su WhatsApp per confermare l'apertura della prenotazione.
           </p>
+          <div className="pt-3 border-t border-zinc-100 flex items-center gap-3">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-1.5 text-xs text-orange-600 hover:text-orange-700 font-bold uppercase tracking-wider font-sans transition-colors"
+            >
+              &larr; Torna alla Home
+            </Link>
+          </div>
         </div>
       </PageWrapper>
     )
@@ -173,7 +182,7 @@ export function AccediForm() {
             per visualizzare lo stato del tuo ordine.
           </p>
           <p className="mt-1 font-medium text-zinc-550">
-            Oppure <b>registrati</b> per creare un account accessibile dalla nostra app
+            Oppure <b>registrati</b> per creare un account accessibile dalla nostra app. Verrai ricontattato su WhatsApp per confermare l'apertura della prenotazione.
           </p>
         </div>
 
