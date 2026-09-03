@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { Check } from 'lucide-react'
 import { PageWrapper } from '@/components/PageWrapper'
 
 declare global {
@@ -139,16 +140,14 @@ export function AccediForm() {
   if (status === 'success') {
     return (
       <PageWrapper title="Accedi / Registrazione">
-        <div className="bg-white rounded-xl border border-zinc-200/80 shadow-sm p-6 max-w-xl mr-auto w-full text-xs text-zinc-700 font-sans leading-relaxed">
-          <div className="flex items-center gap-3 mb-4 text-green-600">
-            <div className="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center shrink-0">
-              <svg className="w-5 h-5 fill-none stroke-currentColor stroke-2" viewBox="0 0 24 24">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
+        <div className="bg-white rounded-xl border border-zinc-200/80 shadow-sm p-6 max-w-xl mr-auto w-full text-xs text-zinc-600 font-sans leading-relaxed">
+          <div className="flex items-center gap-2.5 mb-3 text-emerald-800">
+            <div className="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center shrink-0 text-emerald-800">
+              <Check className="w-3.5 h-3.5 stroke-[3]" />
             </div>
-            <span className="font-bold text-sm text-zinc-800">Registrazione avvenuta con successo</span>
+            <span className="font-bold text-xs text-zinc-800 font-sans">Registrazione avvenuta con successo</span>
           </div>
-          <p className="font-medium text-zinc-700 text-sm leading-relaxed mb-4">
+          <p className="font-medium text-zinc-600 text-xs leading-relaxed mb-4">
             Grazie per esserti registrato, verrai ricontattato su WhatsApp per confermare l'apertura della prenotazione.
           </p>
           <div className="pt-3 border-t border-zinc-100 flex items-center gap-3">
