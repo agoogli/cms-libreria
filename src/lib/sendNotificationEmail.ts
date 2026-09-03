@@ -14,7 +14,8 @@ export interface UserRegistrationNotificationData {
  */
 export async function sendRegistrationNotificationEmail(data: UserRegistrationNotificationData) {
   const apiKey = process.env.RESEND_API_KEY
-  const toEmail = process.env.NOTIFICATION_EMAIL_TO
+  const rawTo = process.env.NOTIFICATION_EMAIL_TO || ''
+  const rawCc = process.env.NOTIFICATION_EMAIL_CC || ''
   const fromEmail = process.env.NOTIFICATION_EMAIL_FROM || 'Libreria Nunnari <onboarding@resend.dev>'
 
   if (!apiKey) {
@@ -22,7 +23,18 @@ export async function sendRegistrationNotificationEmail(data: UserRegistrationNo
     return { success: false, reason: 'missing_api_key' }
   }
 
-  if (!toEmail) {
+  // Supporto per destinatari multipli separati da virgola o punto e virgola
+  const toEmails = rawTo
+    .split(/[,;]+/)
+    .map((e) => e.trim())
+    .filter((e) => e.length > 0)
+
+  const ccEmails = rawCc
+    .split(/[,;]+/)
+    .map((e) => e.trim())
+    .filter((e) => e.length > 0)
+
+  if (toEmails.length === 0) {
     console.warn('[Notifiche Email] NOTIFICATION_EMAIL_TO non configurata nel file .env. Notifica saltata.')
     return { success: false, reason: 'missing_recipient' }
   }
@@ -129,7 +141,8 @@ Messaggio generato automaticamente.
       },
       body: JSON.stringify({
         from: fromEmail,
-        to: [toEmail],
+        to: toEmails,
+        ...(ccEmails.length > 0 ? { cc: ccEmails } : {}),
         subject: subject,
         html: htmlContent,
         text: textContent,
@@ -143,7 +156,11 @@ Messaggio generato automaticamente.
       return { success: false, error: result }
     }
 
-    console.log(`[Notifiche Email Resend] Email inviata con successo a ${toEmail} (ID: ${result.id})`)
+    console.log(
+      `[Notifiche Email Resend] Email inviata con successo a ${toEmails.join(', ')}${
+        ccEmails.length > 0 ? ` (CC: ${ccEmails.join(', ')})` : ''
+      } (ID: ${result.id})`
+    )
     return { success: true, id: result.id }
   } catch (error: any) {
     console.error('[Notifiche Email Resend] Errore di rete durante la chiamata API:', error)
