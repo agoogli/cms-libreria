@@ -140,7 +140,7 @@ export function Header({ settori = [] }: { settori?: Settore[] }) {
               <Link
                 key={settore.id}
                 href={`/settori/${slug}`}
-                className="text-sm font-semibold text-zinc-700 hover:text-orange-600 transition-colors py-1.5 px-2.5 rounded-lg hover:bg-white/80 font-sans"
+                className="w-fit text-sm font-medium tracking-wide text-zinc-700 hover:text-orange-600 transition-colors duration-200 py-1 font-sans relative after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-[2px] after:bg-orange-600 hover:after:w-full after:transition-all after:duration-300"
                 onClick={() => {
                   if (timeoutRef.current) clearTimeout(timeoutRef.current)
                   setIsDesktopDropdownOpen(false)
