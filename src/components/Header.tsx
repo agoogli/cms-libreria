@@ -170,13 +170,24 @@ export function Header({ settori = [] }: { settori?: Settore[] }) {
           {/* Drawer Menu Panel sliding in from left to right */}
           <div className="relative w-72 max-w-[80vw] bg-[#f2f2f2] h-full shadow-2xl flex flex-col p-6 z-50 border-r border-zinc-200/80 animate-in slide-in-from-left duration-300 ease-in-out">
             {/* Header of Drawer */}
-            <div className="flex justify-between items-center mb-6">
-              <span className="font-sans font-bold text-xs tracking-widest uppercase text-orange-600">
-                Menu
-              </span>
+            <div className="flex justify-between items-center gap-3 mb-6 pb-2 border-b border-zinc-200/60">
+              <Link
+                href="/"
+                onClick={() => setIsOpen(false)}
+                className="flex items-center select-none shrink-0"
+              >
+                <Image
+                  src="/assets/logo.png"
+                  alt="Libreria Nunnari & Sfameni"
+                  width={150}
+                  height={42}
+                  className="h-7 sm:h-8 w-auto max-w-[145px] object-contain"
+                  priority
+                />
+              </Link>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1.5 rounded-lg hover:bg-zinc-200/60 text-zinc-500 transition-colors"
+                className="p-1.5 rounded-lg hover:bg-zinc-200/60 text-zinc-500 hover:text-zinc-800 transition-colors shrink-0"
                 aria-label="Chiudi menu"
               >
                 <X className="w-5 h-5" />
