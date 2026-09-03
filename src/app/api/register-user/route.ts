@@ -1,6 +1,7 @@
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { headers } from 'next/headers'
+import { sendRegistrationNotificationEmail } from '@/lib/sendNotificationEmail'
 
 // In-memory rate limiting store
 // Tracks requests by IP address
@@ -131,6 +132,23 @@ export const POST = async (request: Request) => {
       },
       overrideAccess: true, // Crucial: bypasses collection 'create: false' access controls on server-side
     })
+
+    // 5. Invio asincrono della notifica email tramite Resend
+    // Avvolto in un try/catch per garantire che un eventuale problema nell'invio dell'email
+    // non blocchi o restituisca errore all'utente che si è registrato con successo nel database.
+    try {
+      await sendRegistrationNotificationEmail({
+        nome: nome.trim(),
+        cognome: cognome.trim(),
+        cellulare: cellulare.trim(),
+        email: email ? email.trim() : undefined,
+        scuola: scuola ? scuola.trim() : undefined,
+        classe: classe ? Number(classe) : undefined,
+        sezione: sezione ? sezione.trim() : undefined,
+      })
+    } catch (emailErr) {
+      console.error('Errore durante l\'invio della mail di notifica registrazione:', emailErr)
+    }
 
     return Response.json({ success: true })
   } catch (error: any) {
